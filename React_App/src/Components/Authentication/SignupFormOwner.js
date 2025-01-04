@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { Link } from "react-router-dom"; // Importing Link for navigation
 import "./LoginForm.css";
 
-const SignupForm = () => {
+const SignupFormOwner = () => {
   const [formData, setFormData] = useState({
     username: "",
     email: "",
@@ -142,4 +142,4 @@ const SignupForm = () => {
   );
 };
 
-export default SignupForm;
+export default SignupFormOwner;

@@ -1,7 +1,7 @@
 import React from "react";
 import Header from "./Header";
 
-const HomeMember = () => {
+const HomeOwner = () => {
   return (
     <>
       <Header />
@@ -9,4 +9,4 @@ const HomeMember = () => {
   );
 };
 
-export default HomeMember;
+export default HomeOwner;
