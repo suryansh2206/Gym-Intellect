@@ -1,0 +1,128 @@
+/* General Header Styling */
+header {
+  height: 100px;
+  background-color: #f2d6b6;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 2rem; /* Increased padding for better spacing */
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
+}
+
+/* Left Side: Logo and Project Name */
+header .logo-container {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem; /* Use gap for spacing */
+  width: 25%;
+}
+
+header .logo-container img {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%; /* Make logo circular */
+  object-fit: cover; /* Ensure proper aspect ratio */
+}
+
+header .logo-container span {
+  font-family: -apple-system, system-ui, "Segoe UI", Helvetica, Arial,
+    sans-serif, "Apple Color Emoji", "Segoe UI Emoji";
+  font-weight: bold;
+  font-size: 1.5rem;
+  color: #333333; /* Darker color for better contrast */
+}
+
+/* Center: Navigation Links */
+header .nav-container {
+  flex-grow: 1; /* Allow this section to grow and take the remaining space */
+  display: flex;
+  justify-content: center; /* Center-align navigation links */
+}
+
+header nav {
+  display: flex;
+  align-items: center;
+  gap: 2rem; /* Uniform spacing between links */
+}
+
+header nav a {
+  color: #333333; /* Darker color for better contrast */
+  text-decoration: none;
+  font-size: 1.1rem; /* Slightly smaller font for a cleaner look */
+  font-weight: 500;
+  transition: color 0.3s ease-in-out;
+}
+
+header nav a:hover {
+  color: #ff8c42; /* Vibrant hover color */
+  text-decoration: underline;
+}
+
+/* Right Side: Logout and Username */
+header .logout-container {
+  width: 25%;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end; /* Align logout button and username to the right */
+  gap: 1rem; /* Space between username and button */
+}
+
+header .logout-container .helloUser {
+  color: #333333; /* Darker color for better readability */
+  font-size: 1rem;
+  font-weight: 600;
+  text-transform: capitalize; /* Capitalize the username */
+}
+
+/* Logout Button */
+header .logout-container button {
+  background-color: #c3656e; /* Muted red color */
+  color: #ffffff;
+  border: none;
+  padding: 0.6rem 1.2rem;
+  font-size: 1rem;
+  font-weight: bold;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease-in-out, transform 0.2s ease;
+}
+
+header .logout-container button:hover {
+  background-color: #b85461; /* Slightly darker red on hover */
+  transform: scale(1.05); /* Subtle scale effect on hover */
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  header {
+    flex-wrap: wrap;
+    height: auto;
+    padding: 1rem;
+  }
+
+  header .logo-container {
+    justify-content: center;
+    margin-bottom: 1rem;
+    width: 100%;
+  }
+
+  header .nav-container {
+    justify-content: center;
+    margin-bottom: 1rem;
+    width: 100%;
+  }
+
+  header .logout-container {
+    justify-content: center;
+    width: 100%;
+  }
+
+  header nav a {
+    font-size: 1rem;
+  }
+
+  header .logout-container button {
+    font-size: 0.9rem;
+    padding: 0.5rem 1rem;
+  }
+}
