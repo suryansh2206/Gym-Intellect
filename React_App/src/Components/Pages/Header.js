@@ -1,6 +1,6 @@
 import React from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { logout } from "../../reduxStore/authSlice"; // Import the logout action
 import "./Header.css";
 
@@ -27,10 +27,18 @@ const Header = () => {
       {/* Center: Navigation Options */}
       <div className="nav-container">
         <nav>
-          <a href="#workoutPlan">Workout Plan</a>
-          <a href="#dietPlan">Diet Plan</a>
-          <a href="#progress">Progress</a>
-          <a href="#profile">Profile</a>
+          <Link to="/workoutPlan">
+            <i className="bi bi-file-earmark-text"></i> Workout Plan
+          </Link>
+          <Link to="/dietPlan">
+            <i className="bi bi-file-earmark-text"></i> Diet Plan
+          </Link>
+          <Link to="/addMember">
+            <i className="bi bi-person-add"></i> Add Member
+          </Link>
+          <Link to="/profile">
+            <i className="bi bi-person"></i> Profile
+          </Link>
         </nav>
       </div>
 

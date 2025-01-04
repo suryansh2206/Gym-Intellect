@@ -34,7 +34,7 @@ const LoginForm = () => {
       if (response.ok) {
         const userData = await response.json();
         dispatch(loginSuccess(userData)); // Dispatch login success action
-        navigate("/home"); // Redirect to home page after login
+        navigate("/homeOwner"); // Redirect to home page after login
       } else {
         setErrorMessage("Invalid username or password.");
       }
@@ -88,7 +88,7 @@ const LoginForm = () => {
           Forgot Password? <Link to="/forgot-password">Click Here</Link>
         </p>
         <p className="link">
-          Do want to register as a Gym Owner? <br /> <Link to="/signup">Sign Up</Link>
+          Do want to register as a Gym Owner? <br /> <Link to="/signupOwner">Sign Up</Link>
         </p>
         {errorMessage && <p className="error-message">{errorMessage}</p>}
       </div>

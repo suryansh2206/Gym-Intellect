@@ -1,9 +1,9 @@
 import { Route, Routes, Navigate } from "react-router-dom"; // Import Navigate for redirection
 import "./App.css";
 import LoginForm from "./Components/Authentication/LoginForm";
-import HomeMember from "./Components/Pages/HomeMember";
-import SignupForm from "./Components/Authentication/SignupForm";
 import { useSelector } from "react-redux"; // Import useSelector to access the Redux state
+import HomeOwner from "./Components/Pages/HomeOwner";
+import SignupFormOwner from "./Components/Authentication/SignupFormOwner";
 
 function App() {
   // Access authentication state from Redux
@@ -13,12 +13,12 @@ function App() {
     <Routes>
       {/* Public Routes */}
       <Route path="/" element={<LoginForm />} />
-      <Route path="/signup" element={<SignupForm />} />
+      <Route path="/signupOwner" element={<SignupFormOwner />} />
 
       {/* Protected Route */}
       <Route
-        path="/home"
-        element={isAuthenticated ? <HomeMember /> : <Navigate to="/" replace />}
+        path="/homeOwner"
+        element={isAuthenticated ? <HomeOwner /> : <Navigate to="/" replace />}
       />
     </Routes>
   );
