@@ -4,6 +4,7 @@ import LoginForm from "./Components/Authentication/LoginForm";
 import { useSelector } from "react-redux"; // Import useSelector to access the Redux state
 import HomeOwner from "./Components/Pages/HomeOwner";
 import SignupFormOwner from "./Components/Authentication/SignupFormOwner";
+import HomeMember from "./Components/Pages/HomeMember";
 
 function App() {
   // Access authentication state from Redux
@@ -20,6 +21,7 @@ function App() {
         path="/homeOwner"
         element={isAuthenticated ? <HomeOwner /> : <Navigate to="/" replace />}
       />
+      <Route path="/homeMember" element={<HomeMember />} />
     </Routes>
   );
 }
