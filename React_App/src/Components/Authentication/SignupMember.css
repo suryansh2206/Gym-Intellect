@@ -1,0 +1,82 @@
+.form-container {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start; /* Align form to the left */
+  min-height: 100vh;
+  background-color: #f9f2f0; /* Lighter shade of #EDDCD9 */
+  padding-left: 40px; /* Add some padding to the left */
+}
+
+.form-wrapper {
+  background-color: #eddcd9;
+  border: 2px solid #264143;
+  border-radius: 20px;
+  box-shadow: 3px 4px 0px 1px #e99f4c;
+  padding: 20px;
+  width: 100%;
+  max-width: 350px; /* Reduced max-width to make the form smaller */
+  text-align: center;
+}
+
+h2 {
+  color: #264143;
+  font-weight: 900;
+  margin-bottom: 20px;
+}
+
+.form-group {
+  margin-bottom: 15px;
+  display: flex;
+  flex-direction: column; /* Stack label and input vertically */
+  align-items: flex-start; /* Ensure left alignment */
+}
+
+label {
+  display: block;
+  margin-bottom: 5px;
+  font-weight: 600;
+  color: #264143;
+  text-align: left; /* Explicitly set text alignment to left */
+}
+
+input {
+  width: 100%;
+  padding: 12px;
+  border: 2px solid #264143;
+  border-radius: 4px;
+  box-shadow: 3px 4px 0px 1px #e99f4c;
+  font-size: 14px;
+}
+
+input:focus {
+  outline: none;
+  box-shadow: 1px 2px 0px 0px #e99f4c;
+}
+
+.btn {
+  width: 100%;
+  padding: 12px;
+  background-color: #de5499;
+  color: white;
+  border-radius: 10px;
+  font-weight: bold;
+  font-size: 15px;
+  cursor: pointer;
+}
+
+.btn:hover {
+  opacity: 0.9;
+}
+
+.link {
+  color: #264143;
+  font-weight: bold;
+  cursor: pointer;
+  margin-top: 10px;
+  display: inline-block;
+}
+
+.success-message {
+  color: green;
+  margin-top: 10px;
+}
