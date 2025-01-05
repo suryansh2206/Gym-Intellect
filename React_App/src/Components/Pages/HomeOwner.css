@@ -1,0 +1,21 @@
+.signup-form-container {
+    width: 40%;
+    padding: 1rem;
+    background-color: #f8f9fa;
+    border-right: 1px solid #ddd;
+    height: 100%;
+    position: relative;
+    order: -1; /* Ensure it appears first (left side) */
+  }
+  
+  .content-container {
+    display: flex;
+    flex-direction: row;
+    height: 100%;
+  }
+  
+  .main-content {
+    flex: 1;
+    padding: 1rem;
+    background-color: #fff;
+  }
