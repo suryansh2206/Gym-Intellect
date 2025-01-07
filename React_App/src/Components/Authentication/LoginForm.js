@@ -18,10 +18,20 @@ const LoginForm = () => {
 
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
+    setErrorMessage(""); // Clear error message when user modifies input
   };
+
+  const isFormValid =
+    formData.username.trim() !== "" && formData.password.trim() !== "";
 
   const handleSubmitLogin = async (e) => {
     e.preventDefault();
+
+    if (!isFormValid) {
+      setErrorMessage("Please fill in all fields.");
+      return;
+    }
+
     setIsSubmitting(true);
 
     try {
@@ -34,13 +44,14 @@ const LoginForm = () => {
       if (response.ok) {
         const userData = await response.json();
         dispatch(loginSuccess(userData)); // Dispatch login success action
-        navigate("/homeOwner"); // Redirect to home page after login
-      } else {
+        navigate("/homeOwner"); // Redirect to the home page after login
+      } else if (response.status === 401) {
         setErrorMessage("Invalid username or password.");
+      } else {
+        setErrorMessage("Login failed. Please try again later.");
       }
     } catch (error) {
       console.error("Login error:", error);
-      console.log(error);
       setErrorMessage("Something went wrong. Please try again.");
     } finally {
       setIsSubmitting(false);
@@ -48,14 +59,15 @@ const LoginForm = () => {
   };
 
   return (
-    <div className="form-container">
-      <div className="form-wrapper">
-        <h2>Login</h2> <br />
+    <div className="login-form-container">
+      <div className="login-form-wrapper">
+        <h2>Login</h2>
+        <br />
         {isAuthenticated ? (
           <p>You are already logged in!</p>
         ) : (
           <form onSubmit={handleSubmitLogin}>
-            <div className="form-group">
+            <div className="login-form-group">
               <label htmlFor="username">Username:</label>
               <input
                 type="text"
@@ -67,7 +79,7 @@ const LoginForm = () => {
                 placeholder="Enter Username"
               />
             </div>
-            <div className="form-group">
+            <div className="login-form-group">
               <label htmlFor="password">Password:</label>
               <input
                 type="password"
@@ -79,18 +91,27 @@ const LoginForm = () => {
                 placeholder="Enter Password"
               />
             </div>
-            <button type="submit" className="btn" disabled={isSubmitting}>
+            <button
+              type="submit"
+              className="login-btn"
+              disabled={!isFormValid || isSubmitting}
+            >
               {isSubmitting ? "Logging In..." : "Login"}
             </button>
           </form>
         )}
-        <p className="link">
+        <p className="login-link">
           Forgot Password? <Link to="/forgot-password">Click Here</Link>
         </p>
-        <p className="link">
-          Do want to register as a Gym Owner? <br /> <Link to="/signupOwner">Sign Up</Link>
+        <p className="login-link">
+          Want to register as a Gym Owner? <br />{" "}
+          <Link to="/signupOwner">Sign Up</Link>
         </p>
-        {errorMessage && <p className="error-message">{errorMessage}</p>}
+        {errorMessage && (
+          <p className="error-message" aria-live="polite">
+            {errorMessage}
+          </p>
+        )}
       </div>
     </div>
   );

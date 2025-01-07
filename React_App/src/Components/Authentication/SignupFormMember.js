@@ -1,6 +1,4 @@
 import React, { useState } from "react";
-// import { Link } from "react-router-dom"; // Importing Link for navigation
-import "./LoginForm.css";
 import "./SignupMember.css";
 
 const SignupFormMember = () => {
@@ -10,7 +8,7 @@ const SignupFormMember = () => {
     password: "",
     contact: "",
     aadhar: "",
-    roleId: 3, // Default role as Gym Owner (id: 2)
+    roleId: 3, // Default role as Gym Member (id: 3)
   });
   const [successMessage, setSuccessMessage] = useState("");
   const [isSubmitting, setIsSubmitting] = useState(false);
@@ -33,14 +31,14 @@ const SignupFormMember = () => {
       });
 
       if (response.ok) {
-        setSuccessMessage("Sign-up successful! You can now log in.");
+        setSuccessMessage("Member added successfully");
         setFormData({
           username: "",
           email: "",
           password: "",
           contact: "",
           aadhar: "",
-          roleId: 3, // Resetting the role to Gym Owner after successful signup
+          roleId: 3, // Resetting the role to Gym Member after successful signup
         });
       } else {
         throw new Error("Failed to submit the form.");
@@ -54,12 +52,12 @@ const SignupFormMember = () => {
   };
 
   return (
-    <div className="form-container">
-      <div className="form-wrapper">
-        <h3>Register a member</h3>
+    <div className="signup-form-container">
+      <div className="signup-form-wrapper">
+        <h2>Register a Member</h2>
         <br />
         <form onSubmit={handleSubmit}>
-          <div className="form-group">
+          <div className="signup-form-group">
             <label htmlFor="username">Username:</label>
             <input
               type="text"
@@ -71,7 +69,7 @@ const SignupFormMember = () => {
               placeholder="Enter Username"
             />
           </div>
-          <div className="form-group">
+          <div className="signup-form-group">
             <label htmlFor="email">Email:</label>
             <input
               type="email"
@@ -83,7 +81,7 @@ const SignupFormMember = () => {
               placeholder="Enter Email"
             />
           </div>
-          <div className="form-group">
+          <div className="signup-form-group">
             <label htmlFor="password">Password:</label>
             <input
               type="password"
@@ -95,7 +93,7 @@ const SignupFormMember = () => {
               placeholder="Enter Password"
             />
           </div>
-          <div className="form-group">
+          <div className="signup-form-group">
             <label htmlFor="contact">Contact:</label>
             <input
               type="text"
@@ -107,7 +105,7 @@ const SignupFormMember = () => {
               placeholder="Enter Contact"
             />
           </div>
-          <div className="form-group">
+          <div className="signup-form-group">
             <label htmlFor="aadhar">Aadhar:</label>
             <input
               type="text"
@@ -119,25 +117,14 @@ const SignupFormMember = () => {
               placeholder="Enter Aadhar"
             />
           </div>
-          <button
-            type="submit"
-            disabled={isSubmitting}
-            className="submit-button"
-          >
-            {isSubmitting ? "Signing Up..." : "Sign Up"}
+          <button type="submit" className="signup-btn" disabled={isSubmitting}>
+            {isSubmitting ? "Adding Member..." : "Add"}
           </button>
         </form>
 
         {successMessage && (
-          <div className="success-message">
-            <p>{successMessage}</p>
-          </div>
+          <p className="signup-success-message">{successMessage}</p>
         )}
-        <br />
-        {/* Always visible Login link */}
-        {/* <div className="link">
-          <p>Already have an account? <Link to="/">Login here</Link></p>
-        </div> */}
       </div>
     </div>
   );

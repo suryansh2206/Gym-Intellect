@@ -53,12 +53,12 @@ const SignupFormOwner = () => {
   };
 
   return (
-    <div className="form-container">
-      <div className="form-wrapper">
-        <h3>Register as a Gym Owner</h3>
+    <div className="login-form-container">
+      <div className="login-form-wrapper">
+        <h2>Register as a Gym Owner</h2>
         <br />
         <form onSubmit={handleSubmit}>
-          <div className="form-group">
+          <div className="login-form-group">
             <label htmlFor="username">Username:</label>
             <input
               type="text"
@@ -70,7 +70,7 @@ const SignupFormOwner = () => {
               placeholder="Enter Username"
             />
           </div>
-          <div className="form-group">
+          <div className="login-form-group">
             <label htmlFor="email">Email:</label>
             <input
               type="email"
@@ -82,7 +82,7 @@ const SignupFormOwner = () => {
               placeholder="Enter Email"
             />
           </div>
-          <div className="form-group">
+          <div className="login-form-group">
             <label htmlFor="password">Password:</label>
             <input
               type="password"
@@ -94,7 +94,7 @@ const SignupFormOwner = () => {
               placeholder="Enter Password"
             />
           </div>
-          <div className="form-group">
+          <div className="login-form-group">
             <label htmlFor="contact">Contact:</label>
             <input
               type="text"
@@ -106,7 +106,7 @@ const SignupFormOwner = () => {
               placeholder="Enter Contact"
             />
           </div>
-          <div className="form-group">
+          <div className="login-form-group">
             <label htmlFor="aadhar">Aadhar:</label>
             <input
               type="text"
@@ -118,25 +118,17 @@ const SignupFormOwner = () => {
               placeholder="Enter Aadhar"
             />
           </div>
-          <button
-            type="submit"
-            disabled={isSubmitting}
-            className="submit-button"
-          >
+          <button type="submit" className="login-btn" disabled={isSubmitting}>
             {isSubmitting ? "Signing Up..." : "Sign Up"}
           </button>
         </form>
 
         {successMessage && (
-          <div className="success-message">
-            <p>{successMessage}</p>
-          </div>
+          <p className="login-success-message">{successMessage}</p>
         )}
-        <br />
-        {/* Always visible Login link */}
-        <div className="link">
-          <p>Already have an account? <Link to="/">Login here</Link></p>
-        </div>
+        <p className="login-link">
+          Already have an account? <Link to="/">Login here</Link>
+        </p>
       </div>
     </div>
   );
