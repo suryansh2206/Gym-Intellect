@@ -23,6 +23,9 @@ const SignupFormMember = () => {
     e.preventDefault();
     setIsSubmitting(true);
 
+    // Log the form data to the console
+    console.log("Form Data being sent to API:", formData);
+
     try {
       const response = await fetch("http://localhost:8081/api/auth/signup", {
         method: "POST",

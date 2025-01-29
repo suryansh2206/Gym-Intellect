@@ -21,7 +21,10 @@ function App() {
         path="/homeOwner"
         element={isAuthenticated ? <HomeOwner /> : <Navigate to="/" replace />}
       />
-      <Route path="/homeMember" element={<HomeMember />} />
+      <Route
+        path="/homeMember"
+        element={isAuthenticated ? <HomeMember /> : <Navigate to="/" replace />}
+      />
     </Routes>
   );
 }
