@@ -1,11 +1,11 @@
-import { createSlice } from '@reduxjs/toolkit';
+import { createSlice } from "@reduxjs/toolkit";
 
 // src/reduxStore/authSlice.js
 const authSlice = createSlice({
-  name: 'auth',
+  name: "auth",
   initialState: {
-    isAuthenticated: Boolean(localStorage.getItem('isAuthenticated')), // Load state from localStorage
-    user: JSON.parse(localStorage.getItem('user')) || null,
+    isAuthenticated: Boolean(localStorage.getItem("isAuthenticated")), // Load state from localStorage
+    user: JSON.parse(localStorage.getItem("user")) || null,
   },
   reducers: {
     loginSuccess: (state, action) => {
@@ -13,16 +13,16 @@ const authSlice = createSlice({
       state.user = action.payload;
 
       // Save to localStorage
-      localStorage.setItem('isAuthenticated', true);
-      localStorage.setItem('user', JSON.stringify(action.payload));
+      localStorage.setItem("isAuthenticated", true);
+      localStorage.setItem("user", JSON.stringify(action.payload));
     },
     logout: (state) => {
       state.isAuthenticated = false;
       state.user = null;
 
       // Clear localStorage
-      localStorage.removeItem('isAuthenticated');
-      localStorage.removeItem('user');
+      localStorage.removeItem("isAuthenticated");
+      localStorage.removeItem("user");
     },
   },
 });
@@ -30,4 +30,3 @@ const authSlice = createSlice({
 export const { loginSuccess, logout } = authSlice.actions;
 
 export default authSlice.reducer;
-

@@ -43,8 +43,17 @@ const LoginForm = () => {
 
       if (response.ok) {
         const userData = await response.json();
+        console.log(JSON.stringify(userData, null, 2)); // Log user data
         dispatch(loginSuccess(userData)); // Dispatch login success action
-        navigate("/homeOwner"); // Redirect to the home page after login
+
+        // Redirect based on user role
+        if (userData.role === "ADMIN") {
+          navigate("/adminDashboard"); // Redirect to admin dashboard
+        } else if (userData.role === "GYM_OWNER") {
+          navigate("/homeOwner"); // Redirect to home owner page
+        } else if (userData.role === "MEMBER") {
+          navigate("/homeMember"); // Redirect to home member page
+        }
       } else if (response.status === 401) {
         setErrorMessage("Invalid username or password.");
       } else {

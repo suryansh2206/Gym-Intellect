@@ -33,9 +33,9 @@ const HeaderOwner = ({ onAddMemberClick }) => {
           <Link to="/dietPlan">
             <i className="bi bi-file-earmark-text"></i> Diet Plan
           </Link>
-          <button className="nav-button" onClick={onAddMemberClick}>
+          <Link to="#" className="nav-button" onClick={onAddMemberClick}>
             <i className="bi bi-person-add"></i> Add Member
-          </button>
+          </Link>
           <Link to="/profile">
             <i className="bi bi-person"></i> Profile
           </Link>
