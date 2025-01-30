@@ -5,6 +5,7 @@ import { useSelector } from "react-redux"; // Import useSelector to access the R
 import HomeOwner from "./Components/Pages/HomeOwner";
 import SignupFormOwner from "./Components/Authentication/SignupFormOwner";
 import HomeMember from "./Components/Pages/HomeMember";
+import HomeAdmin from "./Components/Pages/HomeAdmin";
 
 function App() {
   // Access authentication state from Redux
@@ -20,11 +21,21 @@ function App() {
       {/* Protected Route */}
       <Route
         path="/homeOwner"
-        element={isAuthenticated ? <HomeOwner /> : <Navigate to="/login" replace />}
+        element={
+          isAuthenticated ? <HomeOwner /> : <Navigate to="/login" replace />
+        }
       />
       <Route
         path="/homeMember"
-        element={isAuthenticated ? <HomeMember /> : <Navigate to="/login" replace />}
+        element={
+          isAuthenticated ? <HomeMember /> : <Navigate to="/login" replace />
+        }
+      />
+      <Route
+        path="/adminDashboard"
+        element={
+          isAuthenticated ? <HomeAdmin /> : <Navigate to="/login" replace />
+        }
       />
     </Routes>
   );
