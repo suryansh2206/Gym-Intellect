@@ -86,3 +86,24 @@
   color: green;
   margin-top: 10px;
 }
+
+/* Add these to your existing CSS */
+.error-message {
+  color: #dc3545;
+  font-size: 0.9rem;
+  margin-top: 0.25rem;
+}
+
+.login-links {
+  margin-top: 1.5rem;
+  text-align: center;
+}
+
+.login-links a {
+  color: #007bff;
+  text-decoration: none;
+}
+
+.login-links a:hover {
+  text-decoration: underline;
+}
