@@ -12,18 +12,19 @@ function App() {
 
   return (
     <Routes>
-      {/* Public Routes */}
-      <Route path="/" element={<LoginForm />} />
+      {/* Redirect from root to /login */}
+      <Route path="/" element={<Navigate to="/login" replace />} />
+      <Route path="/login" element={<LoginForm />} />
       <Route path="/signupOwner" element={<SignupFormOwner />} />
 
       {/* Protected Route */}
       <Route
         path="/homeOwner"
-        element={isAuthenticated ? <HomeOwner /> : <Navigate to="/" replace />}
+        element={isAuthenticated ? <HomeOwner /> : <Navigate to="/login" replace />}
       />
       <Route
         path="/homeMember"
-        element={isAuthenticated ? <HomeMember /> : <Navigate to="/" replace />}
+        element={isAuthenticated ? <HomeMember /> : <Navigate to="/login" replace />}
       />
     </Routes>
   );
