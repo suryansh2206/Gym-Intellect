@@ -1,0 +1,108 @@
+/* Add Gym Profile Styles */
+.add-gym-profile-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  background-color: #f9f2f0; /* Lighter shade of #EDDCD9 */
+  background-image: linear-gradient(
+      rgba(255, 228, 220, 0.6) 1px,
+      transparent 1px
+    ),
+    linear-gradient(90deg, rgba(255, 228, 220, 0.6) 1px, transparent 1px);
+  background-size: 20px 20px; /* Adjust the size for subtlety */
+}
+
+.add-gym-profile-wrapper {
+  background-color: #eddcd9;
+  border: 2px solid #264143;
+  border-radius: 20px;
+  box-shadow: 3px 4px 0px 1px #e99f4c;
+  padding: 20px;
+  width: 100%;
+  max-width: 800px; /* Double the width of the login form */
+  text-align: center;
+}
+
+.add-gym-profile-wrapper h2 {
+  color: #264143;
+  font-weight: 900;
+  margin-bottom: 20px;
+}
+
+.add-gym-form-group {
+  margin-bottom: 15px;
+  display: flex;
+  flex-direction: column; /* Stack label and input vertically */
+  align-items: flex-start; /* Ensure left alignment */
+}
+
+.add-gym-form-group label {
+  display: block;
+  margin-bottom: 5px;
+  font-weight: 600;
+  color: #264143;
+  text-align: left; /* Explicitly set text alignment to left */
+}
+
+.add-gym-form-group input,
+.add-gym-form-group textarea {
+  width: 100%; /* Double the width of the input fields */
+  padding: 12px;
+  border: 2px solid #264143;
+  border-radius: 4px;
+  box-shadow: 3px 4px 0px 1px #e99f4c;
+  font-size: 14px;
+}
+
+.add-gym-form-group input:focus,
+.add-gym-form-group textarea:focus {
+  outline: none;
+  box-shadow: 1px 2px 0px 0px #e99f4c;
+}
+
+.add-gym-btn {
+  width: 100%;
+  padding: 12px;
+  background-color: #de5499;
+  color: white;
+  border-radius: 10px;
+  font-weight: bold;
+  font-size: 15px;
+  cursor: pointer;
+}
+
+.add-gym-btn:hover {
+  opacity: 0.9;
+}
+
+.error-message {
+  color: #dc3545;
+  font-size: 0.9rem;
+  margin-top: 0.25rem;
+}
+
+/* .nav-link {
+  color: #264143;
+  font-weight: bold;
+  cursor: pointer;
+  margin-top: 10px;
+  display: inline-block;
+} */
+
+/* Styling for the Back to Dashboard link */
+.dashboard-link {
+  color: #264143;
+  font-weight: bold;
+  cursor: pointer;
+  margin-top: 10px;
+  display: inline-block;
+}
+
+.error-message {
+  color: #ff0000;
+  margin-bottom: 15px;
+  padding: 10px;
+  background-color: #ffe6e6;
+  border-radius: 4px;
+}

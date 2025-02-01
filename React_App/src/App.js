@@ -1,4 +1,5 @@
 import { Route, Routes, Navigate } from "react-router-dom"; // Import Navigate for redirection
+import AddGymProfile from "./Components/Pages/AddGymProfile"; // Import AddGymProfile component
 import "./App.css";
 import LoginForm from "./Components/Authentication/LoginForm";
 import { useSelector } from "react-redux"; // Import useSelector to access the Redux state
@@ -20,13 +21,19 @@ function App() {
 
       {/* Protected Route */}
       <Route
-        path="/homeOwner"
+        path="/ownerDashboard"
         element={
           isAuthenticated ? <HomeOwner /> : <Navigate to="/login" replace />
         }
       />
       <Route
-        path="/homeMember"
+        path="/addGymProfile"
+        element={
+          isAuthenticated ? <AddGymProfile /> : <Navigate to="/login" replace />
+        }
+      />
+      <Route
+        path="/memberDashboard"
         element={
           isAuthenticated ? <HomeMember /> : <Navigate to="/login" replace />
         }
