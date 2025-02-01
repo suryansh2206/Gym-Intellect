@@ -102,8 +102,8 @@ const LoginForm = () => {
         const redirectPath =
           {
             ADMIN: "/adminDashboard",
-            GYM_OWNER: "/homeOwner",
-            MEMBER: "/homeMember",
+            GYM_OWNER: "/ownerDashboard",
+            MEMBER: "/memberDashboard",
           }[userData.role] || "/";
 
         navigate(redirectPath);

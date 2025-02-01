@@ -27,7 +27,7 @@ const HeaderOwner = ({ onAddMemberClick }) => {
       {/* Center: Navigation Options */}
       <div className="nav-container">
         <nav>
-          <Link to="/addGym">
+          <Link to="/addGymProfile">
             <i className="bi bi-file-earmark-text"></i> Add Gym
           </Link>
           <Link to="/dietPlan">
