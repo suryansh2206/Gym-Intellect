@@ -56,4 +56,11 @@ public class GymProfileController {
         List<GymProfile> pendingProfiles = gymProfileService.getPendingGymProfiles();
         return ResponseEntity.ok(pendingProfiles);
     }
+    
+ // Endpoint to check if a gym profile is approved for a given owner
+    @GetMapping("/owner/{ownerId}/is-approved")
+    public ResponseEntity<Boolean> isGymProfileApprovedForOwner(@PathVariable Long ownerId) {
+        boolean isApproved = gymProfileService.isGymProfileApprovedForOwner(ownerId);
+        return ResponseEntity.ok(isApproved);
+    }
 }

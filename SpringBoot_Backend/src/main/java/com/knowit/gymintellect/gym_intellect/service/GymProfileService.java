@@ -107,4 +107,9 @@ public class GymProfileService {
         GymProfile gymProfile = getGymProfileById(gymProfileId);
         gymProfileRepository.delete(gymProfile);
     }
+    
+    public boolean isGymProfileApprovedForOwner(Long ownerId) {
+        List<GymProfile> approvedProfiles = gymProfileRepository.findByOwner_UserIdAndStatus(ownerId, "APPROVED");
+        return !approvedProfiles.isEmpty();
+    }
 }
