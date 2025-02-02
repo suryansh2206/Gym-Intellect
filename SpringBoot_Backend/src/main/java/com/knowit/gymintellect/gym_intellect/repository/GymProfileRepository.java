@@ -19,5 +19,7 @@ public interface GymProfileRepository extends JpaRepository<GymProfile, Long> {
     
     // Custom query example: Find GymProfiles by name
     public List<GymProfile> findByGymNameContainingIgnoreCase(String gymName);
+    
+    List<GymProfile> findByOwner_UserIdAndStatus(Long ownerId, String status);
 
 }
