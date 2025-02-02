@@ -13,11 +13,11 @@ const HeaderAdmin = () => {
 
   const handleLogout = () => {
     dispatch(logout()); // Dispatch logout action
-    navigate("/"); // Redirect to login page
+    navigate("/login"); // Redirect to login page (adjust the path if needed)
   };
 
   return (
-    <header>
+    <header className="header-admin">
       {/* Left Side: Logo and Project Name */}
       <div className="logo-container">
         <img src="https://via.placeholder.com/40" alt="Logo" />
@@ -27,7 +27,8 @@ const HeaderAdmin = () => {
       {/* Center: Navigation Options */}
       <div className="nav-container">
         <nav>
-          <Link to="/gymProfiles">
+          {/* Updated the link path to match the route for AllGymProfiles */}
+          <Link to="/all-gym-profiles">
             <i className="bi bi-file-earmark-text"></i> Gym Profiles
           </Link>
           <Link to="/members">

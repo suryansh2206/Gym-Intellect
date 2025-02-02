@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useSelector } from "react-redux"; // Importing useSelector from Redux
 import HeaderAdmin from "./HeaderAdmin"; // Importing HeaderAdmin
 import { useNavigate } from "react-router-dom"; // For navigation
+import "./HomeAdmin.css"; // Importing the CSS file for styling
 
 const HomeAdmin = () => {
   const [pendingProfiles, setPendingProfiles] = useState([]);
@@ -54,6 +55,11 @@ const HomeAdmin = () => {
   }, [token]); // Depend on token to refetch when it changes
 
   const handleApprove = async (id) => {
+    if (!id) {
+      console.error("Gym profile ID is undefined.");
+      setErrorMessage("Invalid gym profile ID.");
+      return;
+    }
     try {
       const response = await fetch(
         `http://localhost:8081/api/admin/gym-profiles/${id}/approve`,
@@ -76,6 +82,11 @@ const HomeAdmin = () => {
   };
 
   const handleReject = async (id) => {
+    if (!id) {
+      console.error("Gym profile ID is undefined.");
+      setErrorMessage("Invalid gym profile ID.");
+      return;
+    }
     try {
       const response = await fetch(
         `http://localhost:8081/api/admin/gym-profiles/${id}/reject`,
@@ -120,34 +131,41 @@ const HomeAdmin = () => {
             </tr>
           </thead>
           <tbody>
-            {pendingProfiles.map((profile) => (
-              <tr key={profile.gym_profile_id}>
-                <td>{profile.gym_name}</td>
-                <td>{profile.location}</td>
-                <td>{profile.contact}</td>
-                <td>{profile.open_hours}</td>
-                <td>{profile.gst}</td>
-                <td>{profile.status}</td>
-                <td>
-                  {profile.status === "PENDING" ? (
-                    <>
-                      <button
-                        onClick={() => handleApprove(profile.gym_profile_id)}
-                      >
-                        Approve
-                      </button>
-                      <button
-                        onClick={() => handleReject(profile.gym_profile_id)}
-                      >
-                        Reject
-                      </button>
-                    </>
-                  ) : (
-                    <span>{profile.status}</span>
-                  )}
-                </td>
-              </tr>
-            ))}
+            {pendingProfiles.map((profile) => {
+              console.log("Profile ID:", profile.gymProfileId); // Debugging line
+              return (
+                <tr key={profile.gymProfileId}>
+                  <td>{profile.gymName}</td>
+                  <td>{profile.location}</td>
+                  <td>{profile.contact}</td>
+                  <td>{profile.openHours}</td>
+                  <td>{profile.gst}</td>
+                  <td>{profile.status}</td>
+                  <td>
+                    {profile.status === "PENDING" ? (
+                      <>
+                        <button
+                          className="approve"
+                          onClick={() => handleApprove(profile.gymProfileId)}
+                          >
+                          Approve  
+                          <i class="bi bi-check2"></i>
+                        </button>
+                        <button
+                          className="reject"
+                          onClick={() => handleReject(profile.gymProfileId)}
+                        >
+                          Reject  
+                          <i class="bi bi-x-lg"></i>
+                        </button>
+                      </>
+                    ) : (
+                      <span>{profile.status}</span>
+                    )}
+                  </td>
+                </tr>
+              );
+            })}
           </tbody>
         </table>
       )}
