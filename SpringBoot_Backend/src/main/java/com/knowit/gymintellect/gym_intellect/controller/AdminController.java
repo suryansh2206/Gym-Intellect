@@ -32,6 +32,13 @@ public class AdminController {
         List<GymProfile> gymProfiles = adminService.getAllGymProfiles(username);
         return ResponseEntity.ok(gymProfiles);
     }
+    
+    @GetMapping("/gym-profiles-pending")
+    public ResponseEntity<List<GymProfile>> getAllPendingGymProfiles() {
+        String username = getAuthenticatedUsername();
+        List<GymProfile> gymProfiles = adminService.getAllPendingGymProfiles(username);
+        return ResponseEntity.ok(gymProfiles);
+    }
 
     @PutMapping("/gym-profiles/{gymProfileId}/approve")
     public ResponseEntity<String> approveGymProfile(@PathVariable Long gymProfileId) {

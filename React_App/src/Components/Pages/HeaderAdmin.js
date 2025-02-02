@@ -27,17 +27,11 @@ const HeaderAdmin = () => {
       {/* Center: Navigation Options */}
       <div className="nav-container">
         <nav>
-          <Link to="/workoutPlan">
-            <i className="bi bi-file-earmark-text"></i> Workout Plan
+          <Link to="/gymProfiles">
+            <i className="bi bi-file-earmark-text"></i> Gym Profiles
           </Link>
-          <Link to="/dietPlan">
-            <i className="bi bi-file-earmark-text"></i> Diet Plan
-          </Link>
-          <Link to="/progress">
-            <i className="bi bi-clipboard2-data"></i> Progress
-          </Link>
-          <Link to="/profile">
-            <i className="bi bi-person"></i> Profile
+          <Link to="/members">
+            <i className="bi bi-file-earmark-text"></i> Members
           </Link>
         </nav>
       </div>
