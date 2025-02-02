@@ -28,6 +28,11 @@ public class AdminService {
         validateAdminAccess(username);
         return gymProfileRepository.findAll();
     }
+    
+    public List<GymProfile> getAllPendingGymProfiles(String username) {
+        validateAdminAccess(username);
+        return gymProfileService.getPendingGymProfiles();
+    }
 
     public void approveGymProfile(Long gymProfileId, String username) {
         validateGymProfileId(gymProfileId); // Validate gymProfileId
