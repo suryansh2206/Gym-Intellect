@@ -5,7 +5,7 @@ public class WorkoutJoinDTO {
 	private int wojId;
     private int workoutId;
     private String exerciseName;
-    private int planId;
+    private long planId;
     private String planName;
 	public int getWojId() {
 		return wojId;
@@ -25,11 +25,11 @@ public class WorkoutJoinDTO {
 	public void setExerciseName(String exerciseName) {
 		this.exerciseName = exerciseName;
 	}
-	public int getPlanId() {
+	public long getPlanId() {
 		return planId;
 	}
-	public void setPlanId(int planId) {
-		this.planId = planId;
+	public void setPlanId(long l) {
+		this.planId = l;
 	}
 	public String getPlanName() {
 		return planName;

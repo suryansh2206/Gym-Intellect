@@ -1,6 +1,5 @@
 package com.KnowIt.Gym_intellect_Crud.Entity;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
@@ -11,7 +10,6 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
-import jakarta.persistence.Lob;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 
@@ -22,7 +20,7 @@ public class Workout_plan {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int planId;
+    private long planId;
 
     @Column(nullable = false, length = 50)
     private String planName;
@@ -37,7 +35,7 @@ public class Workout_plan {
     @JsonIgnore
     private List<Workout_join> workoutJoins;
 
-	public int getPlanId() {
+	public long getPlanId() {
 		return planId;
 	}
 

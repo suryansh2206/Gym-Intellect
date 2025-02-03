@@ -8,14 +8,13 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 
-import com.KnowIt.Gym_intellect_Crud.Entity.Workout;
 import com.KnowIt.Gym_intellect_Crud.Entity.Workout_join;
 
 @Repository
 public interface Workout_joinrepo extends JpaRepository<Workout_join, Integer> {
 
     // Find all workout joins by plan ID
-    List<Workout_join> findByPlan_PlanId(int planId);
+    List<Workout_join> findByPlan_PlanId(long planId);
 
     // Find all workout joins by workout ID
     List<Workout_join> findByWorkout_WorkoutId(int workoutId);

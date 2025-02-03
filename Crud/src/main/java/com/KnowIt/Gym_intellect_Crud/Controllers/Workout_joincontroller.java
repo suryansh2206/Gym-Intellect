@@ -42,7 +42,7 @@ public class Workout_joincontroller {
     }
 
     @GetMapping("/workouts-by-plan/{planId}")
-    public ResponseEntity<List<WorkoutJoinDTO>> getWorkoutsByPlan(@PathVariable int planId) {
+    public ResponseEntity<List<WorkoutJoinDTO>> getWorkoutsByPlan(@PathVariable long planId) {
         List<Workout_join> joins = workoutJoinService.getWorkoutsByPlan(planId);
         List<WorkoutJoinDTO> dtos = joins.stream()
             .map(join -> {
