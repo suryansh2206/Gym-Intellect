@@ -91,15 +91,6 @@ public class UserService {
 
         userRepository.save(user);
     }
-
-
-
-
-
-
-
-
-
     
 //    public void registerGymOwner(SignupRequest signupRequest) {
 //        Role gymOwnerRole = roleRepository.findByName("GYM_OWNER")
@@ -158,33 +149,25 @@ public class UserService {
 
             // Handle GYM_OWNER role
             if ("GYM_OWNER".equals(user.getRole().getName())) {
-                Optional<GymProfile> optionalGymProfile = gymProfileRepository.findByOwner(user);
+                List<GymProfile> optionalGymProfile = gymProfileRepository.findByOwner(user);
 
                 if (optionalGymProfile.isEmpty()) {
                     // Gym profile not found - redirect to profile creation
                     return new JwtResponse(jwt, user.getUsername(), user.getEmail(), "GYM_OWNER", "CREATE_PROFILE",userId);
                 }
 
-                GymProfile gymProfile = optionalGymProfile.get();
-                String status = gymProfile.getStatus();
-                System.out.println("Gym profile status: " + status);
+                boolean hasApproved = optionalGymProfile.stream().anyMatch(profile -> "APPROVED".equals(profile.getStatus()));
                 
                
 
                 // Handle different statuses
-                if ("PENDING".equals(status)) {
-                    return new JwtResponse(jwt, user.getUsername(), user.getEmail(), "GYM_OWNER", "PENDING", userId );
-                } else if ("APPROVED".equals(status)) {
+                if (hasApproved) {
                     return new JwtResponse(jwt, user.getUsername(), user.getEmail(), "GYM_OWNER", "APPROVED", userId);
-                } else if ("REJECTED".equals(status)) {
+                } else if (optionalGymProfile.stream().anyMatch(profile -> "PENDING".equals(profile.getStatus()))) {
+                    return new JwtResponse(jwt, user.getUsername(), user.getEmail(), "GYM_OWNER", "PENDING", userId);
+                } else {
                     return new JwtResponse(jwt, user.getUsername(), user.getEmail(), "GYM_OWNER", "REJECTED", userId);
                 }
-            }
-            
-         // ✅ Handle MEMBER role (as stored in DB)
-            if ("MEMBER".equals(user.getRole().getName())) {
-                System.out.println("Gym Member logged in");
-                return new JwtResponse(jwt, user.getUsername(), user.getEmail(), "MEMBER", "ACTIVE", userId);
             }
 
             // Default fallback
@@ -195,7 +178,6 @@ public class UserService {
             throw new RuntimeException("Invalid username or password");
         }
     }
-
 
  
     public User findByEmail(String email) {

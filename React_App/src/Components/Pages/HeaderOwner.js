@@ -4,7 +4,7 @@ import { Link, useNavigate } from "react-router-dom";
 import { logout } from "../../reduxStore/authSlice"; // Import the logout action
 import "./Header.css";
 
-const HeaderOwner = ({ onAddMemberClick }) => {
+const HeaderOwner = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
@@ -33,7 +33,7 @@ const HeaderOwner = ({ onAddMemberClick }) => {
           <Link to="/dietPlan">
             <i className="bi bi-file-earmark-text"></i> Diet Plan
           </Link>
-          <Link to="#" className="nav-button" onClick={onAddMemberClick}>
+          <Link to="/addMember">
             <i className="bi bi-person-add"></i> Add Member
           </Link>
           <Link to="/profile">

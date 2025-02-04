@@ -6,16 +6,10 @@
     height: 100%;
     position: relative;
     order: -1; /* Ensure it appears first (left side) */
-  }
-  
-  .content-container {
+}
+
+.content-container {
     display: flex;
     flex-direction: row;
     height: 100%;
-  }
-  
-  .main-content {
-    flex: 1;
-    padding: 1rem;
-    background-color: #fff;
-  }
+}

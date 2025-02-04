@@ -8,12 +8,16 @@ import SignupFormOwner from "./Components/Authentication/SignupFormOwner";
 import HomeMember from "./Components/Pages/HomeMember";
 import HomeAdmin from "./Components/Pages/HomeAdmin";
 import AllGymProfiles from "./Components/Pages/AllGymProfiles"; // Import the AllGymProfiles component
+import SignupFormMember from "./Components/Authentication/SignupFormMember"; // Import the new SignupFormMember component
 
 function App() {
   // Access authentication state from Redux
   const isAuthenticated = useSelector((state) => state.auth.isAuthenticated);
   // Access user details from Redux state (assuming the user object contains a role property)
   const userRole = useSelector((state) => state.auth.user?.role);
+
+  // Log the userRole to the console for debugging
+  console.log("User role:", userRole);
 
   return (
     <Routes>
@@ -22,35 +26,63 @@ function App() {
       <Route path="/login" element={<LoginForm />} />
       <Route path="/signupOwner" element={<SignupFormOwner />} />
 
-      {/* Protected Route for Owner */}
+      {/* Protected Route for Signup Member (only for GYM_OWNER) */}
+      <Route
+        path="/addMember"
+        element={
+          isAuthenticated && userRole === "GYM_OWNER" ? (
+            <SignupFormMember />
+          ) : (
+            <Navigate to="/login" replace />
+          )
+        }
+      />
+
+      {/* Protected Route for Owner Dashboard (only for GYM_OWNER) */}
       <Route
         path="/ownerDashboard"
         element={
-          isAuthenticated ? <HomeOwner /> : <Navigate to="/login" replace />
+          isAuthenticated && userRole === "GYM_OWNER" ? (
+            <HomeOwner />
+          ) : (
+            <Navigate to="/login" replace />
+          )
         }
       />
-      {/* Protected Route for adding Gym Profile */}
+
+      {/* Protected Route for adding Gym Profile (only for GYM_OWNER) */}
       <Route
         path="/addGymProfile"
         element={
-          isAuthenticated ? <AddGymProfile /> : <Navigate to="/login" replace />
+          isAuthenticated && userRole === "GYM_OWNER" ? (
+            <AddGymProfile />
+          ) : (
+            <Navigate to="/login" replace />
+          )
         }
       />
-      {/* Protected Route for Member */}
+
+      {/* Protected Route for Member Dashboard (for any authenticated member) */}
       <Route
         path="/memberDashboard"
         element={
           isAuthenticated ? <HomeMember /> : <Navigate to="/login" replace />
         }
       />
-      {/* Protected Route for Admin Dashboard */}
+
+      {/* Protected Route for Admin Dashboard (only for ADMIN) */}
       <Route
         path="/adminDashboard"
         element={
-          isAuthenticated ? <HomeAdmin /> : <Navigate to="/login" replace />
+          isAuthenticated && userRole === "ADMIN" ? (
+            <HomeAdmin />
+          ) : (
+            <Navigate to="/login" replace />
+          )
         }
       />
-      {/* Protected Route for AllGymProfiles accessible only by Admin */}
+
+      {/* Protected Route for AllGymProfiles accessible only by ADMIN */}
       <Route
         path="/all-gym-profiles"
         element={
