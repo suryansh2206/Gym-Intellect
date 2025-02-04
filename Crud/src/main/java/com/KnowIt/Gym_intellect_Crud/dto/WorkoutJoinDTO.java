@@ -3,7 +3,7 @@ package com.KnowIt.Gym_intellect_Crud.dto;
 public class WorkoutJoinDTO {
 	
 	private int wojId;
-    private int workoutId;
+    private long workoutId;
     private String exerciseName;
     private long planId;
     private String planName;
@@ -13,10 +13,10 @@ public class WorkoutJoinDTO {
 	public void setWojId(int wojId) {
 		this.wojId = wojId;
 	}
-	public int getWorkoutId() {
+	public long getWorkoutId() {
 		return workoutId;
 	}
-	public void setWorkoutId(int workoutId) {
+	public void setWorkoutId(long workoutId) {
 		this.workoutId = workoutId;
 	}
 	public String getExerciseName() {

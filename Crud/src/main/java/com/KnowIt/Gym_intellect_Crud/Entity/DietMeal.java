@@ -7,7 +7,7 @@ import jakarta.persistence.*;
 public class DietMeal {
 	@Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int mealId;
+    private long mealId;
 
     @ManyToOne
     @JoinColumn(name = "diet_id", referencedColumnName = "diet_id", nullable = false)
@@ -24,7 +24,7 @@ public class DietMeal {
     
  // Getters and Setters
 
-	public int getMealId() {
+	public long getMealId() {
 		return mealId;
 	}
 
