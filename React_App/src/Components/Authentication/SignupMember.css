@@ -2,10 +2,15 @@
 .signup-form-container {
   display: flex;
   align-items: center;
-  justify-content: flex-start; /* Align form to the left */
+  justify-content: center;
   min-height: 100vh;
-  background-color: #ffffff; /* Lighter shade of #EDDCD9 */
-  padding-left: 40px; /* Add some padding to the left */
+  background-color: #f9f2f0; /* Lighter shade of #EDDCD9 */
+  background-image: linear-gradient(
+      rgba(255, 228, 220, 0.6) 1px,
+      transparent 1px
+    ),
+    linear-gradient(90deg, rgba(255, 228, 220, 0.6) 1px, transparent 1px);
+  background-size: 20px 20px; /* Adjust the size for subtlety */
 }
 
 .signup-form-wrapper {

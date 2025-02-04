@@ -6,6 +6,7 @@ import com.knowit.gymintellect.gym_intellect.entity.GymProfile;
 import com.knowit.gymintellect.gym_intellect.service.GymProfileService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
@@ -58,9 +59,9 @@ public class GymProfileController {
     }
     
  // Endpoint to check if a gym profile is approved for a given owner
-    @GetMapping("/owner/{ownerId}/is-approved")
-    public ResponseEntity<Boolean> isGymProfileApprovedForOwner(@PathVariable Long ownerId) {
-        boolean isApproved = gymProfileService.isGymProfileApprovedForOwner(ownerId);
-        return ResponseEntity.ok(isApproved);
+    @GetMapping("/gym-profiles/{userId}")
+    @PreAuthorize("hasRole('GYM_OWNER')")
+    public List<GymProfile> getGymProfilesByUserId(@PathVariable Long userId) {
+        return gymProfileService.getGymProfilesByUserId(userId);
     }
 }

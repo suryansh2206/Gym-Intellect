@@ -64,6 +64,7 @@ public class SecurityConfig {
             .requestMatchers("/api/auth/**").permitAll()  // Public access to auth endpoints
             .requestMatchers("/api/admin/**").permitAll()  // Admin-only access
             .requestMatchers("/api/gym-profile/create").permitAll()
+            .requestMatchers("/api/gym-profile/gym-profiles/**").permitAll()
             .anyRequest().authenticated()
             .and()
             .addFilterBefore(new JwtAuthenticationFilter(authenticationManager(http), jwtUtils, userDetailsService), 
