@@ -108,8 +108,19 @@ public class GymProfileService {
         gymProfileRepository.delete(gymProfile);
     }
     
-    public boolean isGymProfileApprovedForOwner(Long ownerId) {
-        List<GymProfile> approvedProfiles = gymProfileRepository.findByOwner_UserIdAndStatus(ownerId, "APPROVED");
-        return !approvedProfiles.isEmpty();
+    public List<GymProfile> getGymProfilesByUserId(Long userId) {
+        logger.info("Fetching gym profiles for user ID: {}", userId);
+        try {
+            // Retrieve the user (gym owner) by ID
+            User gymOwner = userRepository.findById(userId)
+                    .orElseThrow(() -> new RuntimeException("User not found with ID: " + userId));
+
+            // Retrieve gym profiles associated with the gym owner
+            return gymProfileRepository.findByOwner(gymOwner);
+        } catch (Exception e) {
+            logger.error("Error while fetching gym profiles for user ID: {}", userId, e);
+            throw new RuntimeException("An unexpected error occurred while fetching the gym profiles.");
+        }
     }
+
 }

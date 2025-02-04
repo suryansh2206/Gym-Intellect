@@ -12,14 +12,14 @@ import com.knowit.gymintellect.gym_intellect.entity.User;
 @Repository
 public interface GymProfileRepository extends JpaRepository<GymProfile, Long> {
 	 // Find GymProfile by Gym Owner's User ID
-	Optional<GymProfile> findByOwner(User owner);
-    
-    // Find all GymProfiles that are pending approval
-    List<GymProfile> findByStatus(String status);
-    
-    // Custom query example: Find GymProfiles by name
-    public List<GymProfile> findByGymNameContainingIgnoreCase(String gymName);
-    
-    List<GymProfile> findByOwner_UserIdAndStatus(Long ownerId, String status);
+	List<GymProfile> findByOwner(User owner);
+
+   
+   // Find all GymProfiles that are pending approval
+   List<GymProfile> findByStatus(String status);
+   
+   // Custom query example: Find GymProfiles by name
+   public List<GymProfile> findByGymNameContainingIgnoreCase(String gymName);
 
 }
+
