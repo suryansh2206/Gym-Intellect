@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { Link } from "react-router-dom";
 import "./SignupMember.css";
 
 const SignupFormMember = () => {
@@ -232,6 +233,11 @@ const SignupFormMember = () => {
         {successMessage && (
           <p className="signup-success-message">{successMessage}</p>
         )}
+
+        {/* Back to Dashboard Link */}
+        <Link to="/ownerDashboard" className="dashboard-link">
+          Back to Dashboard
+        </Link>
       </div>
     </div>
   );
