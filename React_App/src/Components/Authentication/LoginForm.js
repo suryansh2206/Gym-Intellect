@@ -14,6 +14,7 @@ const LoginForm = () => {
   const [errors, setErrors] = useState({});
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [view, setView] = useState("login"); // 'login', 'forgot', 'reset'
+  const [showPassword, setShowPassword] = useState(false); // New state for password visibility
 
   const isAuthenticated = useSelector((state) => state.auth.isAuthenticated);
   const dispatch = useDispatch();
@@ -182,6 +183,10 @@ const LoginForm = () => {
     }
   };
 
+  const togglePasswordVisibility = () => {
+    setShowPassword((prev) => !prev);
+  };
+
   const renderForm = () => {
     switch (view) {
       case "login":
@@ -203,14 +208,32 @@ const LoginForm = () => {
             </div>
             <div className="login-form-group">
               <label htmlFor="password">Password:</label>
-              <input
-                type="password"
-                id="password"
-                name="password"
-                value={formData.password}
-                onChange={handleChange}
-                placeholder="Enter Password"
-              />
+              <div style={{ width: "100%", position: "relative" }}>
+                <input
+                  type={showPassword ? "text" : "password"}
+                  id="password"
+                  name="password"
+                  value={formData.password}
+                  onChange={handleChange}
+                  placeholder="Enter Password"
+                  style={{ width: "100%" }} // Ensure the input takes full width
+                />
+                <button
+                  type="button"
+                  onClick={togglePasswordVisibility}
+                  style={{
+                    position: "absolute",
+                    right: "10px",
+                    top: "50%",
+                    transform: "translateY(-50%)",
+                    background: "none",
+                    border: "none",
+                    cursor: "pointer",
+                  }}
+                >
+                  {showPassword ? "👁️" : "👁️‍🗨️"}
+                </button>
+              </div>
               {errors.password && (
                 <p className="error-message">{errors.password}</p>
               )}

@@ -1,60 +1,60 @@
 /* General Header Styling */
 header {
   height: 100px;
-  background-color: #f2d6b6;
+  background-color: #48a6a7; /* Teal */
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 0 2rem; /* Increased padding for better spacing */
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
+  padding: 0 2rem;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
 }
 
 /* Left Side: Logo and Project Name */
 header .logo-container {
   display: flex;
   align-items: center;
-  gap: 0.5rem; /* Use gap for spacing */
+  gap: 0.5rem;
   width: 25%;
 }
 
 header .logo-container img {
   width: 40px;
   height: 40px;
-  border-radius: 50%; /* Make logo circular */
-  object-fit: cover; /* Ensure proper aspect ratio */
+  border-radius: 50%;
+  object-fit: cover;
 }
 
 header .logo-container span {
   font-family: -apple-system, system-ui, "Segoe UI", Helvetica, Arial,
-    sans-serif, "Apple Color Emoji", "Segoe UI Emoji";
+    sans-serif;
   font-weight: bold;
   font-size: 1.5rem;
-  color: #333333; /* Darker color for better contrast */
+  color: #f2efe7; /* Beige for contrast */
 }
 
 /* Center: Navigation Links */
 header .nav-container {
-  flex-grow: 1; /* Allow this section to grow and take the remaining space */
+  flex-grow: 1;
   display: flex;
-  justify-content: center; /* Center-align navigation links */
+  justify-content: center;
 }
 
 header nav {
   display: flex;
   align-items: center;
-  gap: 2rem; /* Uniform spacing between links */
+  gap: 2rem;
 }
 
 header nav a {
-  color: #333333; /* Darker color for better contrast */
+  color: #f2efe7; /* Beige for readability */
   text-decoration: none;
-  font-size: 1.1rem; /* Slightly smaller font for a cleaner look */
+  font-size: 1.1rem;
   font-weight: 500;
   transition: color 0.3s ease-in-out;
 }
 
 header nav a:hover {
-  color: #ff8c42; /* Vibrant hover color */
+  color: #2973b2; /* Dark Blue Hover Effect */
   text-decoration: underline;
 }
 
@@ -63,20 +63,20 @@ header .logout-container {
   width: 25%;
   display: flex;
   align-items: center;
-  justify-content: flex-end; /* Align logout button and username to the right */
-  gap: 1rem; /* Space between username and button */
+  justify-content: flex-end;
+  gap: 1rem;
 }
 
 header .logout-container .helloUser {
-  color: #333333; /* Darker color for better readability */
+  color: #f2efe7; /* Beige for readability */
   font-size: 1rem;
   font-weight: 600;
-  text-transform: capitalize; /* Capitalize the username */
+  text-transform: capitalize;
 }
 
 /* Logout Button */
 header .logout-container button {
-  background-color: #c3656e; /* Muted red color */
+  background-color: #2973b2; /* Dark Blue */
   color: #ffffff;
   border: none;
   padding: 0.6rem 1.2rem;
@@ -88,8 +88,8 @@ header .logout-container button {
 }
 
 header .logout-container button:hover {
-  background-color: #b85461; /* Slightly darker red on hover */
-  transform: scale(1.05); /* Subtle scale effect on hover */
+  background-color: #9acbd0; /* Lighter Blue Hover Effect */
+  transform: scale(1.05);
 }
 
 /* Responsive Design */

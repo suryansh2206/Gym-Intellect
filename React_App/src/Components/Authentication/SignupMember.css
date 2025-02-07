@@ -1,68 +1,78 @@
-/* Signup Member Form Styles */
+/* SignupMember.css */
+
+/* Container styles for the entire page */
 .signup-form-container {
   display: flex;
   align-items: center;
   justify-content: center;
   min-height: 100vh;
-  background-color: #f9f2f0; /* Lighter shade of #EDDCD9 */
+  padding: 40px 0;
+  background-color: #e3f6f5; /* Light Aqua */
   background-image: linear-gradient(
-      rgba(255, 228, 220, 0.6) 1px,
+      rgba(154, 203, 208, 0.6) 1px,
       transparent 1px
     ),
-    linear-gradient(90deg, rgba(255, 228, 220, 0.6) 1px, transparent 1px);
-  background-size: 20px 20px; /* Adjust the size for subtlety */
+    linear-gradient(90deg, rgba(154, 203, 208, 0.6) 1px, transparent 1px);
+  background-size: 10px 10px;
 }
 
+/* Form wrapper styles */
 .signup-form-wrapper {
-  background-color: #eddcd9;
-  border: 2px solid #264143;
+  background-color: #9acbd0; /* Light Teal */
+  border: 2px solid #1e3a5f; /* Dark Navy Blue */
   border-radius: 20px;
-  box-shadow: 3px 4px 0px 1px #e99f4c;
+  box-shadow: 3px 4px 0px 1px #48a6a7;
   padding: 20px;
   width: 100%;
-  max-width: 350px; /* Reduced max-width to make the form smaller */
+  max-width: 800px;
   text-align: center;
 }
 
 .signup-form-wrapper h2 {
-  color: #264143;
+  color: #1e3a5f;
   font-weight: 900;
   margin-bottom: 20px;
 }
 
+/* Form group styles for each field */
 .signup-form-group {
   margin-bottom: 15px;
   display: flex;
-  flex-direction: column; /* Stack label and input vertically */
-  align-items: flex-start; /* Ensure left alignment */
+  flex-direction: column;
+  align-items: flex-start;
 }
 
 .signup-form-group label {
   display: block;
   margin-bottom: 5px;
   font-weight: 600;
-  color: #264143;
-  text-align: left; /* Explicitly set text alignment to left */
+  color: #1e3a5f;
+  text-align: left;
 }
 
-.signup-form-group input {
+.signup-form-group input,
+.signup-form-group select,
+.signup-form-group textarea {
   width: 100%;
   padding: 12px;
-  border: 2px solid #264143;
+  border: 2px solid #1e3a5f;
   border-radius: 4px;
-  box-shadow: 3px 4px 0px 1px #e99f4c;
+  box-shadow: 3px 4px 0px 1px #48a6a7;
   font-size: 14px;
 }
 
-.signup-form-group input:focus {
+.signup-form-group input:focus,
+.signup-form-group select:focus,
+.signup-form-group textarea:focus {
   outline: none;
-  box-shadow: 1px 2px 0px 0px #e99f4c;
+  box-shadow: 1px 2px 0px 0px #48a6a7;
 }
 
+/* Submit button styles */
 .signup-btn {
   width: 100%;
   padding: 12px;
-  background-color: #de5499;
+  background-color: #1e3a5f;
   color: white;
   border-radius: 10px;
   font-weight: bold;
@@ -74,15 +84,35 @@
   opacity: 0.9;
 }
 
-.signup-link {
-  color: #264143;
-  font-weight: bold;
-  cursor: pointer;
-  margin-top: 10px;
+/* Back to Dashboard link styling */
+.dashboard-link {
   display: inline-block;
+  margin-top: 20px;
+  color: #1e3a5f;
+  font-weight: bold;
+  text-decoration: none;
+  cursor: pointer;
 }
 
+.dashboard-link:hover {
+  text-decoration: underline;
+}
+
+/* Success and error message styling */
 .signup-success-message {
-  color: green;
-  margin-top: 10px;
+  margin-top: 15px;
+  padding: 10px;
+  background-color: #b9fbc0;
+  border: 2px solid #1e3a5f;
+  border-radius: 4px;
+  color: #1e3a5f;
+  font-weight: bold;
+}
+
+.error-message {
+  color: #ff0000;
+  margin-bottom: 15px;
+  padding: 10px;
+  background-color: #ffe6e6;
+  border-radius: 4px;
 }

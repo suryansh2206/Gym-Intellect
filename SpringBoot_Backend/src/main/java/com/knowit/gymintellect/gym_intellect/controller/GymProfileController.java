@@ -1,14 +1,17 @@
 package com.knowit.gymintellect.gym_intellect.controller;
 
-import java.util.List;
 import com.knowit.gymintellect.gym_intellect.dto.GymProfileRequest;
 import com.knowit.gymintellect.gym_intellect.entity.GymProfile;
 import com.knowit.gymintellect.gym_intellect.service.GymProfileService;
+
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
+//@CrossOrigin(origins = "http://localhost:3000")
 @RestController
 @RequestMapping("/api/gym-profile")
 public class GymProfileController {
@@ -17,11 +20,19 @@ public class GymProfileController {
     private GymProfileService gymProfileService;
 
     // Endpoint to create a gym profile
+//    @PreAuthorize("hasRole('GYM_OWNER')")
     @PostMapping("/create")
     public ResponseEntity<String> createGymProfile(@RequestBody GymProfileRequest gymProfileRequest) {
         gymProfileService.createGymProfile(gymProfileRequest);
         return ResponseEntity.ok("Gym profile submitted for admin approval.");
     }
+    
+    @GetMapping("/gym-profiles/{userId}")
+    @PreAuthorize("hasRole('GYM_OWNER')")
+    public List<GymProfile> getGymProfilesByUserId(@PathVariable Long userId) {
+        return gymProfileService.getGymProfilesByUserId(userId);
+    }
+
 
     // Endpoint to get a gym profile by ID
     @GetMapping("/{id}")
@@ -49,19 +60,5 @@ public class GymProfileController {
     public ResponseEntity<Void> deleteGymProfile(@PathVariable Long id) {
         gymProfileService.deleteGymProfile(id);
         return ResponseEntity.noContent().build();
-    }
-
-    // New endpoint to fetch all pending gym profiles
-    @GetMapping("/pending")
-    public ResponseEntity<List<GymProfile>> getPendingGymProfiles() {
-        List<GymProfile> pendingProfiles = gymProfileService.getPendingGymProfiles();
-        return ResponseEntity.ok(pendingProfiles);
-    }
-    
- // Endpoint to check if a gym profile is approved for a given owner
-    @GetMapping("/gym-profiles/{userId}")
-    @PreAuthorize("hasRole('GYM_OWNER')")
-    public List<GymProfile> getGymProfilesByUserId(@PathVariable Long userId) {
-        return gymProfileService.getGymProfilesByUserId(userId);
     }
 }

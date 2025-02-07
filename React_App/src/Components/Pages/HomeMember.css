@@ -1,9 +1,3 @@
-.content-container {
-  display: flex;
-  flex-direction: row;
-  height: 100%;
-}
-
 .cards-container {
   display: flex;
   justify-content: center; /* Centers horizontally */

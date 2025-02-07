@@ -30,9 +30,6 @@ const HeaderOwner = () => {
           <Link to="/addGymProfile">
             <i className="bi bi-file-earmark-text"></i> Add Gym
           </Link>
-          <Link to="/dietPlan">
-            <i className="bi bi-file-earmark-text"></i> Diet Plan
-          </Link>
           <Link to="/addMember">
             <i className="bi bi-person-add"></i> Add Member
           </Link>

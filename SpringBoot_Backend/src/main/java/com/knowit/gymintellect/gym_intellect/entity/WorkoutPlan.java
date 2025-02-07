@@ -15,43 +15,30 @@ import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 
 @Entity
-@Table(name = "workoutplan")
+@Table(name = "workout_plan")
 public class WorkoutPlan {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "plan_id")
-    private int planId;
-
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "member_id", nullable = false)
-    private Member member;
+    private Long planId;
 
     @Column(name = "plan_name", nullable = false, length = 50)
     private String planName;
 
     @Column(name = "duration", nullable = false)
-    private int duration;
+    private String duration;
 
     @Column(name = "description")
     private String description;
     
 
     // Getters and Setters
-    public int getPlanId() {
+    public Long getPlanId() {
         return planId;
     }
 
-    public void setPlanId(int planId) {
+    public void setPlanId(Long planId) {
         this.planId = planId;
-    }
-
-    public Member getMember() {
-        return member;
-    }
-
-    public void setMember(Member member) {
-        this.member = member;
     }
 
     public String getPlanName() {
@@ -62,11 +49,11 @@ public class WorkoutPlan {
         this.planName = planName;
     }
 
-    public int getDuration() {
+    public String getDuration() {
         return duration;
     }
 
-    public void setDuration(int duration) {
+    public void setDuration(String duration) {
         this.duration = duration;
     }
 

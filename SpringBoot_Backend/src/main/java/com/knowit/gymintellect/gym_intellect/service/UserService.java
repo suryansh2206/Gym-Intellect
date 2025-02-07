@@ -1,6 +1,8 @@
 package com.knowit.gymintellect.gym_intellect.service;
 
 import java.time.Instant;
+import java.util.Calendar;
+import java.util.Date;
 import java.util.List;
 import java.util.Optional;
 import java.util.Set;
@@ -16,14 +18,19 @@ import org.springframework.stereotype.Service;
 
 import com.knowit.gymintellect.gym_intellect.dto.JwtResponse;
 import com.knowit.gymintellect.gym_intellect.dto.LoginRequest;
+import com.knowit.gymintellect.gym_intellect.dto.MemberRegistrationDTO;
 import com.knowit.gymintellect.gym_intellect.dto.SignupRequest;
 import com.knowit.gymintellect.gym_intellect.entity.GymProfile;
 import com.knowit.gymintellect.gym_intellect.entity.Member;
+import com.knowit.gymintellect.gym_intellect.entity.MembershipPlan;
+import com.knowit.gymintellect.gym_intellect.entity.MembershipPlanJoin;
 import com.knowit.gymintellect.gym_intellect.entity.Role;
 import com.knowit.gymintellect.gym_intellect.entity.User;
 import com.knowit.gymintellect.gym_intellect.entity.WorkoutPlan;
 import com.knowit.gymintellect.gym_intellect.repository.GymProfileRepository;
 import com.knowit.gymintellect.gym_intellect.repository.MemberRepository;
+import com.knowit.gymintellect.gym_intellect.repository.MembershipPlanJoinRepository;
+import com.knowit.gymintellect.gym_intellect.repository.MembershipPlanRepository;
 import com.knowit.gymintellect.gym_intellect.repository.RoleRepository;
 import com.knowit.gymintellect.gym_intellect.repository.UserRepository;
 import com.knowit.gymintellect.gym_intellect.repository.WorkoutPlanRespository;
@@ -60,6 +67,24 @@ public class UserService {
     @Autowired
     private MemberRepository memberRepository;
     
+    @Autowired
+    private MembershipPlanJoinRepository membershipPlanJoinRepository;
+
+    @Autowired
+    private MembershipPlanRepository membershipPlanRepository;
+
+    public List<MembershipPlan> getAllMembershipPlans() {
+        return membershipPlanRepository.findAll();
+    }
+
+    public List<WorkoutPlan> getAllWorkoutPlans() {
+        return workoutPlanRepository.findAll();
+    }
+
+    public List<GymProfile> getGymProfilesForOwner(User owner) {
+        return gymProfileRepository.findByOwner(owner);
+    }
+    
     
  // Method to hash the password
     public String hashPassword(String password) {
@@ -76,8 +101,8 @@ public class UserService {
             throw new RuntimeException("Username or Email already exists!");
         }
 
-        // Fetch role dynamically using roleId from the request
-        Role role = roleRepository.findById(signupRequest.getRoleId())
+        // Fetch the role for the Gym Owner
+        Role role = roleRepository.findByName("GYM_OWNER")
                                   .orElseThrow(() -> new RuntimeException("Role not found!"));
 
         // Create and save the User entity
@@ -87,11 +112,13 @@ public class UserService {
         user.setPassword(passwordEncoder.encode(signupRequest.getPassword()));
         user.setContact(signupRequest.getContact());
         user.setAadhar(signupRequest.getAadhar());
-        user.setRole(role); // Dynamically set the role
+        user.setRole(role); // Set the role ID
 
         userRepository.save(user);
+
+        // No GymProfile is created here. It will be created after the Gym Owner logs in and fills the form.
     }
-    
+
 //    public void registerGymOwner(SignupRequest signupRequest) {
 //        Role gymOwnerRole = roleRepository.findByName("GYM_OWNER")
 //            .orElseThrow(() -> new RuntimeException("Role not found!"));
@@ -107,18 +134,86 @@ public class UserService {
 //        userRepository.save(user);
 //    }
     
-//    public void registerGymMember(SignupRequest signupRequest) {
-//        Role gymMemberRole = roleRepository.findByName("GYM_MEMBER")
-//            .orElseThrow(() -> new RuntimeException("Role not found!"));
-//
-//        User user = new User();
-//        user.setUsername(signupRequest.getUsername());
-//        user.setEmail(signupRequest.getEmail());
-//        user.setPassword(passwordEncoder.encode(signupRequest.getPassword()));
-//        user.setRole(gymMemberRole);
-//
-//        userRepository.save(user);
-//    }
+    public Member registerGymMember(MemberRegistrationDTO registrationDTO, User currentOwner) {
+        // Create User
+        Role gymMemberRole = roleRepository.findByName("MEMBER")
+            .orElseThrow(() -> new RuntimeException("Role not found!"));
+
+        User user = new User();
+        user.setUsername(registrationDTO.getUsername());
+        user.setEmail(registrationDTO.getEmail());
+        user.setPassword(passwordEncoder.encode(registrationDTO.getPassword()));
+        user.setContact(registrationDTO.getContact());
+        user.setAadhar(registrationDTO.getAadhar());
+        user.setRole(gymMemberRole);
+        user = userRepository.save(user);
+
+        // Create Member
+        Member member = new Member();
+        member.setDob(registrationDTO.getDob());
+        member.setGender(registrationDTO.getGender());
+        member.setAddress(registrationDTO.getAddress());
+        member.setHeight(registrationDTO.getHeight());
+        member.setUser(user);
+        
+        if (registrationDTO.getGymProfileId() == null) {
+            throw new IllegalArgumentException("GymProfileId is null in registration request");
+        }
+
+
+        // Handle gym profile
+        GymProfile gymProfile = gymProfileRepository.findById(registrationDTO.getGymProfileId())
+            .orElseThrow(() -> new RuntimeException("Gym profile not found"));
+        
+        // Verify gym profile ownership
+        if (!gymProfile.getOwner().getUserId().equals(currentOwner.getUserId())) {
+            throw new SecurityException("You don't have access to this gym profile");
+        }
+        member.setGymProfile(gymProfile);
+
+        // Handle workout plan
+        WorkoutPlan workoutPlan = workoutPlanRepository.findById(registrationDTO.getPlanId())
+            .orElseThrow(() -> new RuntimeException("Workout plan not found"));
+        member.setWorkoutPlan(workoutPlan);
+
+        // Handle membership plan
+        MembershipPlan membershipPlan = membershipPlanRepository.findById(registrationDTO.getMembershipPlanId())
+            .orElseThrow(() -> new RuntimeException("Membership plan not found"));
+        
+        MembershipPlanJoin membershipJoin = new MembershipPlanJoin();
+        membershipJoin.setMembershipPlan(membershipPlan);
+        membershipJoin.setStartDate(new Date());
+        membershipJoin.setEndDate(calculateEndDate(membershipPlan.getDuration()));
+        membershipJoin.setStatus("ACTIVE");
+        membershipPlanJoinRepository.save(membershipJoin);
+        
+        member.setMembership(membershipJoin);
+
+        return memberRepository.save(member);
+    }
+
+    private Date calculateEndDate(String duration) {
+        // Implementation to calculate end date based on duration string
+        // Example implementation:
+        Calendar cal = Calendar.getInstance();
+        String[] parts = duration.split(" ");
+        int amount = Integer.parseInt(parts[0]);
+        String unit = parts[1].toLowerCase();
+
+        switch (unit) {
+            case "month":
+            case "months":
+                cal.add(Calendar.MONTH, amount);
+                break;
+            case "year":
+            case "years":
+                cal.add(Calendar.YEAR, amount);
+                break;
+            default:
+                throw new IllegalArgumentException("Invalid duration unit");
+        }
+        return cal.getTime();
+    }
     
     public JwtResponse authenticateUser(LoginRequest loginRequest) {
         System.out.println("Authenticating with username: " + loginRequest.getUsername());
@@ -178,6 +273,7 @@ public class UserService {
             throw new RuntimeException("Invalid username or password");
         }
     }
+
 
  
     public User findByEmail(String email) {

@@ -10,7 +10,7 @@ public class WorkoutPlanService {
 	private WorkoutPlanRespository workoutPlanRepository;
 
 	// Example: Fetch a WorkoutPlan by ID
-	public WorkoutPlan getWorkoutPlanById(int planId) {
+	public WorkoutPlan getWorkoutPlanById(Long planId) {
 	    return workoutPlanRepository.findById(planId)
 	            .orElseThrow(() -> new RuntimeException("WorkoutPlan not found with ID: " + planId));
 	}
