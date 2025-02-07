@@ -1,23 +1,28 @@
 /* Login Form Styles */
+
+/* Overall container with white background and a light, small blue grid pattern */
 .login-form-container {
   display: flex;
   align-items: center;
   justify-content: center;
   min-height: 100vh;
-  background-color: #f9f2f0; /* Lighter shade of #EDDCD9 */
+  background-color: #ffffff; /* White background */
+  /* Create a lighter grid pattern with blue lines */
   background-image: linear-gradient(
-      rgba(255, 228, 220, 0.6) 1px,
+      90deg,
+      rgba(41, 115, 178, 0.15) 1px,
       transparent 1px
     ),
-    linear-gradient(90deg, rgba(255, 228, 220, 0.6) 1px, transparent 1px);
-  background-size: 20px 20px; /* Adjust the size for subtlety */
+    linear-gradient(rgba(41, 115, 178, 0.15) 1px, transparent 1px);
+  background-size: 10px 10px; /* Smaller grid size */
 }
 
+/* Form wrapper styling */
 .login-form-wrapper {
-  background-color: #eddcd9;
-  border: 2px solid #264143;
+  background-color: #bde9ee; /* Light blue shade */
+  border: 2px solid #2973b2; /* Blue border */
   border-radius: 20px;
-  box-shadow: 3px 4px 0px 1px #e99f4c;
+  box-shadow: 3px 4px 0px 1px #48a6a7; /* Teal shadow */
   padding: 20px;
   width: 100%;
   max-width: 400px;
@@ -25,7 +30,7 @@
 }
 
 .login-form-wrapper h2 {
-  color: #264143;
+  color: #2973b2; /* Blue */
   font-weight: 900;
   margin-bottom: 20px;
 }
@@ -34,40 +39,41 @@
   margin-bottom: 15px;
   display: flex;
   flex-direction: column; /* Stack label and input vertically */
-  align-items: flex-start; /* Ensure left alignment */
+  align-items: flex-start;
 }
 
 .login-form-group label {
-  display: block;
   margin-bottom: 5px;
   font-weight: 600;
-  color: #264143;
-  text-align: left; /* Explicitly set text alignment to left */
+  color: #2973b2; /* Blue */
+  text-align: left;
 }
 
 .login-form-group input {
   width: 100%;
   padding: 12px;
-  border: 2px solid #264143;
+  border: 2px solid #2973b2; /* Blue */
   border-radius: 4px;
-  box-shadow: 3px 4px 0px 1px #e99f4c;
+  box-shadow: 3px 4px 0px 1px #48a6a7; /* Teal */
   font-size: 14px;
+  color: #333333; /* Dark text for readability */
 }
 
 .login-form-group input:focus {
   outline: none;
-  box-shadow: 1px 2px 0px 0px #e99f4c;
+  box-shadow: 1px 2px 0px 0px #48a6a7;
 }
 
 .login-btn {
   width: 100%;
   padding: 12px;
-  background-color: #de5499;
+  background-color: #2973b2; /* Blue */
   color: white;
   border-radius: 10px;
   font-weight: bold;
   font-size: 15px;
   cursor: pointer;
+  border: none;
 }
 
 .login-btn:hover {
@@ -75,7 +81,7 @@
 }
 
 .login-link {
-  color: #264143;
+  color: #2973b2; /* Blue */
   font-weight: bold;
   cursor: pointer;
   margin-top: 10px;
@@ -83,11 +89,10 @@
 }
 
 .login-success-message {
-  color: green;
+  color: #2973b2; /* Blue */
   margin-top: 10px;
 }
 
-/* Add these to your existing CSS */
 .error-message {
   color: #dc3545;
   font-size: 0.9rem;
@@ -100,7 +105,7 @@
 }
 
 .login-links a {
-  color: #007bff;
+  color: #2973b2; /* Blue */
   text-decoration: none;
 }
 
