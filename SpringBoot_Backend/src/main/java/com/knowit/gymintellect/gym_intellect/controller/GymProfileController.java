@@ -61,4 +61,18 @@ public class GymProfileController {
         gymProfileService.deleteGymProfile(id);
         return ResponseEntity.noContent().build();
     }
+
+    // New endpoint to fetch all pending gym profiles
+    @GetMapping("/pending")
+    public ResponseEntity<List<GymProfile>> getPendingGymProfiles() {
+        List<GymProfile> pendingProfiles = gymProfileService.getPendingGymProfiles();
+        return ResponseEntity.ok(pendingProfiles);
+    }
+    
+ // Endpoint to check if a gym profile is approved for a given owner
+    @GetMapping("/gym-profiles/{userId}")
+    @PreAuthorize("hasRole('GYM_OWNER')")
+    public List<GymProfile> getGymProfilesByUserIdentiy(@PathVariable Long userId) {
+        return gymProfileService.getGymProfilesByUserId(userId);
+    }
 }
