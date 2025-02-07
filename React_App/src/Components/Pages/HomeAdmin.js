@@ -111,30 +111,31 @@ const HomeAdmin = () => {
   return (
     <div>
       <HeaderAdmin />
-      <h1>Pending Gym Profiles</h1>
-
+      <h1 className="display-4">Pending Gym Profiles</h1>
       {errorMessage && <div style={{ color: "red" }}>{errorMessage}</div>}
 
       {loading ? (
         <div>Loading...</div>
       ) : (
-        <table style={{ width: "100%", borderCollapse: "collapse" }}>
-          <thead>
+        <table className="table table-striped table-bordered">
+          <thead className="thead-dark">
             <tr>
-              <th>Gym Name</th>
-              <th>Location</th>
-              <th>Contact</th>
-              <th>Open Hours</th>
-              <th>GST</th>
-              <th>Status</th>
-              <th>Actions</th>
+              <th scope="col">#</th>
+              <th scope="col">Gym Name</th>
+              <th scope="col">Location</th>
+              <th scope="col">Contact</th>
+              <th scope="col">Open Hours</th>
+              <th scope="col">GST</th>
+              <th scope="col">Status</th>
+              <th scope="col">Actions</th>
             </tr>
           </thead>
           <tbody>
-            {pendingProfiles.map((profile) => {
+            {pendingProfiles.map((profile, index) => {
               console.log("Profile ID:", profile.gymProfileId); // Debugging line
               return (
                 <tr key={profile.gymProfileId}>
+                  <th scope="row">{index + 1}</th>
                   <td>{profile.gymName}</td>
                   <td>{profile.location}</td>
                   <td>{profile.contact}</td>
@@ -145,18 +146,16 @@ const HomeAdmin = () => {
                     {profile.status === "PENDING" ? (
                       <>
                         <button
-                          className="approve"
+                          className="btn btn-success"
                           onClick={() => handleApprove(profile.gymProfileId)}
-                          >
-                          Approve  
-                          <i class="bi bi-check2"></i>
+                        >
+                          Approve <i className="bi bi-check2"></i>
                         </button>
                         <button
-                          className="reject"
+                          className="btn btn-danger"
                           onClick={() => handleReject(profile.gymProfileId)}
                         >
-                          Reject  
-                          <i class="bi bi-x-lg"></i>
+                          Reject <i className="bi bi-x-lg"></i>
                         </button>
                       </>
                     ) : (

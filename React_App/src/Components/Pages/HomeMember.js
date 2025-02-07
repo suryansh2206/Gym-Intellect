@@ -5,18 +5,20 @@ import "./HomeMember.css";
 const HomeMember = () => {
   return (
     <>
-      <HeaderMember />
+      <HeaderMember className="home-member-background" />
 
       {/* Cards Container - NEW ADDITION */}
-      <div className="cards-container">
+      <div className="cards-container home-member-background">
         <div className="card">
-          <img className="card-img-top" src="..." alt="Add Diet Plan" />
-          <div className="card-body"></div>
+          <img
+            className="card-img-top"
+            src={require("../../assets/1.png")}
+            alt="Add Diet Plan"
+          />
         </div>
 
         <div className="card">
           <img className="card-img-top" src="..." alt="Add workout Plan" />
-          <div className="card-body"></div>
         </div>
       </div>
     </>

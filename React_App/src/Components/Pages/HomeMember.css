@@ -15,11 +15,11 @@
 }
 
 .card:hover {
-  opacity: 0.8;
+  opacity: 0.95;
   transform: scale(1.1);
 }
 
 .card-img-top {
-  height: 250px; /* Control image height */
+  height: 350px; /* Adjusted image height for better fit */
   object-fit: cover; /* Maintain image aspect ratio */
 }

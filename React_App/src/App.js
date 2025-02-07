@@ -9,6 +9,7 @@ import HomeMember from "./Components/Pages/HomeMember";
 import HomeAdmin from "./Components/Pages/HomeAdmin";
 import AllGymProfiles from "./Components/Pages/AllGymProfiles"; // Import the AllGymProfiles component
 import SignupFormMember from "./Components/Authentication/SignupFormMember"; // Import the new SignupFormMember component
+import GymProfiles from "./Components/Profiles/GymProfiles";
 
 function App() {
   // Access authentication state from Redux
@@ -56,6 +57,18 @@ function App() {
         element={
           isAuthenticated && userRole === "GYM_OWNER" ? (
             <AddGymProfile />
+          ) : (
+            <Navigate to="/login" replace />
+          )
+        }
+      />
+
+      {/* Protected Route for adding Gym Profile (only for GYM_OWNER) */}
+      <Route
+        path="/gymProfile"
+        element={
+          isAuthenticated && userRole === "GYM_OWNER" ? (
+            <GymProfiles />
           ) : (
             <Navigate to="/login" replace />
           )

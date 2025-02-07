@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useSelector } from "react-redux"; // Importing useSelector from Redux
 import "./AllGymProfiles.css"; // Importing the CSS file for styling
+import { Link } from "react-router";
 
 const AllGymProfiles = () => {
   const [gymProfiles, setGymProfiles] = useState([]);
@@ -48,25 +49,28 @@ const AllGymProfiles = () => {
 
   return (
     <div>
-      <h1>All Gym Profiles</h1>
+      <h1 className="display-4">All Gym Profiles</h1>
+      <Link to="/adminDashboard" className="btn btn-outline-secondary">Back to Dashboard</Link>
       {errorMessage && <div style={{ color: "red" }}>{errorMessage}</div>}
       {loading ? (
         <div>Loading...</div>
       ) : (
-        <table style={{ width: "100%", borderCollapse: "collapse" }}>
-          <thead>
+        <table className="table table-striped table-bordered">
+          <thead className="thead-dark">
             <tr>
-              <th>Gym Name</th>
-              <th>Location</th>
-              <th>Contact</th>
-              <th>Open Hours</th>
-              <th>GST</th>
-              <th>Status</th>
+              <th scope="col">#</th>
+              <th scope="col">Gym Name</th>
+              <th scope="col">Location</th>
+              <th scope="col">Contact</th>
+              <th scope="col">Open Hours</th>
+              <th scope="col">GST</th>
+              <th scope="col">Status</th>
             </tr>
           </thead>
           <tbody>
-            {gymProfiles.map((profile) => (
+            {gymProfiles.map((profile, index) => (
               <tr key={profile.gymProfileId}>
+                <th scope="row">{index + 1}</th>
                 <td>{profile.gymName}</td>
                 <td>{profile.location}</td>
                 <td>{profile.contact}</td>
