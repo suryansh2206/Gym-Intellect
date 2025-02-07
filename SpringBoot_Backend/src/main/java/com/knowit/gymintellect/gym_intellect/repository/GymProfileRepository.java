@@ -14,12 +14,11 @@ public interface GymProfileRepository extends JpaRepository<GymProfile, Long> {
 	 // Find GymProfile by Gym Owner's User ID
 	List<GymProfile> findByOwner(User owner);
 
-   
-   // Find all GymProfiles that are pending approval
-   List<GymProfile> findByStatus(String status);
-   
-   // Custom query example: Find GymProfiles by name
-   public List<GymProfile> findByGymNameContainingIgnoreCase(String gymName);
+    
+    // Find all GymProfiles that are pending approval
+    List<GymProfile> findByStatus(String status);
+    
+    // Custom query example: Find GymProfiles by name
+    public List<GymProfile> findByGymNameContainingIgnoreCase(String gymName);
 
 }
-
