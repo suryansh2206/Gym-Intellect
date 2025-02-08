@@ -31,19 +31,30 @@ const SignupFormMember = () => {
     e.preventDefault();
     setIsSubmitting(true);
 
-    // Log the form data to the console
-    console.log("Form Data being sent to API:", formData);
+    // Extract only the required fields
+    const dataToSend = {
+      username: formData.username,
+      email: formData.email,
+      password: formData.password,
+      contact: formData.contact,
+      aadhar: formData.aadhar,
+      roleId: formData.roleId,
+    };
+
+    // Log the data to check what's being sent
+    console.log("Data being sent to API:", dataToSend);
 
     try {
       const response = await fetch("http://localhost:8081/api/auth/signup", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(formData),
+        body: JSON.stringify(dataToSend),
       });
 
       if (response.ok) {
         setSuccessMessage("Member added successfully");
-        // Reset the form data
+
+        // Reset only the required form fields
         setFormData({
           username: "",
           email: "",

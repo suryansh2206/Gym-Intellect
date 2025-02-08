@@ -241,6 +241,12 @@ public class UserService {
                 System.out.println("Admin user logged in");
                 return new JwtResponse(jwt, user.getUsername(), user.getEmail(), "ADMIN", " ", userId);
             }
+            
+            if ("MEMBER".equals(user.getRole().getName())) {
+                System.out.println("MEMBER user logged in");
+                return new JwtResponse(jwt, user.getUsername(), user.getEmail(), "MEMBER", " ", userId);
+            }
+            
 
             // Handle GYM_OWNER role
             if ("GYM_OWNER".equals(user.getRole().getName())) {

@@ -30,10 +30,13 @@ const HeaderOwner = () => {
           <Link to="/addGymProfile">
             <i className="bi bi-file-earmark-text"></i> Add Gym
           </Link>
+          <Link to="/gymProfile">
+            <i className="bi bi-file-earmark-text"></i> My Gym Profiles
+          </Link>
           <Link to="/addMember">
             <i className="bi bi-person-add"></i> Add Member
           </Link>
-          <Link to="/profile">
+          <Link to="/ownerProfile">
             <i className="bi bi-person"></i> Profile
           </Link>
         </nav>

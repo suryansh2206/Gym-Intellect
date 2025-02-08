@@ -27,12 +27,12 @@ const HeaderMember = () => {
       {/* Center: Navigation Options */}
       <div className="nav-container">
         <nav>
-          <Link to="/workoutPlan">
+          {/* <Link to="/workoutPlan">
             <i className="bi bi-file-earmark-text"></i> Workout Plan
           </Link>
           <Link to="/dietPlan">
             <i className="bi bi-file-earmark-text"></i> Diet Plan
-          </Link>
+          </Link> */}
           <Link to="/progress">
             <i class="bi bi-clipboard2-data"></i> Progress
           </Link>
