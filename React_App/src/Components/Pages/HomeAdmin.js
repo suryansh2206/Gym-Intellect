@@ -26,7 +26,7 @@ const HomeAdmin = () => {
 
     try {
       const response = await fetch(
-        "http://localhost:8081/api/admin/gym-profiles-pending",
+        "http://localhost:8212/api/admin/gym-profiles-pending",
         {
           headers: {
             Authorization: `Bearer ${token}`,
@@ -62,7 +62,7 @@ const HomeAdmin = () => {
     }
     try {
       const response = await fetch(
-        `http://localhost:8081/api/admin/gym-profiles/${id}/approve`,
+        `http://localhost:8212/api/admin/gym-profiles/${id}/approve`,
         {
           method: "PUT",
           headers: {
@@ -89,7 +89,7 @@ const HomeAdmin = () => {
     }
     try {
       const response = await fetch(
-        `http://localhost:8081/api/admin/gym-profiles/${id}/reject`,
+        `http://localhost:8212/api/admin/gym-profiles/${id}/reject`,
         {
           method: "POST",
           headers: {

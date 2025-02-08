@@ -89,7 +89,7 @@ const LoginForm = () => {
     setIsSubmitting(true);
 
     try {
-      const response = await fetch("http://localhost:8081/api/auth/login", {
+      const response = await fetch("http://localhost:8212/api/auth/login", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(formData),
@@ -126,7 +126,7 @@ const LoginForm = () => {
 
     try {
       const response = await fetch(
-        "http://localhost:8081/api/auth/forgot-password",
+        "http://localhost:8212/api/auth/forgot-password",
         {
           method: "POST",
           headers: { "Content-Type": "application/json" },
@@ -157,7 +157,7 @@ const LoginForm = () => {
 
     try {
       const response = await fetch(
-        "http://localhost:8081/api/auth/reset-password",
+        "http://localhost:8212/api/auth/reset-password",
         {
           method: "POST",
           headers: { "Content-Type": "application/json" },

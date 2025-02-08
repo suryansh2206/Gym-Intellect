@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import "./SignupMember.css";
 
@@ -18,8 +18,37 @@ const SignupFormMember = () => {
     roleId: 3, // Default role as Gym Member (id: 3)
   });
 
+  const [workoutPlans, setWorkoutPlans] = useState([]);
   const [successMessage, setSuccessMessage] = useState("");
   const [isSubmitting, setIsSubmitting] = useState(false);
+
+  useEffect(() => {
+    const fetchWorkoutPlans = async () => {
+      try {
+        const response = await fetch(
+          "http://localhost:8212/api/member/workout-plans",
+          {
+            method: "GET",
+            headers: {
+              "Content-Type": "application/json",
+              Accept: "application/json",
+            },
+          }
+        );
+        if (response.ok) {
+          const data = await response.json();
+          setWorkoutPlans(data);
+          console.log("Workout Plans:", data);
+        } else {
+          throw new Error("Failed to fetch workout plans");
+        }
+      } catch (error) {
+        console.error("Error fetching workout plans:", error);
+      }
+    };
+
+    fetchWorkoutPlans();
+  }, []);
 
   // Handle form input changes
   const handleChange = (e) => {
@@ -45,7 +74,7 @@ const SignupFormMember = () => {
     console.log("Data being sent to API:", dataToSend);
 
     try {
-      const response = await fetch("http://localhost:8081/api/auth/signup", {
+      const response = await fetch("http://localhost:8212/api/auth/signup", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(dataToSend),
@@ -211,10 +240,11 @@ const SignupFormMember = () => {
               <option value="" disabled>
                 Select Workout Plan
               </option>
-              {/* Replace with dynamic options if available */}
-              <option value="1">Plan 1</option>
-              <option value="2">Plan 2</option>
-              <option value="3">Plan 3</option>
+              {workoutPlans.map((plan, index) => (
+                <option key={plan.planId || index} value={plan.planId}>
+                  {plan.planName}
+                </option>
+              ))}
             </select>
           </div>
           <div className="signup-form-group">

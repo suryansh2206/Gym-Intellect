@@ -13,12 +13,16 @@ const HomeMember = () => {
           <img
             className="card-img-top"
             src={require("../../assets/1.png")}
-            alt="Add Diet Plan"
+            alt="Workout Plan"
           />
         </div>
 
         <div className="card">
-          <img className="card-img-top" src="..." alt="Add workout Plan" />
+          <img
+            className="card-img-top"
+            src={require("../../assets/Diet Plan.png")}
+            alt="Diet Plan"
+          />
         </div>
       </div>
     </>

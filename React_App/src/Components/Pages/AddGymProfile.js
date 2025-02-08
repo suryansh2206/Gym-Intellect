@@ -45,7 +45,7 @@ const AddGymProfile = () => {
 
     try {
       const response = await fetch(
-        "http://localhost:8081/api/gym-profile/create",
+        "http://localhost:8212/api/gym-profile/create",
         {
           method: "POST",
           headers: {

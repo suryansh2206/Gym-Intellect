@@ -24,7 +24,7 @@ const GymProfiles = () => {
 
       try {
         const response = await fetch(
-          `http://localhost:8081/api/gym-profile/gym-profiles/${userId}`,
+          `http://localhost:8212/api/gym-profile/gym-profiles/${userId}`,
           {
             method: "GET",
             headers: {

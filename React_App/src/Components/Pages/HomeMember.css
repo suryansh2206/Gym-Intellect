@@ -20,6 +20,8 @@
 }
 
 .card-img-top {
-  height: 350px; /* Adjusted image height for better fit */
-  object-fit: cover; /* Maintain image aspect ratio */
+  height: 350px;
+  width: 100%;
+  object-fit: cover;
+  object-position: top; /* Adjust to 'bottom' or 'center' based on image alignment */
 }
