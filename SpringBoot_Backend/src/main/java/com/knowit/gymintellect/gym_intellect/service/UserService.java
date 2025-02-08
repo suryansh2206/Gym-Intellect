@@ -345,4 +345,5 @@ public class UserService {
 //    public JwtResponse authenticateUser(LoginRequest loginRequest) {
 //        // Logic for authentication and JWT generation
 //    }
+    
 }

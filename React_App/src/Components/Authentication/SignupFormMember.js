@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import "./SignupMember.css";
+import { useSelector } from "react-redux";
 
 const SignupFormMember = () => {
   const [formData, setFormData] = useState({
@@ -16,11 +17,19 @@ const SignupFormMember = () => {
     planId: "", // For Workout Plan
     membershipPlanId: "", // For Membership Plan
     roleId: 3, // Default role as Gym Member (id: 3)
+    gymProfileId: "", // For Gym Profile
   });
 
   const [workoutPlans, setWorkoutPlans] = useState([]);
+  const [gymProfiles, setGymProfiles] = useState([]);
   const [successMessage, setSuccessMessage] = useState("");
   const [isSubmitting, setIsSubmitting] = useState(false);
+
+  const userIdRedux = useSelector((state) => state.auth.userId);
+  const tokenRedux = useSelector((state) => state.auth.token);
+
+  const userId = userIdRedux || localStorage.getItem("userId");
+  const token = tokenRedux || localStorage.getItem("token");
 
   useEffect(() => {
     const fetchWorkoutPlans = async () => {
@@ -47,8 +56,35 @@ const SignupFormMember = () => {
       }
     };
 
+    const fetchGymProfiles = async () => {
+      try {
+        const response = await fetch(
+          `http://localhost:8212/api/gym-profile/gym-profiles/${userId}`,
+          {
+            method: "GET",
+            headers: {
+              "Content-Type": "application/json",
+              Authorization: `Bearer ${token}`,
+            },
+            credentials: "include",
+          }
+        );
+
+        if (!response.ok) {
+          throw new Error(`HTTP error! Status: ${response.status}`);
+        }
+
+        const data = await response.json();
+        setGymProfiles(Array.isArray(data) ? data : [data]);
+        console.log("Fetched Gym Profiles:", data);
+      } catch (error) {
+        console.error("Error fetching gym profiles:", error);
+      }
+    };
+
     fetchWorkoutPlans();
-  }, []);
+    fetchGymProfiles();
+  }, [userId, token]);
 
   // Handle form input changes
   const handleChange = (e) => {
@@ -83,6 +119,30 @@ const SignupFormMember = () => {
       if (response.ok) {
         setSuccessMessage("Member added successfully");
 
+        // Log the data before sending it to the second API
+        console.log(
+          "Data being sent to second API (Full Registration):",
+          formData
+        );
+
+        try {
+          const fullResponse = await fetch(
+            "http://localhost:8212/api/member/register",
+            {
+              method: "POST",
+              headers: { "Content-Type": "application/json" },
+              body: JSON.stringify(formData),
+            }
+          );
+
+          if (!fullResponse.ok) {
+            throw new Error("Failed to submit full registration data.");
+          }
+          console.log("Full registration data sent successfully!");
+        } catch (fullError) {
+          console.error("Error in full registration:", fullError);
+        }
+
         // Reset only the required form fields
         setFormData({
           username: "",
@@ -97,6 +157,7 @@ const SignupFormMember = () => {
           planId: "",
           membershipPlanId: "",
           roleId: 3,
+          gymProfileId: "",
         });
       } else {
         throw new Error("Failed to submit the form.");
@@ -263,6 +324,32 @@ const SignupFormMember = () => {
               <option value="1">Membership 1</option>
               <option value="2">Membership 2</option>
               <option value="3">Membership 3</option>
+            </select>
+          </div>
+
+          {/* New Select Box for Gym Profiles */}
+          <div className="signup-form-group">
+            <label htmlFor="gymProfileId">Gym Profile:</label>
+            <select
+              id="gymProfileId"
+              name="gymProfileId"
+              value={formData.gymProfileId}
+              onChange={handleChange}
+              required
+            >
+              <option value="" disabled>
+                Select Gym Profile
+              </option>
+              {gymProfiles
+                .filter((profile) => profile.status === "APPROVED")
+                .map((profile, index) => (
+                  <option
+                    key={profile.gymProfileId || index}
+                    value={profile.gymProfileId}
+                  >
+                    {profile.gymName}
+                  </option>
+                ))}
             </select>
           </div>
 
