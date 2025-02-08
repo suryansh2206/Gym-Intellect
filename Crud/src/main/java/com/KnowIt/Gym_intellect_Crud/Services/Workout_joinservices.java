@@ -25,7 +25,7 @@ public class Workout_joinservices {
 	    private Workout_planrepo workoutPlanRepository;
 
 	    // Link a workout to a plan
-	    public Workout_join linkWorkoutToPlan(Long workoutId, Long planId) {
+	    public Workout_join linkWorkoutToPlan(int workoutId, int planId) {
 	        Workout workout = workoutRepository.findById(workoutId)
 	                .orElseThrow(() -> new AotInitializerNotFoundException(null, "Workout not found with ID: " + workoutId));
 	        Workout_plan plan = workoutPlanRepository.findById(planId)

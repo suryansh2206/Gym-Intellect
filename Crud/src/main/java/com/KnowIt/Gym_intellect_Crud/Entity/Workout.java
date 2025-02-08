@@ -21,7 +21,7 @@ public class Workout {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private long workoutId;
+    private int workoutId;
 
     @Column(nullable = false, length = 255)
     private String exerciseName;
@@ -44,7 +44,7 @@ public class Workout {
     @JsonIgnore
     private List<Workout_join> workoutJoins;
 
-	public long getWorkoutId() {
+	public int getWorkoutId() {
 		return workoutId;
 	}
 

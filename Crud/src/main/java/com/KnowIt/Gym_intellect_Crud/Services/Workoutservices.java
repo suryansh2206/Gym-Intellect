@@ -25,13 +25,13 @@ public class Workoutservices {
 	    }
 
 	    // Get workout by ID
-	    public Workout getWorkoutById(Long workoutId) {
+	    public Workout getWorkoutById(int workoutId) {
 	        return workoutRepository.findById(workoutId)
 	                .orElseThrow(() -> new AotInitializerNotFoundException(null, "Workout not found with ID: " + workoutId));
 	    }
 
 	    // Update workout
-	    public Workout updateWorkout(Long workoutId, Workout updatedWorkout) {
+	    public Workout updateWorkout(int workoutId, Workout updatedWorkout) {
 	        Workout existingWorkout = getWorkoutById(workoutId);
 	        existingWorkout.setExerciseName(updatedWorkout.getExerciseName());
 	        existingWorkout.setSets(updatedWorkout.getSets());
@@ -42,7 +42,7 @@ public class Workoutservices {
 	    }
 
 	    // Delete workout
-	    public void deleteWorkout(Long workoutId) {
+	    public void deleteWorkout(int workoutId) {
 	        workoutRepository.deleteById(workoutId);
 	    }
 

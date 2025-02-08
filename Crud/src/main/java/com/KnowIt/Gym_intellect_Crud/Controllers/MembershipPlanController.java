@@ -34,7 +34,7 @@ public class MembershipPlanController {
 
     // Update a membership plan
     @PutMapping("/{id}")
-    public ResponseEntity<MembershipPlan> updateMembershipPlan(@PathVariable Long id, @RequestBody MembershipPlan membershipPlan) {
+    public ResponseEntity<MembershipPlan> updateMembershipPlan(@PathVariable int id, @RequestBody MembershipPlan membershipPlan) {
         MembershipPlan updatedPlan = membershipPlanService.updateMembershipPlan(id, membershipPlan);
         return new ResponseEntity<>(updatedPlan, HttpStatus.OK);
     }

@@ -10,7 +10,7 @@ public class MembershipPlan {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "member_plan_id")
-    private Long memberPlanId;
+    private int memberPlanId;
 
     @Column(name = "plan_name", nullable = false)
     private String planName;
@@ -28,11 +28,11 @@ public class MembershipPlan {
     private List<MemberPlanJoin> memberPlanJoins;
 
     // Getters and Setters
-    public Long getMemberPlanId() {
+    public int getMemberPlanId() {
         return memberPlanId;
     }
 
-    public void setMemberPlanId(Long memberPlanId) {
+    public void setMemberPlanId(int memberPlanId) {
         this.memberPlanId = memberPlanId;
     }
 

@@ -39,21 +39,21 @@ public class Workout_plancontroller {
 
     // Get workout plan by ID
     @GetMapping("/{id}")
-    public ResponseEntity<Workout_plan> getPlanById(@PathVariable Long id) {
+    public ResponseEntity<Workout_plan> getPlanById(@PathVariable int id) {
         Workout_plan plan = workoutPlanService.getPlanById(id);
         return ResponseEntity.ok(plan);
     }
 
     // Update workout plan
     @PutMapping("/{id}")
-    public ResponseEntity<Workout_plan> updatePlan(@PathVariable Long id, @RequestBody Workout_plan updatedPlan) {
+    public ResponseEntity<Workout_plan> updatePlan(@PathVariable int id, @RequestBody Workout_plan updatedPlan) {
         Workout_plan plan = workoutPlanService.updatePlan(id, updatedPlan);
         return ResponseEntity.ok(plan);
     }
 
     // Delete workout plan
     @DeleteMapping("/{id}")
-    public ResponseEntity<Void> deletePlan(@PathVariable Long id) {
+    public ResponseEntity<Void> deletePlan(@PathVariable int id) {
         workoutPlanService.deletePlan(id);
         return ResponseEntity.noContent().build();
     }

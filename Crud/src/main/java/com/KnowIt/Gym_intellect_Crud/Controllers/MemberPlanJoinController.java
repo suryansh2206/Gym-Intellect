@@ -34,7 +34,7 @@ public class MemberPlanJoinController {
 
     // Update a member plan join
     @PutMapping("/{id}")
-    public ResponseEntity<MemberPlanJoin> updateMemberPlanJoin(@PathVariable Long id, @RequestBody MemberPlanJoin memberPlanJoin) {
+    public ResponseEntity<MemberPlanJoin> updateMemberPlanJoin(@PathVariable int id, @RequestBody MemberPlanJoin memberPlanJoin) {
         MemberPlanJoin updatedJoin = memberPlanJoinService.updateMemberPlanJoin(id, memberPlanJoin);
         return new ResponseEntity<>(updatedJoin, HttpStatus.OK);
     }

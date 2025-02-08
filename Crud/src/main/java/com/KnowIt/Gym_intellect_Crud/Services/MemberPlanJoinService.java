@@ -26,7 +26,7 @@ public class MemberPlanJoinService {
     }
 
     // Update a member plan join
-    public MemberPlanJoin updateMemberPlanJoin(Long id, MemberPlanJoin memberPlanJoin) {
+    public MemberPlanJoin updateMemberPlanJoin(int id, MemberPlanJoin memberPlanJoin) {
         memberPlanJoin.setMembershipId(id); // Set the ID to ensure the correct join is updated
         return memberPlanJoinRepository.save(memberPlanJoin);
     }

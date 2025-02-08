@@ -12,42 +12,36 @@ import java.util.List;
 import java.util.Optional;
 
 @RestController
-@RequestMapping("/api/dietmeals")
+@RequestMapping("/api/dietMeals")
 public class DietMealController {
-
     @Autowired
-    private DietMealService dietMealService;
+    private DietMealService service;
+
+    @PostMapping
+    public ResponseEntity<DietMeal> create(@RequestBody DietMeal dietMeal) {
+        return ResponseEntity.ok(service.save(dietMeal));
+    }
 
     @GetMapping
-    public List<DietMeal> getAllDietMeals() {
-        return dietMealService.getAllDietMeals();
+    public ResponseEntity<List<DietMeal>> getAll() {
+        return ResponseEntity.ok(service.getAll());
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<DietMeal> getDietMealById(@PathVariable Long id) {
-        Optional<DietMeal> dietMeal = dietMealService.getDietMealById(id);
-        return dietMeal.map(ResponseEntity::ok)
-                       .orElseGet(() -> ResponseEntity.notFound().build());
-    }
-
-    @PostMapping
-    public DietMeal createDietMeal(@RequestBody DietMeal dietMeal) {
-        return dietMealService.createDietMeal(dietMeal);
+    public ResponseEntity<DietMeal> getById(@PathVariable int id) {
+        return service.getById(id)
+                .map(ResponseEntity::ok)
+                .orElse(ResponseEntity.notFound().build());
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity<DietMeal> updateDietMeal(@PathVariable Long id, @RequestBody DietMeal updatedDietMeal) {
-        try {
-            DietMeal dietMeal = dietMealService.updateDietMeal(id, updatedDietMeal);
-            return ResponseEntity.ok(dietMeal);
-        } catch (RuntimeException e) {
-            return ResponseEntity.notFound().build();
-        }
+    public ResponseEntity<DietMeal> update(@PathVariable int id, @RequestBody DietMeal dietMeal) {
+        return ResponseEntity.ok(service.update(id, dietMeal));
     }
 
     @DeleteMapping("/{id}")
-    public ResponseEntity<Void> deleteDietMeal(@PathVariable Long id) {
-        dietMealService.deleteDietMeal(id);
+    public ResponseEntity<Void> delete(@PathVariable int id) {
+        service.delete(id);
         return ResponseEntity.noContent().build();
     }
 }

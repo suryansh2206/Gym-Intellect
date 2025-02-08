@@ -39,21 +39,21 @@ public class Workoutcontroller {
 
 	    // Get workout by ID
 	    @GetMapping("/{id}")
-	    public ResponseEntity<Workout> getWorkoutById(@PathVariable Long id) {
+	    public ResponseEntity<Workout> getWorkoutById(@PathVariable int id) {
 	        Workout workout = workoutService.getWorkoutById(id);
 	        return ResponseEntity.ok(workout);
 	    }
 
 	    // Update workout
 	    @PutMapping("/{id}")
-	    public ResponseEntity<Workout> updateWorkout(@PathVariable Long id, @RequestBody Workout updatedWorkout) {
+	    public ResponseEntity<Workout> updateWorkout(@PathVariable int id, @RequestBody Workout updatedWorkout) {
 	        Workout workout = workoutService.updateWorkout(id, updatedWorkout);
 	        return ResponseEntity.ok(workout);
 	    }
 
 	    // Delete workout
 	    @DeleteMapping("/{id}")
-	    public ResponseEntity<Void> deleteWorkout(@PathVariable Long id) {
+	    public ResponseEntity<Void> deleteWorkout(@PathVariable int id) {
 	        workoutService.deleteWorkout(id);
 	        return ResponseEntity.noContent().build();
 	    }
