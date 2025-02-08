@@ -26,13 +26,13 @@ public class Workout_planservices {
     }
 
     // Get plan by ID
-    public Workout_plan getPlanById(Long planId) {
+    public Workout_plan getPlanById(int planId) {
         return workoutPlanRepository.findById(planId)
                 .orElseThrow(() -> new AotInitializerNotFoundException(null, "Plan not found with ID: " + planId));
     }
 
     // Update plan
-    public Workout_plan updatePlan(Long planId, Workout_plan updatedPlan) {
+    public Workout_plan updatePlan(int planId, Workout_plan updatedPlan) {
         Workout_plan existingPlan = getPlanById(planId);
         existingPlan.setPlanName(updatedPlan.getPlanName());
         existingPlan.setDuration(updatedPlan.getDuration());
@@ -41,7 +41,7 @@ public class Workout_planservices {
     }
 
     // Delete plan
-    public void deletePlan(Long planId) {
+    public void deletePlan(int planId) {
         workoutPlanRepository.deleteById(planId);
     }
 	

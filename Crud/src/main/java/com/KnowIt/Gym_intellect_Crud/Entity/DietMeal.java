@@ -1,66 +1,31 @@
 package com.KnowIt.Gym_intellect_Crud.Entity;
 
 import jakarta.persistence.*;
+import lombok.Getter;
+import lombok.Setter;
 
 @Entity
+@Getter
+@Setter
 @Table(name = "diet_meal")
 public class DietMeal {
-	@Id
+    @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private long mealId;
+    @Column(name = "meal_id")
+    private int mealId;
 
     @ManyToOne
-    @JoinColumn(name = "diet_id", referencedColumnName = "diet_id", nullable = false)
+    @JoinColumn(name = "diet_id", referencedColumnName = "diet_id")
     private DietPlan dietPlan;
 
-    @Column(nullable = false, length = 50)
+    @Column(name = "food_item", nullable = false)
     private String foodItem;
 
-    @Column(nullable = false, length = 20)
+    @Column(nullable = false)
     private String quantity;
 
     @Column(nullable = false)
     private float calories;
-    
- // Getters and Setters
 
-	public long getMealId() {
-		return mealId;
-	}
-
-	public void setMealId(int mealId) {
-		this.mealId = mealId;
-	}
-
-	public DietPlan getDietPlan() {
-		return dietPlan;
-	}
-
-	public void setDietPlan(DietPlan dietPlan) {
-		this.dietPlan = dietPlan;
-	}
-
-	public String getFoodItem() {
-		return foodItem;
-	}
-
-	public void setFoodItem(String foodItem) {
-		this.foodItem = foodItem;
-	}
-
-	public String getQuantity() {
-		return quantity;
-	}
-
-	public void setQuantity(String quantity) {
-		this.quantity = quantity;
-	}
-
-	public float getCalories() {
-		return calories;
-	}
-
-	public void setCalories(float calories) {
-		this.calories = calories;
-	}
+    // Getters and Setters
 }

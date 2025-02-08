@@ -1,76 +1,34 @@
 package com.KnowIt.Gym_intellect_Crud.Entity;
 
 import jakarta.persistence.*;
+import lombok.Getter;
+import lombok.Setter;
 
 @Entity
+@Getter
+@Setter
 @Table(name = "diet_plan")
 public class DietPlan {
-	@Id
+    @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private long dietId;
+    @Column(name = "diet_id")
+    private int dietId;
 
-    @ManyToOne
-    @JoinColumn(name = "workoutPlan_id", referencedColumnName = "plan_id", nullable = true)
-    private Workout_plan workoutPlan;
+    @JoinColumn(name = "plan_id", referencedColumnName = "planId")
+    private Integer planId;
 
-    @ManyToOne
-    @JoinColumn(name = "dietPlan_id", referencedColumnName = "dietPlan_id", nullable = true)
-    private DietPlanType dietPlanType;
-
-    @Column(nullable = false, length = 50)
+    @Column(name = "meal_type", nullable = false)
     private String mealType;
 
-    @Column(nullable = false, columnDefinition = "TEXT")
+    @Column(nullable = false)
     private String description;
 
     @Column(nullable = false)
     private float calories;
 
-	public long getDietId() {
-		return dietId;
-	}
+    @ManyToOne
+    @JoinColumn(name = "dietPlan_id", referencedColumnName = "dietPlan_id")
+    private DietPlanType dietPlanType;
 
-	public void setDietId(int dietId) {
-		this.dietId = dietId;
-	}
-
-	public Workout_plan getWorkoutPlan() {
-		return workoutPlan;
-	}
-
-	public void setWorkoutPlan(Workout_plan workoutPlan) {
-		this.workoutPlan = workoutPlan;
-	}
-
-	public DietPlanType getDietPlanType() {
-		return dietPlanType;
-	}
-
-	public void setDietPlanType(DietPlanType dietPlanType) {
-		this.dietPlanType = dietPlanType;
-	}
-
-	public String getMealType() {
-		return mealType;
-	}
-
-	public void setMealType(String mealType) {
-		this.mealType = mealType;
-	}
-
-	public String getDescription() {
-		return description;
-	}
-
-	public void setDescription(String description) {
-		this.description = description;
-	}
-
-	public float getCalories() {
-		return calories;
-	}
-
-	public void setCalories(float calories) {
-		this.calories = calories;
-	}
+    // Getters and Setters
 }

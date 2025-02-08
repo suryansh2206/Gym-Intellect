@@ -3,43 +3,43 @@ package com.KnowIt.Gym_intellect_Crud.Services;
 import java.util.List;
 import java.util.Optional;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
 import com.KnowIt.Gym_intellect_Crud.Entity.DietMeal;
 import com.KnowIt.Gym_intellect_Crud.Repository.DietMealRepository;
 
+@Service
 public class DietMealService {
-	private DietMealRepository dietMealRepository;
-	
-	public List<DietMeal> getAllDietMeals(){
-		return dietMealRepository.findAll();
-	}
-	
-	public DietMeal createDietMeal(DietMeal dietmeal) {
-		return dietMealRepository.save(dietmeal);
-	}
-	
-	public Optional<DietMeal> getDietMealById(Long id){
-		return dietMealRepository.findById(id);
-	}
-	
-	public DietMeal updateDietMeal(Long mealId, DietMeal updatedDietMeal) {
-        return dietMealRepository.findById(mealId).map(dietMeal -> {
-            if (updatedDietMeal.getFoodItem() != null) {
-                dietMeal.setFoodItem(updatedDietMeal.getFoodItem());
-            }
-            if (updatedDietMeal.getQuantity() != null) {
-                dietMeal.setQuantity(updatedDietMeal.getQuantity());
-            }
-            if (updatedDietMeal.getCalories() > 0) {
-                dietMeal.setCalories(updatedDietMeal.getCalories());
-            }
+    @Autowired
+    private DietMealRepository repository;
+
+    public DietMeal save(DietMeal dietMeal) {
+        return repository.save(dietMeal);
+    }
+
+    public List<DietMeal> getAll() {
+        return repository.findAll();
+    }
+
+    public Optional<DietMeal> getById(int id) {
+        return repository.findById(id);
+    }
+
+    public DietMeal update(int id, DietMeal updatedDietMeal) {
+        return repository.findById(id).map(dietMeal -> {
+            dietMeal.setFoodItem(updatedDietMeal.getFoodItem());
+            dietMeal.setQuantity(updatedDietMeal.getQuantity());
+            dietMeal.setCalories(updatedDietMeal.getCalories());
+            
             if (updatedDietMeal.getDietPlan() != null) {
                 dietMeal.setDietPlan(updatedDietMeal.getDietPlan());
             }
-            return dietMealRepository.save(dietMeal);
-        }).orElseThrow(() -> new RuntimeException("DietMeal not found with ID: " + mealId));
+            return repository.save(dietMeal);
+        }).orElseThrow(() -> new RuntimeException("DietMeal not found"));
     }
-	
-	public void deleteDietMeal(Long id) {
-        dietMealRepository.deleteById(id);
+
+    public void delete(int id) {
+        repository.deleteById(id);
     }
 }

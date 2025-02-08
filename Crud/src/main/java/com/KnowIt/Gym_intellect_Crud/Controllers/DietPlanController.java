@@ -11,42 +11,36 @@ import java.util.List;
 import java.util.Optional;
 
 @RestController
-@RequestMapping("/api/dietplans")
+@RequestMapping("/api/dietPlans")
 public class DietPlanController {
-
     @Autowired
-    private DietPlanService dietPlanService;
+    private DietPlanService service;
+
+    @PostMapping
+    public ResponseEntity<DietPlan> create(@RequestBody DietPlan dietPlan) {
+        return ResponseEntity.ok(service.save(dietPlan));
+    }
 
     @GetMapping
-    public List<DietPlan> getAllDietPlans() {
-        return dietPlanService.getAllDietPlans();
+    public ResponseEntity<List<DietPlan>> getAll() {
+        return ResponseEntity.ok(service.getAll());
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<DietPlan> getDietPlanById(@PathVariable Long id) {
-        Optional<DietPlan> dietPlan = dietPlanService.getDietPlanById(id);
-        return dietPlan.map(ResponseEntity::ok)
-                       .orElseGet(() -> ResponseEntity.notFound().build());
-    }
-
-    @PostMapping
-    public DietPlan createDietPlan(@RequestBody DietPlan dietPlan) {
-        return dietPlanService.createDietPlan(dietPlan);
+    public ResponseEntity<DietPlan> getById(@PathVariable int id) {
+        return service.getById(id)
+                .map(ResponseEntity::ok)
+                .orElse(ResponseEntity.notFound().build());
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity<DietPlan> updateDietPlan(@PathVariable Long id, @RequestBody DietPlan updatedDietPlan) {
-        try {
-            DietPlan dietPlan = dietPlanService.updateDietPlan(id, updatedDietPlan);
-            return ResponseEntity.ok(dietPlan);
-        } catch (RuntimeException e) {
-            return ResponseEntity.notFound().build();
-        }
+    public ResponseEntity<DietPlan> update(@PathVariable int id, @RequestBody DietPlan dietPlan) {
+        return ResponseEntity.ok(service.update(id, dietPlan));
     }
 
     @DeleteMapping("/{id}")
-    public ResponseEntity<Void> deleteDietPlan(@PathVariable Long id) {
-        dietPlanService.deleteDietPlan(id);
+    public ResponseEntity<Void> delete(@PathVariable int id) {
+        service.delete(id);
         return ResponseEntity.noContent().build();
     }
 }

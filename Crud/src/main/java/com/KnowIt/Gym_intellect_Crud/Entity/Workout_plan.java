@@ -20,7 +20,8 @@ public class Workout_plan {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private long planId;
+//    @Column(name = "plan_id")
+    private Long planId;
 
     @Column(nullable = false, length = 50)
     private String planName;
@@ -39,7 +40,7 @@ public class Workout_plan {
 		return planId;
 	}
 
-	public void setPlanId(int planId) {
+	public void setPlanId(Long planId) {
 		this.planId = planId;
 	}
 

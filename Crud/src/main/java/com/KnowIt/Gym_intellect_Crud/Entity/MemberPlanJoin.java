@@ -11,7 +11,7 @@ public class MemberPlanJoin {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "membership_id")
-    private Long membershipId;
+    private int membershipId;
 
     @Column(name = "start_date", nullable = false)
     @Temporal(TemporalType.DATE)
@@ -32,11 +32,11 @@ public class MemberPlanJoin {
     private MembershipPlan membershipPlan;
 
     // Getters and Setters
-    public Long getMembershipId() {
+    public int getMembershipId() {
         return membershipId;
     }
 
-    public void setMembershipId(Long id) {
+    public void setMembershipId(int id) {
         this.membershipId = id;
     }
 

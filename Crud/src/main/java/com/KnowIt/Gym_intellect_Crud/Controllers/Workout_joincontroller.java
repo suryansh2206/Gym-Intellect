@@ -26,8 +26,8 @@ public class Workout_joincontroller {
     // Link a workout to a plan
     @PostMapping("/link")
     public ResponseEntity<Workout_join> linkWorkoutToPlan(
-            @RequestParam Long workoutId,
-            @RequestParam Long planId) {
+            @RequestParam int workoutId,
+            @RequestParam int planId) {
         Workout_join join = workoutJoinService.linkWorkoutToPlan(workoutId, planId);
         return ResponseEntity.ok(join);
     }
@@ -42,7 +42,7 @@ public class Workout_joincontroller {
     }
 
     @GetMapping("/workouts-by-plan/{planId}")
-    public ResponseEntity<List<WorkoutJoinDTO>> getWorkoutsByPlan(@PathVariable long planId) {
+    public ResponseEntity<List<WorkoutJoinDTO>> getWorkoutsByPlan(@PathVariable int planId) {
         List<Workout_join> joins = workoutJoinService.getWorkoutsByPlan(planId);
         List<WorkoutJoinDTO> dtos = joins.stream()
             .map(join -> {
