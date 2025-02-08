@@ -16,7 +16,7 @@ const HomeOwner = () => {
     const fetchGymProfiles = async () => {
       try {
         const response = await fetch(
-          `http://localhost:8081/api/gym-profile/gym-profiles/${userId}`,
+          `http://localhost:8212/api/gym-profile/gym-profiles/${userId}`,
           {
             method: "GET",
             headers: {
@@ -87,15 +87,11 @@ const HomeOwner = () => {
       {/* Cards Container - NEW ADDITION */}
       <div className="cards-container">
         <div className="card">
-          <img className="card-img-top" src="..." alt="Add Diet Plan" />
-          <div className="card-body">
-          </div>
+          <img className="card-img-top" src={require("../../assets/Diet Plan 2.png")} alt="Add Diet Plan" />
         </div>
 
         <div className="card">
-          <img className="card-img-top" src="..." alt="Add workout Plan" />
-          <div className="card-body">
-          </div>
+          <img className="card-img-top" src={require("../../assets/workout1.jpg")} alt="Add workout Plan" />
         </div>
       </div>
     </div>

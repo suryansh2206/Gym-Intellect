@@ -21,7 +21,7 @@ const AllGymProfiles = () => {
 
     try {
       const response = await fetch(
-        "http://localhost:8081/api/admin/gym-profiles",
+        "http://localhost:8212/api/admin/gym-profiles",
         {
           headers: {
             Authorization: `Bearer ${token}`,

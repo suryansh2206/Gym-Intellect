@@ -65,6 +65,9 @@ public class SecurityConfig {
             .requestMatchers("/api/admin/**").permitAll()  // Admin-only access
             .requestMatchers("/api/gym-profile/create").permitAll()
             .requestMatchers("/api/gym-profile/gym-profiles/**").permitAll()
+            .requestMatchers("/api/member/register").permitAll() 
+            .requestMatchers("/api/member/workout-plans").permitAll()
+            .requestMatchers("/api/member/plans").permitAll()
             .anyRequest().authenticated()
             .and()
             .addFilterBefore(new JwtAuthenticationFilter(authenticationManager(http), jwtUtils, userDetailsService), 

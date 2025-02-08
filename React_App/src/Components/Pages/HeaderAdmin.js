@@ -20,7 +20,6 @@ const HeaderAdmin = () => {
     <header className="header-admin">
       {/* Left Side: Logo and Project Name */}
       <div className="logo-container">
-        <img src="https://via.placeholder.com/40" alt="Logo" />
         <span>GYM INTELLECT</span>
       </div>
 
