@@ -128,20 +128,11 @@ const SignupFormMember = () => {
     e.preventDefault();
     setIsSubmitting(true);
 
-    // Extract only the required fields
-    const dataToSend = {
-      username: formData.username,
-      email: formData.email,
-      password: formData.password,
-      contact: formData.contact,
-      aadhar: formData.aadhar,
-      roleId: formData.roleId,
-    };
-
-    // Log the data to check what's being sent
-    console.log("Data being sent to API:", dataToSend);
+    console.log("Data being sent to second API (Full Registration):", formData);
 
     try {
+      // Commenting out the first API call
+      /*
       const response = await fetch("http://localhost:8212/api/auth/signup", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
@@ -156,43 +147,46 @@ const SignupFormMember = () => {
           "Data being sent to second API (Full Registration):",
           formData
         );
-
-        try {
-          const fullResponse = await fetch(
-            "http://localhost:8212/api/member/register",
-            {
-              method: "POST",
-              headers: { "Content-Type": "application/json" },
-              body: JSON.stringify(formData),
-            }
-          );
-
-          if (!fullResponse.ok) {
-            throw new Error("Failed to submit full registration data.");
-          }
-          console.log("Full registration data sent successfully!");
-        } catch (fullError) {
-          console.error("Error in full registration:", fullError);
-        }
-
-        // Reset only the required form fields
-        setFormData({
-          username: "",
-          email: "",
-          password: "",
-          contact: "",
-          aadhar: "",
-          dob: "",
-          gender: "Male",
-          address: "",
-          height: "",
-          planId: "",
-          membershipPlanId: "",
-          gymProfileId: "",
-        });
       } else {
         throw new Error("Failed to submit the form.");
       }
+      */
+
+      // Second API call
+      const fullResponse = await fetch(
+        "http://localhost:8212/api/member/register",
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${token}`,
+          },
+          body: JSON.stringify(formData),
+        }
+      );
+
+      if (!fullResponse.ok) {
+        throw new Error("Failed to submit full registration data.");
+      } else {
+        setSuccessMessage("Member added successfully");
+      }
+      console.log("Full registration data sent successfully!");
+
+      // Reset only the required form fields
+      setFormData({
+        username: "",
+        email: "",
+        password: "",
+        contact: "",
+        aadhar: "",
+        dob: "",
+        gender: "Male",
+        address: "",
+        height: "",
+        planId: "",
+        membershipPlanId: "",
+        gymProfileId: "",
+      });
     } catch (error) {
       console.error("Error:", error);
       setSuccessMessage("Error submitting the form. Please try again.");
@@ -360,7 +354,10 @@ const SignupFormMember = () => {
                 Select Membership Plan
               </option>
               {membershipPlans.map((plan, index) => (
-                <option key={plan.id || index} value={plan.planName}>
+                <option
+                  key={plan.memberPlanId || index}
+                  value={plan.memberPlanId}
+                >
                   {plan.planName}
                 </option>
               ))}
