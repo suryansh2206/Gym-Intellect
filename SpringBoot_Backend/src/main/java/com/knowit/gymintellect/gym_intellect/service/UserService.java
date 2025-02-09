@@ -73,8 +73,14 @@ public class UserService {
     @Autowired
     private MembershipPlanRepository membershipPlanRepository;
 
-    public List<MembershipPlan> getAllMembershipPlans() {
-        return membershipPlanRepository.findAll();
+    public List<MembershipPlan> getMembershipPlansByGymProfile(Long gymProfileId) {
+        if (gymProfileId == null) {
+            throw new IllegalArgumentException("GymProfileId is required");
+        }
+
+        List<MembershipPlan> plans = membershipPlanRepository.findByGymProfile_GymProfileId(gymProfileId);
+        System.out.println("Fetched plans: " + plans);  // Debug log
+        return plans;
     }
 
     public List<WorkoutPlan> getAllWorkoutPlans() {
@@ -188,7 +194,7 @@ public class UserService {
         membershipPlanJoinRepository.save(membershipJoin);
         
         member.setMembership(membershipJoin);
-
+        System.out.print("Here");
         return memberRepository.save(member);
     }
 

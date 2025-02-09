@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.knowit.gymintellect.gym_intellect.dto.MemberRegistrationDTO;
@@ -46,9 +47,10 @@ public class MemberController {
     }
 
     @PostMapping("/register")
-    @PreAuthorize("hasRole('GYM_OWNER')")
+//    @PreAuthorize("hasRole('GYM_OWNER')")
     public ResponseEntity<Member> registerMember(@RequestBody MemberRegistrationDTO registrationDTO) {
         User currentOwner = getAuthenticatedUser();
+        System.out.println(currentOwner);
         return ResponseEntity.ok(userService.registerGymMember(registrationDTO, currentOwner));
     }
 
@@ -74,12 +76,13 @@ public class MemberController {
     // Keep other endpoints unchanged
     @GetMapping("/plans")
     @PreAuthorize("hasRole('GYM_OWNER')")
-    public ResponseEntity<List<MembershipPlan>> getMembershipPlans() {
-        return ResponseEntity.ok(userService.getAllMembershipPlans());
+    public ResponseEntity<List<MembershipPlan>> getMembershipPlans(@RequestParam("gymProfileId") Long gymProfileId) {
+        return ResponseEntity.ok(userService.getMembershipPlansByGymProfile(gymProfileId));
     }
 
+
     @GetMapping("/workout-plans")
-    @PreAuthorize("hasRole('GYM_OWNER')")
+    @PreAuthorize("hasAuthority('GYM_OWNER')")
     public ResponseEntity<List<WorkoutPlan>> getWorkoutPlans() {
         return ResponseEntity.ok(userService.getAllWorkoutPlans());
     }

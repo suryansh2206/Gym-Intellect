@@ -16,11 +16,11 @@ const SignupFormMember = () => {
     height: "",
     planId: "", // For Workout Plan
     membershipPlanId: "", // For Membership Plan
-    roleId: 3, // Default role as Gym Member (id: 3)
     gymProfileId: "", // For Gym Profile
   });
 
   const [workoutPlans, setWorkoutPlans] = useState([]);
+  const [membershipPlans, setMembershipPlans] = useState([]); // Added state for membership plans
   const [gymProfiles, setGymProfiles] = useState([]);
   const [successMessage, setSuccessMessage] = useState("");
   const [isSubmitting, setIsSubmitting] = useState(false);
@@ -85,6 +85,38 @@ const SignupFormMember = () => {
     fetchWorkoutPlans();
     fetchGymProfiles();
   }, [userId, token]);
+
+  // Fetch membership plans when gymProfileId changes
+  useEffect(() => {
+    const fetchMembershipPlans = async () => {
+      if (formData.gymProfileId) {
+        try {
+          const response = await fetch(
+            `http://localhost:8212/api/member/plans?gymProfileId=${formData.gymProfileId}`,
+            {
+              method: "GET",
+              headers: {
+                "Content-Type": "application/json",
+                Authorization: `Bearer ${token}`,
+              },
+            }
+          );
+
+          if (response.ok) {
+            const data = await response.json();
+            setMembershipPlans(data);
+            console.log("Membership Plans:", data);
+          } else {
+            throw new Error("Failed to fetch membership plans");
+          }
+        } catch (error) {
+          console.error("Error fetching membership plans:", error);
+        }
+      }
+    };
+
+    fetchMembershipPlans();
+  }, [formData.gymProfileId, token]);
 
   // Handle form input changes
   const handleChange = (e) => {
@@ -156,7 +188,6 @@ const SignupFormMember = () => {
           height: "",
           planId: "",
           membershipPlanId: "",
-          roleId: 3,
           gymProfileId: "",
         });
       } else {
@@ -289,43 +320,6 @@ const SignupFormMember = () => {
               placeholder="Enter Address"
             />
           </div>
-          <div className="signup-form-group">
-            <label htmlFor="planId">Workout Plan:</label>
-            <select
-              id="planId"
-              name="planId"
-              value={formData.planId}
-              onChange={handleChange}
-              required
-            >
-              <option value="" disabled>
-                Select Workout Plan
-              </option>
-              {workoutPlans.map((plan, index) => (
-                <option key={plan.planId || index} value={plan.planId}>
-                  {plan.planName}
-                </option>
-              ))}
-            </select>
-          </div>
-          <div className="signup-form-group">
-            <label htmlFor="membershipPlanId">Membership Plan:</label>
-            <select
-              id="membershipPlanId"
-              name="membershipPlanId"
-              value={formData.membershipPlanId}
-              onChange={handleChange}
-              required
-            >
-              <option value="" disabled>
-                Select Membership Plan
-              </option>
-              {/* Replace with dynamic options if available */}
-              <option value="1">Membership 1</option>
-              <option value="2">Membership 2</option>
-              <option value="3">Membership 3</option>
-            </select>
-          </div>
 
           {/* New Select Box for Gym Profiles */}
           <div className="signup-form-group">
@@ -350,6 +344,46 @@ const SignupFormMember = () => {
                     {profile.gymName}
                   </option>
                 ))}
+            </select>
+          </div>
+
+          <div className="signup-form-group">
+            <label htmlFor="membershipPlanId">Membership Plan:</label>
+            <select
+              id="membershipPlanId"
+              name="membershipPlanId"
+              value={formData.membershipPlanId}
+              onChange={handleChange}
+              required
+            >
+              <option value="" disabled>
+                Select Membership Plan
+              </option>
+              {membershipPlans.map((plan, index) => (
+                <option key={plan.id || index} value={plan.planName}>
+                  {plan.planName}
+                </option>
+              ))}
+            </select>
+          </div>
+
+          <div className="signup-form-group">
+            <label htmlFor="planId">Workout Plan:</label>
+            <select
+              id="planId"
+              name="planId"
+              value={formData.planId}
+              onChange={handleChange}
+              required
+            >
+              <option value="" disabled>
+                Select Workout Plan
+              </option>
+              {workoutPlans.map((plan, index) => (
+                <option key={plan.planId || index} value={plan.planId}>
+                  {plan.planName}
+                </option>
+              ))}
             </select>
           </div>
 
