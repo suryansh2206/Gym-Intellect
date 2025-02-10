@@ -26,7 +26,7 @@ public class Workout_join {
     @ManyToOne
     @JoinColumn(name = "plan_id")
     @JsonBackReference
-    private Workout_plan plan;
+    private WorkoutPlan plan;
 
 
 	public int getWojId() {
@@ -45,11 +45,11 @@ public class Workout_join {
 		this.workout = workout;
 	}
 
-	public Workout_plan getPlan() {
+	public WorkoutPlan getPlan() {
 		return plan;
 	}
 
-	public void setPlan(Workout_plan plan) {
+	public void setPlan(WorkoutPlan plan) {
 		this.plan = plan;
 	}
 

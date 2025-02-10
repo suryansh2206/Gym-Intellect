@@ -5,27 +5,65 @@ import lombok.Getter;
 import lombok.Setter;
 
 @Entity
-@Getter
-@Setter
 @Table(name = "diet_meal")
 public class DietMeal {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "meal_id")
-    private int mealId;
+    private Long mealId;
 
     @ManyToOne
-    @JoinColumn(name = "diet_id", referencedColumnName = "diet_id")
+    @JoinColumn(name = "dietPlan_id")
     private DietPlan dietPlan;
 
-    @Column(name = "food_item", nullable = false)
+    @Column(nullable = false, length = 50)
     private String foodItem;
 
-    @Column(nullable = false)
+    @Column(nullable = false, length = 20)
     private String quantity;
 
     @Column(nullable = false)
-    private float calories;
+    private Float calories;
+
+	public Long getMealId() {
+		return mealId;
+	}
+
+	public void setMealId(Long mealId) {
+		this.mealId = mealId;
+	}
+
+	public DietPlan getDietPlan() {
+		return dietPlan;
+	}
+
+	public void setDietPlan(DietPlan dietPlan) {
+		this.dietPlan = dietPlan;
+	}
+
+	public String getFoodItem() {
+		return foodItem;
+	}
+
+	public void setFoodItem(String foodItem) {
+		this.foodItem = foodItem;
+	}
+
+	public String getQuantity() {
+		return quantity;
+	}
+
+	public void setQuantity(String quantity) {
+		this.quantity = quantity;
+	}
+
+	public Float getCalories() {
+		return calories;
+	}
+
+	public void setCalories(Float calories) {
+		this.calories = calories;
+	}
 
     // Getters and Setters
 }

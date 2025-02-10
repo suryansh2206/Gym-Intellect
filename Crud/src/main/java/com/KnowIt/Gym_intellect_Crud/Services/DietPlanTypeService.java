@@ -22,11 +22,11 @@ public class DietPlanTypeService {
         return repository.findAll();
     }
 
-    public Optional<DietPlanType> getById(int id) {
+    public Optional<DietPlanType> getById(Long id) {
         return repository.findById(id);
     }
 
-    public DietPlanType update(int id, DietPlanType updatedDietPlanType) {
+    public DietPlanType update(Long id, DietPlanType updatedDietPlanType) {
         return repository.findById(id).map(dietPlanType -> {
             dietPlanType.setDietPlanName(updatedDietPlanType.getDietPlanName());
             dietPlanType.setDescription(updatedDietPlanType.getDescription());
@@ -34,7 +34,7 @@ public class DietPlanTypeService {
         }).orElseThrow(() -> new RuntimeException("DietPlanType not found"));
     }
 
-    public void delete(int id) {
+    public void delete(Long id) {
         repository.deleteById(id);
     }
 }

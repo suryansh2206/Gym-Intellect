@@ -21,9 +21,6 @@ public class MemberPlanJoin {
     @Temporal(TemporalType.DATE)
     private Date endDate;
 
-    @Column(name = "fees", nullable = false, precision = 10, scale = 2)
-    private BigDecimal fees;
-
     @Column(name = "status", nullable = false)
     private String status;
 
@@ -54,14 +51,6 @@ public class MemberPlanJoin {
 
     public void setEndDate(Date endDate) {
         this.endDate = endDate;
-    }
-
-    public BigDecimal getFees() {
-        return fees;
-    }
-
-    public void setFees(BigDecimal fees) {
-        this.fees = fees;
     }
 
     public String getStatus() {

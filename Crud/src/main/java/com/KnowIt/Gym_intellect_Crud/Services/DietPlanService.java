@@ -17,6 +17,7 @@ public class DietPlanService {
     private DietPlanRepository repository;
 
     public DietPlan save(DietPlan dietPlan) {
+    
         return repository.save(dietPlan);
     }
 
@@ -37,8 +38,8 @@ public class DietPlanService {
             dietPlan.setDescription(updatedDietPlan.getDescription());
             dietPlan.setCalories(updatedDietPlan.getCalories());
 
-            if (updatedDietPlan.getPlanId() != null) {
-                dietPlan.setPlanId(updatedDietPlan.getPlanId());
+            if (updatedDietPlan.getPlan() != null) {
+                dietPlan.setPlan(updatedDietPlan.getPlan());
             }
 
             if (updatedDietPlan.getDietPlanType() != null) {

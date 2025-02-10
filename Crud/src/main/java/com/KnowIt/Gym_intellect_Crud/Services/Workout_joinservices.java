@@ -8,7 +8,7 @@ import org.springframework.stereotype.Service;
 
 import com.KnowIt.Gym_intellect_Crud.Entity.Workout;
 import com.KnowIt.Gym_intellect_Crud.Entity.Workout_join;
-import com.KnowIt.Gym_intellect_Crud.Entity.Workout_plan;
+import com.KnowIt.Gym_intellect_Crud.Entity.WorkoutPlan;
 import com.KnowIt.Gym_intellect_Crud.Repository.Workout_joinrepo;
 import com.KnowIt.Gym_intellect_Crud.Repository.Workout_planrepo;
 import com.KnowIt.Gym_intellect_Crud.Repository.Workoutrepo;
@@ -28,7 +28,7 @@ public class Workout_joinservices {
 	    public Workout_join linkWorkoutToPlan(int workoutId, int planId) {
 	        Workout workout = workoutRepository.findById(workoutId)
 	                .orElseThrow(() -> new AotInitializerNotFoundException(null, "Workout not found with ID: " + workoutId));
-	        Workout_plan plan = workoutPlanRepository.findById(planId)
+	        WorkoutPlan plan = workoutPlanRepository.findById(planId)
 	                .orElseThrow(() -> new AotInitializerNotFoundException(null, "Plan not found with ID: " + planId));
 
 	        Workout_join join = new Workout_join();

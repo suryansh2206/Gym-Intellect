@@ -23,6 +23,7 @@ public class DietPlanController {
 
     @GetMapping
     public ResponseEntity<List<DietPlan>> getAll() {
+    	System.out.println(service.getAll());
         return ResponseEntity.ok(service.getAll());
     }
 

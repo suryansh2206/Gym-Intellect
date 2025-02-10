@@ -9,7 +9,7 @@ const SignupFormOwner = () => {
     password: "",
     contact: "",
     aadhar: "",
-    roleId: 2, // Default role as Gym Owner (id: 2)
+    roleId: 1, // Default role as Gym Owner (id: 2)
   });
   const [successMessage, setSuccessMessage] = useState("");
   const [isSubmitting, setIsSubmitting] = useState(false);

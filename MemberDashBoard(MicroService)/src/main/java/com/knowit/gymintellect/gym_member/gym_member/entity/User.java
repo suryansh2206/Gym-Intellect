@@ -1,11 +1,7 @@
 package com.knowit.gymintellect.gym_member.gym_member.entity;
 
 import java.time.Instant;
-import java.time.LocalDateTime;
 import java.util.List;
-
-import org.hibernate.annotations.CreationTimestamp;
-import org.hibernate.annotations.UpdateTimestamp;
 
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 

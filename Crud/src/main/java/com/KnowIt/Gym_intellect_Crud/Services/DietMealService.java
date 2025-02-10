@@ -22,11 +22,11 @@ public class DietMealService {
         return repository.findAll();
     }
 
-    public Optional<DietMeal> getById(int id) {
+    public Optional<DietMeal> getById(Long id) {
         return repository.findById(id);
     }
 
-    public DietMeal update(int id, DietMeal updatedDietMeal) {
+    public DietMeal update(Long id, DietMeal updatedDietMeal) {
         return repository.findById(id).map(dietMeal -> {
             dietMeal.setFoodItem(updatedDietMeal.getFoodItem());
             dietMeal.setQuantity(updatedDietMeal.getQuantity());
@@ -39,7 +39,7 @@ public class DietMealService {
         }).orElseThrow(() -> new RuntimeException("DietMeal not found"));
     }
 
-    public void delete(int id) {
+    public void delete(Long id) {
         repository.deleteById(id);
     }
 }
