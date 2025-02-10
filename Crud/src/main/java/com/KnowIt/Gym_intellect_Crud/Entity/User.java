@@ -7,6 +7,7 @@ import java.util.List;
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 import jakarta.persistence.CascadeType;
@@ -46,6 +47,7 @@ public class User {
 
     @ManyToOne
     @JoinColumn(name = "rid", nullable = false)
+    @JsonIgnore
     private Role role;
 
     private String resetToken;
@@ -54,10 +56,12 @@ public class User {
     private Instant tokenExpiration;
     
     @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, orphanRemoval = true)
+    @JsonIgnore
     private List<Member> members;
     
     @OneToMany(mappedBy = "owner", cascade = CascadeType.ALL)
     @JsonManagedReference
+    @JsonIgnore
     private List<GymProfile> gymProfiles;
 
 //    @Column(name = "createdAt", nullable = true, updatable = false)
