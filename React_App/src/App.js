@@ -10,6 +10,7 @@ import HomeAdmin from "./Components/Pages/HomeAdmin";
 import AllGymProfiles from "./Components/Pages/AllGymProfiles"; // Import the AllGymProfiles component
 import SignupFormMember from "./Components/Authentication/SignupFormMember"; // Import the new SignupFormMember component
 import GymProfiles from "./Components/Profiles/GymProfiles";
+import AddMembershipPlan from "./Components/Pages/AddMembershipPlan";
 import OwnerProfile from "./Components/Pages/OwnerProfile";
 import MemberProfile from "./Components/Pages/MemberProfile";
 
@@ -88,6 +89,18 @@ function App() {
         }
       />
 
+      {/* Protected Route for adding Membership Plan (only for GYM_OWNER) */}
+      <Route
+        path="/addMembershipPlan"
+        element={
+          isAuthenticated && userRole === "GYM_OWNER" ? (
+            <AddMembershipPlan />
+          ) : (
+            <Navigate to="/login" replace />
+          )
+        }
+      />
+            
       <Route
         path="/ownerProfile"
         element={
