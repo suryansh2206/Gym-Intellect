@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import "./SignupMember.css";
+import { useSelector } from "react-redux";
 
 const SignupFormMember = () => {
   const [formData, setFormData] = useState({
@@ -15,12 +16,20 @@ const SignupFormMember = () => {
     height: "",
     planId: "", // For Workout Plan
     membershipPlanId: "", // For Membership Plan
-    roleId: 3, // Default role as Gym Member (id: 3)
+    gymProfileId: "", // For Gym Profile
   });
 
   const [workoutPlans, setWorkoutPlans] = useState([]);
+  const [membershipPlans, setMembershipPlans] = useState([]); // Added state for membership plans
+  const [gymProfiles, setGymProfiles] = useState([]);
   const [successMessage, setSuccessMessage] = useState("");
   const [isSubmitting, setIsSubmitting] = useState(false);
+
+  const userIdRedux = useSelector((state) => state.auth.userId);
+  const tokenRedux = useSelector((state) => state.auth.token);
+
+  const userId = userIdRedux || localStorage.getItem("userId");
+  const token = tokenRedux || localStorage.getItem("token");
 
   useEffect(() => {
     const fetchWorkoutPlans = async () => {
@@ -47,8 +56,67 @@ const SignupFormMember = () => {
       }
     };
 
+    const fetchGymProfiles = async () => {
+      try {
+        const response = await fetch(
+          `http://localhost:8212/api/gym-profile/gym-profiles/${userId}`,
+          {
+            method: "GET",
+            headers: {
+              "Content-Type": "application/json",
+              Authorization: `Bearer ${token}`,
+            },
+            credentials: "include",
+          }
+        );
+
+        if (!response.ok) {
+          throw new Error(`HTTP error! Status: ${response.status}`);
+        }
+
+        const data = await response.json();
+        setGymProfiles(Array.isArray(data) ? data : [data]);
+        console.log("Fetched Gym Profiles:", data);
+      } catch (error) {
+        console.error("Error fetching gym profiles:", error);
+      }
+    };
+
     fetchWorkoutPlans();
-  }, []);
+    fetchGymProfiles();
+  }, [userId, token]);
+
+  // Fetch membership plans when gymProfileId changes
+  useEffect(() => {
+    const fetchMembershipPlans = async () => {
+      if (formData.gymProfileId) {
+        try {
+          const response = await fetch(
+            `http://localhost:8212/api/member/plans?gymProfileId=${formData.gymProfileId}`,
+            {
+              method: "GET",
+              headers: {
+                "Content-Type": "application/json",
+                Authorization: `Bearer ${token}`,
+              },
+            }
+          );
+
+          if (response.ok) {
+            const data = await response.json();
+            setMembershipPlans(data);
+            console.log("Membership Plans:", data);
+          } else {
+            throw new Error("Failed to fetch membership plans");
+          }
+        } catch (error) {
+          console.error("Error fetching membership plans:", error);
+        }
+      }
+    };
+
+    fetchMembershipPlans();
+  }, [formData.gymProfileId, token]);
 
   // Handle form input changes
   const handleChange = (e) => {
@@ -60,20 +128,11 @@ const SignupFormMember = () => {
     e.preventDefault();
     setIsSubmitting(true);
 
-    // Extract only the required fields
-    const dataToSend = {
-      username: formData.username,
-      email: formData.email,
-      password: formData.password,
-      contact: formData.contact,
-      aadhar: formData.aadhar,
-      roleId: formData.roleId,
-    };
-
-    // Log the data to check what's being sent
-    console.log("Data being sent to API:", dataToSend);
+    console.log("Data being sent to second API (Full Registration):", formData);
 
     try {
+      // Commenting out the first API call
+      /*
       const response = await fetch("http://localhost:8212/api/auth/signup", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
@@ -83,24 +142,51 @@ const SignupFormMember = () => {
       if (response.ok) {
         setSuccessMessage("Member added successfully");
 
-        // Reset only the required form fields
-        setFormData({
-          username: "",
-          email: "",
-          password: "",
-          contact: "",
-          aadhar: "",
-          dob: "",
-          gender: "Male",
-          address: "",
-          height: "",
-          planId: "",
-          membershipPlanId: "",
-          roleId: 3,
-        });
+        // Log the data before sending it to the second API
+        console.log(
+          "Data being sent to second API (Full Registration):",
+          formData
+        );
       } else {
         throw new Error("Failed to submit the form.");
       }
+      */
+
+      // Second API call
+      const fullResponse = await fetch(
+        "http://localhost:8212/api/member/register",
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${token}`,
+          },
+          body: JSON.stringify(formData),
+        }
+      );
+
+      if (!fullResponse.ok) {
+        throw new Error("Failed to submit full registration data.");
+      } else {
+        setSuccessMessage("Member added successfully");
+      }
+      console.log("Full registration data sent successfully!");
+
+      // Reset only the required form fields
+      setFormData({
+        username: "",
+        email: "",
+        password: "",
+        contact: "",
+        aadhar: "",
+        dob: "",
+        gender: "Male",
+        address: "",
+        height: "",
+        planId: "",
+        membershipPlanId: "",
+        gymProfileId: "",
+      });
     } catch (error) {
       console.error("Error:", error);
       setSuccessMessage("Error submitting the form. Please try again.");
@@ -228,6 +314,56 @@ const SignupFormMember = () => {
               placeholder="Enter Address"
             />
           </div>
+
+          {/* New Select Box for Gym Profiles */}
+          <div className="signup-form-group">
+            <label htmlFor="gymProfileId">Gym Profile:</label>
+            <select
+              id="gymProfileId"
+              name="gymProfileId"
+              value={formData.gymProfileId}
+              onChange={handleChange}
+              required
+            >
+              <option value="" disabled>
+                Select Gym Profile
+              </option>
+              {gymProfiles
+                .filter((profile) => profile.status === "APPROVED")
+                .map((profile, index) => (
+                  <option
+                    key={profile.gymProfileId || index}
+                    value={profile.gymProfileId}
+                  >
+                    {profile.gymName}
+                  </option>
+                ))}
+            </select>
+          </div>
+
+          <div className="signup-form-group">
+            <label htmlFor="membershipPlanId">Membership Plan:</label>
+            <select
+              id="membershipPlanId"
+              name="membershipPlanId"
+              value={formData.membershipPlanId}
+              onChange={handleChange}
+              required
+            >
+              <option value="" disabled>
+                Select Membership Plan
+              </option>
+              {membershipPlans.map((plan, index) => (
+                <option
+                  key={plan.memberPlanId || index}
+                  value={plan.memberPlanId}
+                >
+                  {plan.planName}
+                </option>
+              ))}
+            </select>
+          </div>
+
           <div className="signup-form-group">
             <label htmlFor="planId">Workout Plan:</label>
             <select
@@ -245,24 +381,6 @@ const SignupFormMember = () => {
                   {plan.planName}
                 </option>
               ))}
-            </select>
-          </div>
-          <div className="signup-form-group">
-            <label htmlFor="membershipPlanId">Membership Plan:</label>
-            <select
-              id="membershipPlanId"
-              name="membershipPlanId"
-              value={formData.membershipPlanId}
-              onChange={handleChange}
-              required
-            >
-              <option value="" disabled>
-                Select Membership Plan
-              </option>
-              {/* Replace with dynamic options if available */}
-              <option value="1">Membership 1</option>
-              <option value="2">Membership 2</option>
-              <option value="3">Membership 3</option>
             </select>
           </div>
 

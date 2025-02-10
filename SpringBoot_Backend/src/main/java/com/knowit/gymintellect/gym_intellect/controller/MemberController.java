@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.knowit.gymintellect.gym_intellect.dto.MemberRegistrationDTO;
@@ -40,17 +41,37 @@ public class MemberController {
 
     private User getAuthenticatedUser() {
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+        System.out.println("Authentication Object: " + authentication);
+
+        if (authentication == null || !authentication.isAuthenticated()) {
+            System.out.println("User is not authenticated!");
+            return null;  // Or throw an exception
+        }
+
         String username = authentication.getName();
+        System.out.println("Authenticated Username: " + username);
+
         return userRepository.findByUsername(username)
                 .orElseThrow(() -> new UsernameNotFoundException("User not found"));
     }
 
+
     @PostMapping("/register")
     @PreAuthorize("hasRole('GYM_OWNER')")
     public ResponseEntity<Member> registerMember(@RequestBody MemberRegistrationDTO registrationDTO) {
+        System.out.println("In backend member controller");
+
         User currentOwner = getAuthenticatedUser();
+        
+        if (currentOwner == null) {
+            System.out.println("currentOwner is NULL! Authentication failed.");
+            return ResponseEntity.status(HttpStatus.UNAUTHORIZED).build();
+        }
+
+        System.out.println("Authenticated Gym Owner: " + currentOwner);
         return ResponseEntity.ok(userService.registerGymMember(registrationDTO, currentOwner));
     }
+
 
     @GetMapping("/gym-profiles/owner/{ownerId}")
     @PreAuthorize("hasRole('GYM_OWNER')")
@@ -74,12 +95,13 @@ public class MemberController {
     // Keep other endpoints unchanged
     @GetMapping("/plans")
     @PreAuthorize("hasRole('GYM_OWNER')")
-    public ResponseEntity<List<MembershipPlan>> getMembershipPlans() {
-        return ResponseEntity.ok(userService.getAllMembershipPlans());
+    public ResponseEntity<List<MembershipPlan>> getMembershipPlans(@RequestParam("gymProfileId") Long gymProfileId) {
+        return ResponseEntity.ok(userService.getMembershipPlansByGymProfile(gymProfileId));
     }
 
+
     @GetMapping("/workout-plans")
-    @PreAuthorize("hasRole('GYM_OWNER')")
+    @PreAuthorize("hasAuthority('GYM_OWNER')")
     public ResponseEntity<List<WorkoutPlan>> getWorkoutPlans() {
         return ResponseEntity.ok(userService.getAllWorkoutPlans());
     }
