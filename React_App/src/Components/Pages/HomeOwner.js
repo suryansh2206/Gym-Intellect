@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import { Link } from "react-router-dom";
 import { useSelector } from "react-redux";
 import HeaderOwner from "./HeaderOwner";
 import "./HomeOwner.css";
@@ -15,6 +16,7 @@ const HomeOwner = () => {
   useEffect(() => {
     const fetchGymProfiles = async () => {
       try {
+        console.log(userId);
         const response = await fetch(
           `http://localhost:8212/api/gym-profile/gym-profiles/${userId}`,
           {
@@ -85,13 +87,17 @@ const HomeOwner = () => {
       </div>
 
       {/* Cards Container - NEW ADDITION */}
-      <div className="cards-container">
-        <div className="card">
+    <div className="cards-container">
+      <div className="card">
+        <Link to="/diet-plan">
           <img className="card-img-top" src={require("../../assets/Diet Plan 2.png")} alt="Add Diet Plan" />
-        </div>
+        </Link>
+      </div>
 
         <div className="card">
-          <img className="card-img-top" src={require("../../assets/workout1.jpg")} alt="Add workout Plan" />
+          <Link to="/workout-plan">
+            <img className="card-img-top" src={require("../../assets/workout1.jpg")} alt="Add workout Plan" />
+          </Link>
         </div>
       </div>
     </div>
