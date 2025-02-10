@@ -22,7 +22,7 @@ public class WebConfig implements WebMvcConfigurer {
     
     @Override
     public void addCorsMappings(CorsRegistry registry) {
-        registry.addMapping("/**").allowedOrigins("http://localhost:3000") // Allow React frontend
+        registry.addMapping("/**").allowedOrigins("http://localhost:3021") // Allow React frontend
         .allowedMethods("GET", "POST", "PUT", "DELETE") // Allow methods
         .allowedHeaders("*") // Allow all headers
         .allowCredentials(true); // Allow cookies

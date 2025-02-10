@@ -1,5 +1,8 @@
 package com.knowit.gymintellect.gym_member.gym_member.controller;
 
+import java.util.Map;
+import java.util.Optional;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -7,22 +10,22 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.knowit.gymintellect.gym_member.gym_member.entity.WorkoutPlan;
 import com.knowit.gymintellect.gym_member.gym_member.service.MemberService;
 
 @RestController
-@RequestMapping("/api/member")
+@RequestMapping("/api/members")
 public class MemberController {
-
-    @Autowired
+	@Autowired
     private MemberService memberService;
 
-    @GetMapping("/{userId}/workout-plan")
-    public ResponseEntity<?> getMemberWorkoutPlan(@PathVariable Long userId) {
-        WorkoutPlan workoutPlan = memberService.getWorkoutPlanForMember(userId);
-        if (workoutPlan != null) {
-            return ResponseEntity.ok(workoutPlan);
+    @GetMapping("/profile/{userId}")
+    public ResponseEntity<?> getUserAndMember( @PathVariable int userId) {
+        Optional<Map<String, Object>> memberDetails = memberService.getMemberDetails(userId);
+
+        if (memberDetails.isEmpty()) {
+            return ResponseEntity.notFound().build();
         }
-        return ResponseEntity.badRequest().body("Member not found or membership expired!");
+
+        return ResponseEntity.ok(memberDetails.get());
     }
 }
