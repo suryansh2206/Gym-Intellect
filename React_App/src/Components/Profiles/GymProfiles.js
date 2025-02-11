@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { useSelector } from "react-redux";
-import { Link } from "react-router";
+// import { Link } from "react-router";
 
 const GymProfiles = () => {
   const userIdRedux = useSelector((state) => state.auth.userId);
@@ -63,9 +63,9 @@ const GymProfiles = () => {
   return (
     <div className="gym-profiles-container">
       <h1 className="display-4">My Gym Profiles</h1>
-      <Link to="/ownerDashboard" className="btn btn-outline-secondary">
+      {/* <Link to="/ownerDashboard" className="btn btn-outline-secondary">
         Back to Dashboard
-      </Link>
+      </Link> */}
       {errorMessage && <div style={{ color: "red" }}>{errorMessage}</div>}
       {loading ? (
         <div>Loading...</div>

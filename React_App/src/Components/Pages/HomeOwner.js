@@ -96,7 +96,7 @@ const HomeOwner = () => {
 
         <div className="card">
           <Link to="/workout-plan">
-            <img className="card-img-top" src={require("../../assets/workout1.jpg")} alt="Add workout Plan" />
+            <img className="card-img-top" src={require("../../assets/workout2.jpg")} alt="Add workout Plan" />
           </Link>
         </div>
       </div>

@@ -19,20 +19,19 @@
 
 /* Centering Container */
 .container {
+  position: relative;
   display: flex;
-  justify-content: center;
+  flex-direction: column;
   align-items: center;
-  height: 100vh;
-  width: 100vw;
-  padding: 20px;
+  padding: 10px;
 }
 
 /* Larger Card */
-.card {
-  width: 500px; /* Increased width */
-  height: 700px;
+.card_profile {
+  width: 400px; /* Increased width */
+  height: 400px;
   background: #fff;
-  box-shadow: 0 6px 30px rgba(0, 0, 0, 0.3); /* Bigger shadow for depth */
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3); /* Bigger shadow for depth */
   padding: 30px; /* More padding for a spacious look */
   text-align: center;
   border-radius: 16px;
@@ -40,6 +39,12 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  transition: all 300ms;
+}
+
+.card_profile:hover {
+  opacity: 0.8;
+  transform: scale(1.1);
 }
 
 /* Profile Picture */
@@ -78,3 +83,24 @@
   font-size: 18px; /* Larger font for details */
   margin: 10px 0;
 }
+
+/* Styling for the gym profiles section */
+.gym-profiles-section {
+  margin-top: 30px; /* Space between the owner card and gym profiles */
+  width: 100%;
+  max-width: 1200px; /* Limit the maximum width for better readability */
+  padding: 20px; /* Internal spacing */
+  background-color: #fff; /* White background similar to the card */
+  border-radius: 8px; /* Rounded corners */
+  /* box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); Subtle shadow for depth */
+  align-self: center; /* Center the section within the container */
+}
+
+/* Back Button */
+.custom-back-button {
+  position: absolute;
+  top: 20px;
+  left: 10px;
+  z-index: 1000; 
+}
+
