@@ -36,9 +36,8 @@ public class DietPlan {
 //    @JsonIgnore
     private List<DietMeal> meals;
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "workout_plan_id", referencedColumnName = "planId")
-//    @JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
 //    @JsonIgnore
     private WorkoutPlan workoutPlan;
 

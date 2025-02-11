@@ -38,7 +38,7 @@ public class Member {
     private int gym_profile_id;
     
     @ManyToOne
-    @JoinColumn(name = "plan_id")
+    @JoinColumn(name = "plan_id", referencedColumnName = "planId")
     @JsonIgnore
     private WorkoutPlan workoutPlan;
 

@@ -24,7 +24,7 @@ public class DietMeal {
 
     @ManyToOne
     @JoinColumn(name = "diet_id", referencedColumnName = "dietPlanId")
-    @JsonIgnore
+//    @JsonIgnore
     private DietPlan dietPlan;
 
     // Getters and Setters

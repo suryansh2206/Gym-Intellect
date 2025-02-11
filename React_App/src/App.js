@@ -14,6 +14,7 @@ import AddMembershipPlan from "./Components/Pages/AddMembershipPlan";
 import OwnerProfile from "./Components/Pages/OwnerProfile";
 import MemberProfile from "./Components/Pages/MemberProfile";
 import WorkoutPlanMember from "./Components/Pages/WorkoutPlanMember";
+import DietPlanMember from "./Components/Pages/DietPlanMember";
 
 function App() {
   // Access authentication state from Redux
@@ -130,6 +131,14 @@ function App() {
         path="/workoutplanmember"
         element={isAuthenticated && userRole === "MEMBER" ? (
           <WorkoutPlanMember />
+        ) : (
+          <Navigate to="/login" replace />
+        )}/>  
+
+        <Route
+        path="/dietplanmember"
+        element={isAuthenticated && userRole === "MEMBER" ? (
+          <DietPlanMember />
         ) : (
           <Navigate to="/login" replace />
         )}/>  
