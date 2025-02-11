@@ -18,7 +18,7 @@ const DietPlanMember = () => {
     useEffect(() => {
         const fetchDietPlans = async () => {
             try {
-                const response = await fetch(`http://localhost:8083/api/member/${userId}/diet-plan`, {
+                const response = await fetch(`http://localhost:8214/api/member/${userId}/diet-plan`, {
                     headers: {
                         "Content-Type": "application/json",
                         Authorization: `Bearer ${token}`,

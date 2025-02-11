@@ -1,0 +1,103 @@
+C:\MyProjectGit\New folder\GymIntellectMember\GymIntellectMember\obj\Debug\net8.0\GymIntellectMember.csproj.AssemblyReference.cache
+C:\MyProjectGit\New folder\GymIntellectMember\GymIntellectMember\obj\Debug\net8.0\GymIntellectMember.GeneratedMSBuildEditorConfig.editorconfig
+C:\MyProjectGit\New folder\GymIntellectMember\GymIntellectMember\obj\Debug\net8.0\GymIntellectMember.AssemblyInfoInputs.cache
+C:\MyProjectGit\New folder\GymIntellectMember\GymIntellectMember\obj\Debug\net8.0\GymIntellectMember.AssemblyInfo.cs
+C:\MyProjectGit\New folder\GymIntellectMember\GymIntellectMember\obj\Debug\net8.0\GymIntellectMember.csproj.CoreCompileInputs.cache
+C:\MyProjectGit\New folder\GymIntellectMember\GymIntellectMember\obj\Debug\net8.0\GymIntellectMember.MvcApplicationPartsAssemblyInfo.cs
+C:\MyProjectGit\New folder\GymIntellectMember\GymIntellectMember\obj\Debug\net8.0\GymIntellectMember.MvcApplicationPartsAssemblyInfo.cache
+C:\MyProjectGit\New folder\GymIntellectMember\GymIntellectMember\bin\Debug\net8.0\appsettings.Development.json
+C:\MyProjectGit\New folder\GymIntellectMember\GymIntellectMember\bin\Debug\net8.0\appsettings.json
+C:\MyProjectGit\New folder\GymIntellectMember\GymIntellectMember\bin\Debug\net8.0\GymIntellectMember.staticwebassets.endpoints.json
+C:\MyProjectGit\New folder\GymIntellectMember\GymIntellectMember\bin\Debug\net8.0\GymIntellectMember.exe
+C:\MyProjectGit\New folder\GymIntellectMember\GymIntellectMember\bin\Debug\net8.0\GymIntellectMember.deps.json
+C:\MyProjectGit\New folder\GymIntellectMember\GymIntellectMember\bin\Debug\net8.0\GymIntellectMember.runtimeconfig.json
+C:\MyProjectGit\New folder\GymIntellectMember\GymIntellectMember\bin\Debug\net8.0\GymIntellectMember.dll
+C:\MyProjectGit\New folder\GymIntellectMember\GymIntellectMember\bin\Debug\net8.0\GymIntellectMember.pdb
+C:\MyProjectGit\New folder\GymIntellectMember\GymIntellectMember\bin\Debug\net8.0\Microsoft.AspNetCore.JsonPatch.dll
+C:\MyProjectGit\New folder\GymIntellectMember\GymIntellectMember\bin\Debug\net8.0\Microsoft.AspNetCore.Mvc.NewtonsoftJson.dll
+C:\MyProjectGit\New folder\GymIntellectMember\GymIntellectMember\bin\Debug\net8.0\Microsoft.EntityFrameworkCore.dll
+C:\MyProjectGit\New folder\GymIntellectMember\GymIntellectMember\bin\Debug\net8.0\Microsoft.EntityFrameworkCore.Abstractions.dll
+C:\MyProjectGit\New folder\GymIntellectMember\GymIntellectMember\bin\Debug\net8.0\Microsoft.EntityFrameworkCore.Relational.dll
+C:\MyProjectGit\New folder\GymIntellectMember\GymIntellectMember\bin\Debug\net8.0\Microsoft.Extensions.Caching.Memory.dll
+C:\MyProjectGit\New folder\GymIntellectMember\GymIntellectMember\bin\Debug\net8.0\Microsoft.Extensions.DependencyInjection.dll
+C:\MyProjectGit\New folder\GymIntellectMember\GymIntellectMember\bin\Debug\net8.0\Microsoft.Extensions.DependencyInjection.Abstractions.dll
+C:\MyProjectGit\New folder\GymIntellectMember\GymIntellectMember\bin\Debug\net8.0\Microsoft.Extensions.Logging.dll
+C:\MyProjectGit\New folder\GymIntellectMember\GymIntellectMember\bin\Debug\net8.0\Microsoft.Extensions.Logging.Abstractions.dll
+C:\MyProjectGit\New folder\GymIntellectMember\GymIntellectMember\bin\Debug\net8.0\Microsoft.Extensions.Options.dll
+C:\MyProjectGit\New folder\GymIntellectMember\GymIntellectMember\bin\Debug\net8.0\Microsoft.OpenApi.dll
+C:\MyProjectGit\New folder\GymIntellectMember\GymIntellectMember\bin\Debug\net8.0\MySqlConnector.dll
+C:\MyProjectGit\New folder\GymIntellectMember\GymIntellectMember\bin\Debug\net8.0\Newtonsoft.Json.dll
+C:\MyProjectGit\New folder\GymIntellectMember\GymIntellectMember\bin\Debug\net8.0\Newtonsoft.Json.Bson.dll
+C:\MyProjectGit\New folder\GymIntellectMember\GymIntellectMember\bin\Debug\net8.0\Pomelo.EntityFrameworkCore.MySql.dll
+C:\MyProjectGit\New folder\GymIntellectMember\GymIntellectMember\bin\Debug\net8.0\Swashbuckle.AspNetCore.Swagger.dll
+C:\MyProjectGit\New folder\GymIntellectMember\GymIntellectMember\bin\Debug\net8.0\Swashbuckle.AspNetCore.SwaggerGen.dll
+C:\MyProjectGit\New folder\GymIntellectMember\GymIntellectMember\bin\Debug\net8.0\Swashbuckle.AspNetCore.SwaggerUI.dll
+C:\MyProjectGit\New folder\GymIntellectMember\GymIntellectMember\obj\Debug\net8.0\scopedcss\bundle\GymIntellectMember.styles.css
+C:\MyProjectGit\New folder\GymIntellectMember\GymIntellectMember\obj\Debug\net8.0\staticwebassets.build.json
+C:\MyProjectGit\New folder\GymIntellectMember\GymIntellectMember\obj\Debug\net8.0\staticwebassets.development.json
+C:\MyProjectGit\New folder\GymIntellectMember\GymIntellectMember\obj\Debug\net8.0\staticwebassets.build.endpoints.json
+C:\MyProjectGit\New folder\GymIntellectMember\GymIntellectMember\obj\Debug\net8.0\staticwebassets\msbuild.GymIntellectMember.Microsoft.AspNetCore.StaticWebAssets.props
+C:\MyProjectGit\New folder\GymIntellectMember\GymIntellectMember\obj\Debug\net8.0\staticwebassets\msbuild.GymIntellectMember.Microsoft.AspNetCore.StaticWebAssetEndpoints.props
+C:\MyProjectGit\New folder\GymIntellectMember\GymIntellectMember\obj\Debug\net8.0\staticwebassets\msbuild.build.GymIntellectMember.props
+C:\MyProjectGit\New folder\GymIntellectMember\GymIntellectMember\obj\Debug\net8.0\staticwebassets\msbuild.buildMultiTargeting.GymIntellectMember.props
+C:\MyProjectGit\New folder\GymIntellectMember\GymIntellectMember\obj\Debug\net8.0\staticwebassets\msbuild.buildTransitive.GymIntellectMember.props
+C:\MyProjectGit\New folder\GymIntellectMember\GymIntellectMember\obj\Debug\net8.0\staticwebassets.pack.json
+C:\MyProjectGit\New folder\GymIntellectMember\GymIntellectMember\obj\Debug\net8.0\staticwebassets.upToDateCheck.txt
+C:\MyProjectGit\New folder\GymIntellectMember\GymIntellectMember\obj\Debug\net8.0\GymIntel.72C8A64A.Up2Date
+C:\MyProjectGit\New folder\GymIntellectMember\GymIntellectMember\obj\Debug\net8.0\GymIntellectMember.dll
+C:\MyProjectGit\New folder\GymIntellectMember\GymIntellectMember\obj\Debug\net8.0\refint\GymIntellectMember.dll
+C:\MyProjectGit\New folder\GymIntellectMember\GymIntellectMember\obj\Debug\net8.0\GymIntellectMember.pdb
+C:\MyProjectGit\New folder\GymIntellectMember\GymIntellectMember\obj\Debug\net8.0\GymIntellectMember.genruntimeconfig.cache
+C:\MyProjectGit\New folder\GymIntellectMember\GymIntellectMember\obj\Debug\net8.0\ref\GymIntellectMember.dll
+D:\Awaiz\KNOW IT\Project\Gym Intellect\Project\Gym-Intellect\GymIntellectMember(DotNet)\GymIntellectMember\bin\Debug\net8.0\appsettings.Development.json
+D:\Awaiz\KNOW IT\Project\Gym Intellect\Project\Gym-Intellect\GymIntellectMember(DotNet)\GymIntellectMember\bin\Debug\net8.0\appsettings.json
+D:\Awaiz\KNOW IT\Project\Gym Intellect\Project\Gym-Intellect\GymIntellectMember(DotNet)\GymIntellectMember\bin\Debug\net8.0\GymIntellectMember.staticwebassets.endpoints.json
+D:\Awaiz\KNOW IT\Project\Gym Intellect\Project\Gym-Intellect\GymIntellectMember(DotNet)\GymIntellectMember\bin\Debug\net8.0\GymIntellectMember.exe
+D:\Awaiz\KNOW IT\Project\Gym Intellect\Project\Gym-Intellect\GymIntellectMember(DotNet)\GymIntellectMember\bin\Debug\net8.0\GymIntellectMember.deps.json
+D:\Awaiz\KNOW IT\Project\Gym Intellect\Project\Gym-Intellect\GymIntellectMember(DotNet)\GymIntellectMember\bin\Debug\net8.0\GymIntellectMember.runtimeconfig.json
+D:\Awaiz\KNOW IT\Project\Gym Intellect\Project\Gym-Intellect\GymIntellectMember(DotNet)\GymIntellectMember\bin\Debug\net8.0\GymIntellectMember.dll
+D:\Awaiz\KNOW IT\Project\Gym Intellect\Project\Gym-Intellect\GymIntellectMember(DotNet)\GymIntellectMember\bin\Debug\net8.0\GymIntellectMember.pdb
+D:\Awaiz\KNOW IT\Project\Gym Intellect\Project\Gym-Intellect\GymIntellectMember(DotNet)\GymIntellectMember\bin\Debug\net8.0\Microsoft.AspNetCore.JsonPatch.dll
+D:\Awaiz\KNOW IT\Project\Gym Intellect\Project\Gym-Intellect\GymIntellectMember(DotNet)\GymIntellectMember\bin\Debug\net8.0\Microsoft.AspNetCore.Mvc.NewtonsoftJson.dll
+D:\Awaiz\KNOW IT\Project\Gym Intellect\Project\Gym-Intellect\GymIntellectMember(DotNet)\GymIntellectMember\bin\Debug\net8.0\Microsoft.EntityFrameworkCore.dll
+D:\Awaiz\KNOW IT\Project\Gym Intellect\Project\Gym-Intellect\GymIntellectMember(DotNet)\GymIntellectMember\bin\Debug\net8.0\Microsoft.EntityFrameworkCore.Abstractions.dll
+D:\Awaiz\KNOW IT\Project\Gym Intellect\Project\Gym-Intellect\GymIntellectMember(DotNet)\GymIntellectMember\bin\Debug\net8.0\Microsoft.EntityFrameworkCore.Relational.dll
+D:\Awaiz\KNOW IT\Project\Gym Intellect\Project\Gym-Intellect\GymIntellectMember(DotNet)\GymIntellectMember\bin\Debug\net8.0\Microsoft.Extensions.Caching.Memory.dll
+D:\Awaiz\KNOW IT\Project\Gym Intellect\Project\Gym-Intellect\GymIntellectMember(DotNet)\GymIntellectMember\bin\Debug\net8.0\Microsoft.Extensions.DependencyInjection.dll
+D:\Awaiz\KNOW IT\Project\Gym Intellect\Project\Gym-Intellect\GymIntellectMember(DotNet)\GymIntellectMember\bin\Debug\net8.0\Microsoft.Extensions.DependencyInjection.Abstractions.dll
+D:\Awaiz\KNOW IT\Project\Gym Intellect\Project\Gym-Intellect\GymIntellectMember(DotNet)\GymIntellectMember\bin\Debug\net8.0\Microsoft.Extensions.Logging.dll
+D:\Awaiz\KNOW IT\Project\Gym Intellect\Project\Gym-Intellect\GymIntellectMember(DotNet)\GymIntellectMember\bin\Debug\net8.0\Microsoft.Extensions.Logging.Abstractions.dll
+D:\Awaiz\KNOW IT\Project\Gym Intellect\Project\Gym-Intellect\GymIntellectMember(DotNet)\GymIntellectMember\bin\Debug\net8.0\Microsoft.Extensions.Options.dll
+D:\Awaiz\KNOW IT\Project\Gym Intellect\Project\Gym-Intellect\GymIntellectMember(DotNet)\GymIntellectMember\bin\Debug\net8.0\Microsoft.OpenApi.dll
+D:\Awaiz\KNOW IT\Project\Gym Intellect\Project\Gym-Intellect\GymIntellectMember(DotNet)\GymIntellectMember\bin\Debug\net8.0\MySqlConnector.dll
+D:\Awaiz\KNOW IT\Project\Gym Intellect\Project\Gym-Intellect\GymIntellectMember(DotNet)\GymIntellectMember\bin\Debug\net8.0\Newtonsoft.Json.dll
+D:\Awaiz\KNOW IT\Project\Gym Intellect\Project\Gym-Intellect\GymIntellectMember(DotNet)\GymIntellectMember\bin\Debug\net8.0\Newtonsoft.Json.Bson.dll
+D:\Awaiz\KNOW IT\Project\Gym Intellect\Project\Gym-Intellect\GymIntellectMember(DotNet)\GymIntellectMember\bin\Debug\net8.0\Pomelo.EntityFrameworkCore.MySql.dll
+D:\Awaiz\KNOW IT\Project\Gym Intellect\Project\Gym-Intellect\GymIntellectMember(DotNet)\GymIntellectMember\bin\Debug\net8.0\Swashbuckle.AspNetCore.Swagger.dll
+D:\Awaiz\KNOW IT\Project\Gym Intellect\Project\Gym-Intellect\GymIntellectMember(DotNet)\GymIntellectMember\bin\Debug\net8.0\Swashbuckle.AspNetCore.SwaggerGen.dll
+D:\Awaiz\KNOW IT\Project\Gym Intellect\Project\Gym-Intellect\GymIntellectMember(DotNet)\GymIntellectMember\bin\Debug\net8.0\Swashbuckle.AspNetCore.SwaggerUI.dll
+D:\Awaiz\KNOW IT\Project\Gym Intellect\Project\Gym-Intellect\GymIntellectMember(DotNet)\GymIntellectMember\obj\Debug\net8.0\GymIntellectMember.csproj.AssemblyReference.cache
+D:\Awaiz\KNOW IT\Project\Gym Intellect\Project\Gym-Intellect\GymIntellectMember(DotNet)\GymIntellectMember\obj\Debug\net8.0\GymIntellectMember.GeneratedMSBuildEditorConfig.editorconfig
+D:\Awaiz\KNOW IT\Project\Gym Intellect\Project\Gym-Intellect\GymIntellectMember(DotNet)\GymIntellectMember\obj\Debug\net8.0\GymIntellectMember.AssemblyInfoInputs.cache
+D:\Awaiz\KNOW IT\Project\Gym Intellect\Project\Gym-Intellect\GymIntellectMember(DotNet)\GymIntellectMember\obj\Debug\net8.0\GymIntellectMember.AssemblyInfo.cs
+D:\Awaiz\KNOW IT\Project\Gym Intellect\Project\Gym-Intellect\GymIntellectMember(DotNet)\GymIntellectMember\obj\Debug\net8.0\GymIntellectMember.csproj.CoreCompileInputs.cache
+D:\Awaiz\KNOW IT\Project\Gym Intellect\Project\Gym-Intellect\GymIntellectMember(DotNet)\GymIntellectMember\obj\Debug\net8.0\GymIntellectMember.MvcApplicationPartsAssemblyInfo.cs
+D:\Awaiz\KNOW IT\Project\Gym Intellect\Project\Gym-Intellect\GymIntellectMember(DotNet)\GymIntellectMember\obj\Debug\net8.0\GymIntellectMember.MvcApplicationPartsAssemblyInfo.cache
+D:\Awaiz\KNOW IT\Project\Gym Intellect\Project\Gym-Intellect\GymIntellectMember(DotNet)\GymIntellectMember\obj\Debug\net8.0\GymIntellectMember.sourcelink.json
+D:\Awaiz\KNOW IT\Project\Gym Intellect\Project\Gym-Intellect\GymIntellectMember(DotNet)\GymIntellectMember\obj\Debug\net8.0\scopedcss\bundle\GymIntellectMember.styles.css
+D:\Awaiz\KNOW IT\Project\Gym Intellect\Project\Gym-Intellect\GymIntellectMember(DotNet)\GymIntellectMember\obj\Debug\net8.0\staticwebassets.build.json
+D:\Awaiz\KNOW IT\Project\Gym Intellect\Project\Gym-Intellect\GymIntellectMember(DotNet)\GymIntellectMember\obj\Debug\net8.0\staticwebassets.development.json
+D:\Awaiz\KNOW IT\Project\Gym Intellect\Project\Gym-Intellect\GymIntellectMember(DotNet)\GymIntellectMember\obj\Debug\net8.0\staticwebassets.build.endpoints.json
+D:\Awaiz\KNOW IT\Project\Gym Intellect\Project\Gym-Intellect\GymIntellectMember(DotNet)\GymIntellectMember\obj\Debug\net8.0\staticwebassets\msbuild.GymIntellectMember.Microsoft.AspNetCore.StaticWebAssets.props
+D:\Awaiz\KNOW IT\Project\Gym Intellect\Project\Gym-Intellect\GymIntellectMember(DotNet)\GymIntellectMember\obj\Debug\net8.0\staticwebassets\msbuild.GymIntellectMember.Microsoft.AspNetCore.StaticWebAssetEndpoints.props
+D:\Awaiz\KNOW IT\Project\Gym Intellect\Project\Gym-Intellect\GymIntellectMember(DotNet)\GymIntellectMember\obj\Debug\net8.0\staticwebassets\msbuild.build.GymIntellectMember.props
+D:\Awaiz\KNOW IT\Project\Gym Intellect\Project\Gym-Intellect\GymIntellectMember(DotNet)\GymIntellectMember\obj\Debug\net8.0\staticwebassets\msbuild.buildMultiTargeting.GymIntellectMember.props
+D:\Awaiz\KNOW IT\Project\Gym Intellect\Project\Gym-Intellect\GymIntellectMember(DotNet)\GymIntellectMember\obj\Debug\net8.0\staticwebassets\msbuild.buildTransitive.GymIntellectMember.props
+D:\Awaiz\KNOW IT\Project\Gym Intellect\Project\Gym-Intellect\GymIntellectMember(DotNet)\GymIntellectMember\obj\Debug\net8.0\staticwebassets.pack.json
+D:\Awaiz\KNOW IT\Project\Gym Intellect\Project\Gym-Intellect\GymIntellectMember(DotNet)\GymIntellectMember\obj\Debug\net8.0\staticwebassets.upToDateCheck.txt
+D:\Awaiz\KNOW IT\Project\Gym Intellect\Project\Gym-Intellect\GymIntellectMember(DotNet)\GymIntellectMember\obj\Debug\net8.0\GymIntel.72C8A64A.Up2Date
+D:\Awaiz\KNOW IT\Project\Gym Intellect\Project\Gym-Intellect\GymIntellectMember(DotNet)\GymIntellectMember\obj\Debug\net8.0\GymIntellectMember.dll
+D:\Awaiz\KNOW IT\Project\Gym Intellect\Project\Gym-Intellect\GymIntellectMember(DotNet)\GymIntellectMember\obj\Debug\net8.0\refint\GymIntellectMember.dll
+D:\Awaiz\KNOW IT\Project\Gym Intellect\Project\Gym-Intellect\GymIntellectMember(DotNet)\GymIntellectMember\obj\Debug\net8.0\GymIntellectMember.pdb
+D:\Awaiz\KNOW IT\Project\Gym Intellect\Project\Gym-Intellect\GymIntellectMember(DotNet)\GymIntellectMember\obj\Debug\net8.0\GymIntellectMember.genruntimeconfig.cache
+D:\Awaiz\KNOW IT\Project\Gym Intellect\Project\Gym-Intellect\GymIntellectMember(DotNet)\GymIntellectMember\obj\Debug\net8.0\ref\GymIntellectMember.dll

@@ -18,7 +18,7 @@ const WorkoutPlanMember = () => {
         const fetchWorkouts = async () => {
             try {
                 console.log(userId);
-                const response = await fetch(`http://localhost:8083/api/workouts/${userId}`,
+                const response = await fetch(`http://localhost:8214/api/workouts/${userId}`,
                     {
                       method: "GET",
                       headers: {
