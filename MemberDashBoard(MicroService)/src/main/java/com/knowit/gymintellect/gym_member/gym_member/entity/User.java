@@ -49,8 +49,8 @@ public class User {
     @Column(nullable = true)
     private Instant tokenExpiration;
     
-    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, orphanRemoval = true)
-    private List<Member> members;
+//    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, orphanRemoval = true)
+//    private List<Member> members;
     
     @OneToMany(mappedBy = "owner", cascade = CascadeType.ALL)
     @JsonManagedReference
@@ -142,14 +142,6 @@ public class User {
 
     public void setTokenExpiration(Instant tokenExpiration) {
         this.tokenExpiration = tokenExpiration;
-    }
-    
-    public List<Member> getMembers() {
-        return members;
-    }
-
-    public void setMembers(List<Member> members) {
-        this.members = members;
     }
     
 //    public boolean isVerified() {

@@ -12,6 +12,7 @@ import SignupFormMember from "./Components/Authentication/SignupFormMember"; // 
 import GymProfiles from "./Components/Profiles/GymProfiles";
 import AddMembershipPlan from "./Components/Pages/AddMembershipPlan";
 import OwnerProfile from "./Components/Pages/OwnerProfile";
+import MemberProfile from "./Components/Pages/MemberProfile";
 
 function App() {
   // Access authentication state from Redux
@@ -107,6 +108,17 @@ function App() {
         element={
           isAuthenticated && userRole === "GYM_OWNER" ? (
             <OwnerProfile />
+          ) : (
+            <Navigate to="/login" replace />
+          )
+        }
+      />
+
+      <Route
+        path="/memberprofile"
+        element={
+          isAuthenticated && userRole === "MEMBER" ? (
+            <MemberProfile/>
           ) : (
             <Navigate to="/login" replace />
           )

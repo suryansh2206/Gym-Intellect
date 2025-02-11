@@ -22,9 +22,6 @@ public class DietPlan {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long dietPlanId;
 
-    @Column(unique = true, nullable = false)
-    private String dietPlanName;
-
     @Column(nullable = false)
     private String description;
 
@@ -38,9 +35,6 @@ public class DietPlan {
     // Getters and Setters
     public Long getDietPlanId() { return dietPlanId; }
     public void setDietPlanId(Long dietPlanId) { this.dietPlanId = dietPlanId; }
-
-    public String getDietPlanName() { return dietPlanName; }
-    public void setDietPlanName(String dietPlanName) { this.dietPlanName = dietPlanName; }
 
     public String getDescription() { return description; }
     public void setDescription(String description) { this.description = description; }

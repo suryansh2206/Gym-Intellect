@@ -35,7 +35,7 @@ const HeaderMember = () => {
           <Link to="/progress">
             <i class="bi bi-clipboard2-data"></i> Progress
           </Link>
-          <Link to="/profile">
+          <Link to="/memberprofile">
             <i className="bi bi-person"></i> Profile
           </Link>
         </nav>

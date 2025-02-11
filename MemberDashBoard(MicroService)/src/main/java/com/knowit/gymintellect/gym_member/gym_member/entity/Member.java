@@ -28,12 +28,10 @@ public class Member {
     private MembershipPlanJoin membership;
     
     @ManyToOne
-    @JoinColumn(name = "user_id")
+    @JoinColumn(name = "user_id", nullable = false)
     private User user;
     
-    @ManyToOne
-    @JoinColumn(name = "gym_profile_id")
-    private GymProfile gymProfile;
+    private int gym_profile_id;
     
     @ManyToOne
     @JoinColumn(name = "plan_id")
@@ -95,12 +93,12 @@ public class Member {
 		this.user = user;
 	}
 
-	public GymProfile getGymProfile() {
-		return gymProfile;
+	public int getGymProfile() {
+		return gym_profile_id;
 	}
 
-	public void setGymProfile(GymProfile gymProfile) {
-		this.gymProfile = gymProfile;
+	public void setGymProfile(int gymProfile) {
+		this.gym_profile_id = gymProfile;
 	}
 
 	public WorkoutPlan getWorkoutPlan() {
