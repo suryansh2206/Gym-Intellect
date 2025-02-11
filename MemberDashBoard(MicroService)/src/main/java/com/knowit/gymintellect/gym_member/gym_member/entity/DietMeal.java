@@ -1,5 +1,7 @@
 package com.knowit.gymintellect.gym_member.gym_member.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -22,6 +24,7 @@ public class DietMeal {
 
     @ManyToOne
     @JoinColumn(name = "diet_id", referencedColumnName = "dietPlanId")
+    @JsonIgnore
     private DietPlan dietPlan;
 
     // Getters and Setters

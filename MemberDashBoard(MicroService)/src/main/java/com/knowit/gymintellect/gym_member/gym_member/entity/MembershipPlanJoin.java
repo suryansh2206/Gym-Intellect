@@ -2,6 +2,8 @@ package com.knowit.gymintellect.gym_member.gym_member.entity;
 
 import java.util.Date;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -24,10 +26,12 @@ public class MembershipPlanJoin {
 
     @ManyToOne
     @JoinColumn(name = "member_plan_id", referencedColumnName = "memberPlanId", nullable = false)
+    @JsonIgnore
     private MembershipPlan membershipPlan;
 
     @ManyToOne
     @JoinColumn(name = "member_id", referencedColumnName = "memberId", nullable = false)
+    @JsonIgnore
     private Member member;
 
     @Temporal(TemporalType.DATE)

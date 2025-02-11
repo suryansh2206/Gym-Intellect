@@ -22,5 +22,5 @@ public class WorkoutController {
     public ResponseEntity<List<Workout>> getWorkouts(@PathVariable int userId) {
         List<Workout> workouts = workoutService.getWorkoutsByUserId(userId);
         return ResponseEntity.ok(workouts);
-    } 
+    }
 }

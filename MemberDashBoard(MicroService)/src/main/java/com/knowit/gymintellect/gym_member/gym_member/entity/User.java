@@ -3,6 +3,7 @@ package com.knowit.gymintellect.gym_member.gym_member.entity;
 import java.time.Instant;
 import java.util.List;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 import jakarta.persistence.CascadeType;
@@ -42,6 +43,7 @@ public class User {
 
     @ManyToOne
     @JoinColumn(name = "rid", nullable = false)
+    @JsonIgnore
     private Role role;
 
     private String resetToken;
