@@ -2,7 +2,10 @@ package com.knowit.gymintellect.gym_member.gym_member.entity;
 
 import java.util.List;
 
+import com.fasterxml.jackson.annotation.JsonIdentityInfo;
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
@@ -12,12 +15,14 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
 
 @Entity
 @Table(name = "diet_plan")
+//@JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class, property = "dietPlanId")
 public class DietPlan {
 
     @Id
@@ -28,11 +33,13 @@ public class DietPlan {
     private String description;
 
     @OneToMany(mappedBy = "dietPlan", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
-    @JsonIgnore
+//    @JsonIgnore
     private List<DietMeal> meals;
 
-    @OneToOne
+    @ManyToOne
     @JoinColumn(name = "workout_plan_id", referencedColumnName = "planId")
+//    @JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
+//    @JsonIgnore
     private WorkoutPlan workoutPlan;
 
     // Getters and Setters

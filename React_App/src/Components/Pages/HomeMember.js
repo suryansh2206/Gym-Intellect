@@ -19,7 +19,7 @@ const HomeMember = () => {
         />
       </div>
       </Link>
-      <Link to="/diet-plan-member" className="no-underline">
+      <Link to="/dietplanmember" className="no-underline">
       <div className="card">
           <img
             className="card-img-top"

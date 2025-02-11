@@ -18,6 +18,9 @@ import com.knowit.gymintellect.gym_member.gym_member.repository.DietPlanReposito
 import com.knowit.gymintellect.gym_member.gym_member.repository.MemberRepository;
 import com.knowit.gymintellect.gym_member.gym_member.repository.WorkoutJoinRepository;
 
+import jakarta.persistence.EntityManager;
+import jakarta.persistence.PersistenceContext;
+
 @Service
 public class DietPlanService {
 
@@ -32,22 +35,31 @@ public class DietPlanService {
     
     private WorkoutJoinRepository workoutJoinRepository;
 
+//    @PersistenceContext
+//    private EntityManager entityManager;
+
     public List<DietPlan> getDietPlanForMember(int userId) {
-    	Member member = memberRepository.findByUserUserId(userId)
+        Member member = memberRepository.findByUserUserId(userId)
                 .orElseThrow(() -> new RuntimeException("Member not found"));
 
         WorkoutPlan workoutPlan = member.getWorkoutPlan();
         if (workoutPlan == null) {
             throw new RuntimeException("Workout plan not found for this member");
         }
+
         int planId = workoutPlan.getPlanId().intValue();
-        List<DietPlan> workoutJoins = dietPlanRepository.findByWorkoutPlan_PlanId(planId);
         
-//        List<Long> workoutIds = workoutJoins.stream()
-//                .map(wj -> wj.getWorkout().getWorkoutId())
-//                .collect(Collectors.toList());
-//        List<Workout> workout = workoutJoinRepository.findBy
-//        Workout workout =  workoutjoin.getWorkout();
-        return workoutJoins;
+        List<DietPlan> dietPlans = dietPlanRepository.findAll();
+        
+        // Debugging before returning
+        System.out.println("Raw Retrieved Diet Plans:");
+        for (DietPlan dp : dietPlans) {
+            System.out.println("Diet Plan ID: " + dp.getDietPlanId() + ", Description: " + dp.getDescription());
+        }
+
+        return dietPlans;
     }
+
+
+
 }

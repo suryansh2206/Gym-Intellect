@@ -39,17 +39,21 @@ public class WorkoutPlan {
     @JsonIgnore
     private List<Workout> workouts;
     
-    @OneToOne(mappedBy = "workoutPlan", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    @OneToMany(mappedBy = "workoutPlan", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     @JsonIgnore
-    private DietPlan dietPlan;
+    private List<DietPlan> dietPlans;
 
-    public DietPlan getDietPlan() {
-		return dietPlan;
+
+    
+
+
+	public List<DietPlan> getDietPlans() {
+		return dietPlans;
 	}
 
 
-	public void setDietPlan(DietPlan dietPlan) {
-		this.dietPlan = dietPlan;
+	public void setDietPlans(List<DietPlan> dietPlans) {
+		this.dietPlans = dietPlans;
 	}
 
 
