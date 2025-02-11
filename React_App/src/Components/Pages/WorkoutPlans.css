@@ -1,0 +1,118 @@
+/* WorkoutPlans.css */
+
+/* Container styles for the entire page */
+.workout-plans-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  padding: 40px 0;
+  background-color: #e3f6f5; /* Light Aqua */
+  background-image: linear-gradient(
+      rgba(154, 203, 208, 0.6) 1px,
+      transparent 1px
+    ),
+    linear-gradient(90deg, rgba(154, 203, 208, 0.6) 1px, transparent 1px);
+  background-size: 10px 10px;
+}
+
+/* Form wrapper styles */
+.workout-plans-wrapper {
+  background-color: #9acbd0; /* Light Teal */
+  border: 2px solid #1e3a5f; /* Dark Navy Blue */
+  border-radius: 20px;
+  box-shadow: 3px 4px 0px 1px #48a6a7;
+  padding: 20px;
+  width: 100%;
+  max-width: 800px;
+  text-align: center;
+}
+
+.workout-plans-wrapper h2 {
+  color: #1e3a5f;
+  font-weight: 900;
+  margin-bottom: 20px;
+}
+
+/* Form group styles for each field */
+.workout-plans-form-group {
+  margin-bottom: 15px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.workout-plans-form-group label {
+  display: block;
+  margin-bottom: 5px;
+  font-weight: 600;
+  color: #1e3a5f;
+  text-align: left;
+}
+
+.workout-plans-form-group input,
+.workout-plans-form-group select,
+.workout-plans-form-group textarea {
+  width: 100%;
+  padding: 12px;
+  border: 2px solid #1e3a5f;
+  border-radius: 4px;
+  box-shadow: 3px 4px 0px 1px #48a6a7;
+  font-size: 14px;
+}
+
+.workout-plans-form-group input:focus,
+.workout-plans-form-group select:focus,
+.workout-plans-form-group textarea:focus {
+  outline: none;
+  box-shadow: 1px 2px 0px 0px #48a6a7;
+}
+
+/* Submit button styles */
+.workout-plans-btn {
+  width: 100%;
+  padding: 12px;
+  background-color: #1e3a5f;
+  color: white;
+  border-radius: 10px;
+  font-weight: bold;
+  font-size: 15px;
+  cursor: pointer;
+}
+
+.workout-plans-btn:hover {
+  opacity: 0.9;
+}
+
+/* Back to Dashboard link styling */
+.dashboard-link {
+  display: inline-block;
+  margin-top: 20px;
+  color: #1e3a5f;
+  font-weight: bold;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.dashboard-link:hover {
+  text-decoration: underline;
+}
+
+/* Success and error message styling */
+.workout-plans-success-message {
+  margin-top: 15px;
+  padding: 10px;
+  background-color: #b9fbc0;
+  border: 2px solid #1e3a5f;
+  border-radius: 4px;
+  color: #1e3a5f;
+  font-weight: bold;
+}
+
+.error-message {
+  color: #ff0000;
+  margin-bottom: 15px;
+  padding: 10px;
+  background-color: #ffe6e6;
+  border-radius: 4px;
+}
