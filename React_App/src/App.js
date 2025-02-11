@@ -30,6 +30,8 @@ function App() {
       <Route path="/" element={<Navigate to="/login" replace />} />
       <Route path="/login" element={<LoginForm />} />
       <Route path="/signupOwner" element={<SignupFormOwner />} />
+      
+      {/* <Route path="/reset-password" element={<LoginForm />} /> */}
 
       {/* Protected Route for Signup Member (only for GYM_OWNER) */}
       <Route
@@ -76,7 +78,7 @@ function App() {
             <Navigate to="/login" replace />
           )
         }
-      />  
+      />
 
       {/* Protected Route for adding Gym Profile (only for GYM_OWNER) */}
       <Route
@@ -101,7 +103,7 @@ function App() {
           )
         }
       />
-            
+
       <Route
         path="/ownerProfile"
         element={
