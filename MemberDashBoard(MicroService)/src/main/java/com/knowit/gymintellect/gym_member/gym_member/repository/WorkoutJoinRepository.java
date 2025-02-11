@@ -11,4 +11,6 @@ import com.knowit.gymintellect.gym_member.gym_member.entity.WorkoutPlan;
 @Repository
 public interface WorkoutJoinRepository extends JpaRepository<WorkoutJoin, Integer>{
 	List<WorkoutJoin> findByWorkoutPlan(WorkoutPlan workoutPlan);
+	List<WorkoutJoin> findByWorkoutPlan_PlanId(Integer workoutPlanId);
+//	int findByWorkoutPlanId(Integer workoutPlanId);
 }

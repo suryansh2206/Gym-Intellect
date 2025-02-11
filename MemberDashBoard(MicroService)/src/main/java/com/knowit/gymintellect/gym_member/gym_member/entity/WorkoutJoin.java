@@ -1,5 +1,7 @@
 package com.knowit.gymintellect.gym_member.gym_member.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -21,9 +23,11 @@ public class WorkoutJoin {
 
     @ManyToOne
     @JoinColumn(name = "workout_id")
+    @JsonIgnore
     private Workout workout;
 
     @ManyToOne
     @JoinColumn(name = "plan_id")
+    @JsonIgnore
     private WorkoutPlan workoutPlan;
 }

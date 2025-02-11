@@ -2,6 +2,8 @@ package com.knowit.gymintellect.gym_member.gym_member.entity;
 
 import java.util.Date;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -25,16 +27,19 @@ public class Member {
     
     @ManyToOne
     @JoinColumn(name = "membership_id")
+    @JsonIgnore
     private MembershipPlanJoin membership;
     
     @ManyToOne
     @JoinColumn(name = "user_id", nullable = false)
+    @JsonIgnore
     private User user;
     
     private int gym_profile_id;
     
     @ManyToOne
     @JoinColumn(name = "plan_id")
+    @JsonIgnore
     private WorkoutPlan workoutPlan;
 
 	public Long getMemberId() {

@@ -2,6 +2,8 @@ package com.knowit.gymintellect.gym_member.gym_member.entity;
 
 import java.util.List;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -34,9 +36,11 @@ public class WorkoutPlan {
     private String description;  // Workout details
     
     @OneToMany(mappedBy = "workoutPlan", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    @JsonIgnore
     private List<Workout> workouts;
     
     @OneToOne(mappedBy = "workoutPlan", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    @JsonIgnore
     private DietPlan dietPlan;
 
     public DietPlan getDietPlan() {

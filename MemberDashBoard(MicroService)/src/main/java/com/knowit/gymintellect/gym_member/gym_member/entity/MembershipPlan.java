@@ -1,5 +1,7 @@
 package com.knowit.gymintellect.gym_member.gym_member.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -29,6 +31,7 @@ public class MembershipPlan {
 
     @ManyToOne
     @JoinColumn(name = "gym_profile_id", referencedColumnName = "gymProfileId", nullable = false)
+    @JsonIgnore
     private GymProfile gymProfile;
 
     public MembershipPlan() {}

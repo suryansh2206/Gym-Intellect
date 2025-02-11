@@ -13,6 +13,7 @@ import GymProfiles from "./Components/Profiles/GymProfiles";
 import AddMembershipPlan from "./Components/Pages/AddMembershipPlan";
 import OwnerProfile from "./Components/Pages/OwnerProfile";
 import MemberProfile from "./Components/Pages/MemberProfile";
+import WorkoutPlanMember from "./Components/Pages/WorkoutPlanMember";
 
 function App() {
   // Access authentication state from Redux
@@ -122,6 +123,14 @@ function App() {
           )
         }
       />
+
+      <Route
+        path="/workoutplanmember"
+        element={isAuthenticated && userRole === "MEMBER" ? (
+          <WorkoutPlanMember />
+        ) : (
+          <Navigate to="/login" replace />
+        )}/>  
 
       {/* Protected Route for Member Dashboard (for any authenticated member) */}
       <Route
