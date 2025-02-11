@@ -15,10 +15,11 @@ const MemberProfile = () => {
   const navigate = useNavigate();
 
   useEffect(() => {
+    
     console.log(localStorage.getItem("userId"));
     const fetchOwnerDetails = async () => {
       try {
-        const response = await fetch(`http://localhost:8083/api/members/profile/${ownerId}`, {
+        const response = await fetch(`http://localhost:8214/api/members/profile/${ownerId}`, {
           method: "GET",
           headers: {
             "Authorization": `Bearer ${token}`,

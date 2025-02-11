@@ -28,7 +28,7 @@ public class ForgetController {
     @Autowired
     private EmailService emailService;
 	
-	@PostMapping("/forgot-password")
+    @PostMapping("/forgot-password")
     public ResponseEntity<String> forgotPassword(@RequestBody Map<String, String> request) {
         String email = request.get("email");
 
@@ -43,7 +43,7 @@ public class ForgetController {
         userService.savePasswordResetToken(user, token);
         
         // Send email
-        String resetUrl = "http://localhost:3000/reset-password?token=" + token;
+        String resetUrl = "http://localhost:3021/reset-password?token=" + token;
         emailService.sendEmail(email, "Password Reset Request", 
             "Click the link to reset your password: " + resetUrl);
 

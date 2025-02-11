@@ -87,18 +87,46 @@ const HomeOwner = () => {
       </div>
 
       {/* Cards Container - NEW ADDITION */}
-    <div className="cards-container">
-      <div className="card">
-        <Link to="/diet-plan">
-          <img className="card-img-top" src={require("../../assets/Diet Plan 2.png")} alt="Add Diet Plan" />
-        </Link>
-      </div>
+      <div className="cards-container">
+        <div className="card">
+          <Link to="/diet-plan">
+            <img
+              className="card-img-top"
+              src={require("../../assets/Diet Plan 2.png")}
+              alt="Add Diet Plan"
+            />
+          </Link>
+        </div>
 
         <div className="card">
           <Link to="/workout-plan">
-            <img className="card-img-top" src={require("../../assets/workout2.jpg")} alt="Add workout Plan" />
+            <img
+              className="card-img-top"
+              src={require("../../assets/workout2.jpg")}
+              alt="Add Workout Plan"
+            />
           </Link>
         </div>
+
+        <div className="card">
+          <Link to="/membership-plan">
+            <img
+              className="card-img-top"
+              src={require("../../assets/workoutRoutine.webp")}
+              alt="Add Membership Plan"
+            />
+          </Link>
+        </div>
+
+        {/* <div className="card">
+          <Link to="/new-feature">
+            <img
+              className="card-img-top"
+              src={require("../../assets/new-feature.jpg")}
+              alt="New Feature"
+            />
+          </Link>
+        </div> */}
       </div>
     </div>
   );

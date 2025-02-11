@@ -5,15 +5,16 @@
 }
 
 .cards-container {
+  padding: 30px;
   display: flex;
   justify-content: center; /* Centers horizontally */
   align-items: center; /* Keeps proper positioning */
-  gap: 150px; /* Space between cards */
-  margin-top: 150px; /* Adjust to position correctly */
+  gap: 50px; /* Space between cards */
+  margin-top: 50px; /* Adjust to position correctly */
 }
 
 .card {
-  width: 30rem; /* Bootstrap default card width */
+  width: 20rem; /* Adjust the width to make the cards smaller */
   transition: all 300ms;
   border-radius: 10px;
   overflow: hidden;
@@ -26,6 +27,6 @@
 }
 
 .card-img-top {
-  height: 250px; /* Control image height */
+  height: 200px; /* Control image height */
   object-fit: cover; /* Maintain image aspect ratio */
 }

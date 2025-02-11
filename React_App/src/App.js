@@ -9,10 +9,11 @@ import HomeMember from "./Components/Pages/HomeMember";
 import HomeAdmin from "./Components/Pages/HomeAdmin";
 import AllGymProfiles from "./Components/Pages/AllGymProfiles"; // Import the AllGymProfiles component
 import SignupFormMember from "./Components/Authentication/SignupFormMember"; // Import the new SignupFormMember component
-import GymProfiles from "./Components/Profiles/GymProfiles";
+// import GymProfiles from "./Components/Profiles/GymProfiles";
 import AddMembershipPlan from "./Components/Pages/AddMembershipPlan";
 import OwnerProfile from "./Components/Pages/OwnerProfile";
 import MemberProfile from "./Components/Pages/MemberProfile";
+import WorkoutPlans from "./Components/Pages/WorkoutPlans";
 import WorkoutPlanMember from "./Components/Pages/WorkoutPlanMember";
 import DietPlanMember from "./Components/Pages/DietPlanMember";
 
@@ -31,8 +32,8 @@ function App() {
       <Route path="/" element={<Navigate to="/login" replace />} />
       <Route path="/login" element={<LoginForm />} />
       <Route path="/signupOwner" element={<SignupFormOwner />} />
-      
-      {/* <Route path="/reset-password" element={<LoginForm />} /> */}
+
+       <Route path="/reset-password" element={<LoginForm />} />
 
       {/* Protected Route for Signup Member (only for GYM_OWNER) */}
       <Route
@@ -71,10 +72,10 @@ function App() {
       />
 
       <Route
-        path="/diet_plan"
+        path="/workout-plan"
         element={
           isAuthenticated && userRole === "GYM_OWNER" ? (
-            <AddGymProfile />
+            <WorkoutPlans />
           ) : (
             <Navigate to="/login" replace />
           )
@@ -82,7 +83,7 @@ function App() {
       />
 
       {/* Protected Route for adding Gym Profile (only for GYM_OWNER) */}
-      <Route
+      {/* <Route
         path="/gymProfile"
         element={
           isAuthenticated && userRole === "GYM_OWNER" ? (
@@ -91,7 +92,7 @@ function App() {
             <Navigate to="/login" replace />
           )
         }
-      />
+      /> */}
 
       {/* Protected Route for adding Membership Plan (only for GYM_OWNER) */}
       <Route
@@ -120,7 +121,7 @@ function App() {
         path="/memberprofile"
         element={
           isAuthenticated && userRole === "MEMBER" ? (
-            <MemberProfile/>
+            <MemberProfile />
           ) : (
             <Navigate to="/login" replace />
           )
