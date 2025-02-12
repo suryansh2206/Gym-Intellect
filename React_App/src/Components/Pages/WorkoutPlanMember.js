@@ -13,7 +13,6 @@ const WorkoutPlanMember = () => {
 
   const userId = userIdRedux || localStorage.getItem("userId");
   const token = tokenRedux || localStorage.getItem("token");
-
   useEffect(() => {
     const fetchWorkouts = async () => {
       try {
@@ -31,6 +30,24 @@ const WorkoutPlanMember = () => {
         );
 
         const data = await response.json();
+
+        // useEffect(() => {
+        //   const fetchWorkouts = async () => {
+        //     try {
+        //       console.log(userId);
+        //       const response = await fetch(
+        //         `http://localhost:8214/api/workouts/${userId}`,
+        //         {
+        //           method: "GET",
+        //           headers: {
+        //             "Content-Type": "application/json",
+        //             Authorization: `Bearer ${token}`,
+        //           },
+        //           credentials: "include",
+        //         }
+        //       );
+
+        //       const data = await response.json();
 
         setWorkouts(data);
         console.log(data);

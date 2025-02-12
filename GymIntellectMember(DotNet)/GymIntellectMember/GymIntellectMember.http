@@ -1,0 +1,6 @@
+@GymIntellectMember_HostAddress = http://localhost:5111
+
+GET {{GymIntellectMember_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###

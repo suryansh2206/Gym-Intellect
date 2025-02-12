@@ -13,7 +13,6 @@ import com.knowit.gymintellect.gym_member.gym_member.entity.WorkoutJoin;
 @Repository
 public interface DietPlanRepository extends JpaRepository<DietPlan, Long> {
 	
-//	@Query("SELECT d FROM DietPlan d WHERE d.workoutPlan.planId = :planId")
-	List<DietPlan> findAll();
-	List<DietPlan> findByWorkoutPlan_PlanId(@Param("planId") int planId);
+	@Query("SELECT d FROM DietPlan d LEFT JOIN FETCH d.meals WHERE d.workoutPlan.planId = :planId")
+    List<DietPlan> findByWorkoutPlanId(@Param("planId") Long planId);
 }

@@ -21,11 +21,12 @@ public class DietPlanController {
 
     @GetMapping("/{userId}/diet-plan")
     public ResponseEntity<?> getMemberDietPlan(@PathVariable int userId) {
-        List<DietPlan> dietPlan = dietPlanService.getDietPlanForMember(userId);
-        if (dietPlan != null) {
-            return ResponseEntity.ok(dietPlan);
+    	try {
+            List<DietPlan> dietPlans = dietPlanService.getDietPlanForMember(userId);
+            return ResponseEntity.ok(dietPlans);
+        } catch (RuntimeException e) {
+            return ResponseEntity.badRequest().body(e.getMessage());
         }
-        return ResponseEntity.badRequest().body("Member not found or membership expired!");
     }
 }
 

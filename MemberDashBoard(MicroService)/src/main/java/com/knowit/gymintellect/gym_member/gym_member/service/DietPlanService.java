@@ -1,5 +1,6 @@
 package com.knowit.gymintellect.gym_member.gym_member.service;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
@@ -39,7 +40,7 @@ public class DietPlanService {
 //    private EntityManager entityManager;
 
     public List<DietPlan> getDietPlanForMember(int userId) {
-        Member member = memberRepository.findByUserUserId(userId)
+    	Member member = memberRepository.findByUserUserId(userId)
                 .orElseThrow(() -> new RuntimeException("Member not found"));
 
         WorkoutPlan workoutPlan = member.getWorkoutPlan();
@@ -47,14 +48,14 @@ public class DietPlanService {
             throw new RuntimeException("Workout plan not found for this member");
         }
 
-        int planId = workoutPlan.getPlanId().intValue();
-        
-        List<DietPlan> dietPlans = dietPlanRepository.findAll();
-        
-        // Debugging before returning
-        System.out.println("Raw Retrieved Diet Plans:");
+        List<DietPlan> dietPlans = dietPlanRepository.findByWorkoutPlanId(workoutPlan.getPlanId());
+
+        // Debugging: Print retrieved data
         for (DietPlan dp : dietPlans) {
             System.out.println("Diet Plan ID: " + dp.getDietPlanId() + ", Description: " + dp.getDescription());
+            for (DietMeal meal : dp.getMeals()) {
+                System.out.println("Meal: " + meal.getFoodItem() + ", Quantity: " + meal.getQuantity() + ", Calories: " + meal.getCalories());
+            }
         }
 
         return dietPlans;
