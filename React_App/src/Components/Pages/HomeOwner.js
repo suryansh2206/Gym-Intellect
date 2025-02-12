@@ -89,7 +89,7 @@ const HomeOwner = () => {
       {/* Cards Container - NEW ADDITION */}
       <div className="cards-container">
         <div className="card">
-          <Link to="/diet-plan">
+          <Link to="/dietPlan">
             <img
               className="card-img-top"
               src={require("../../assets/Diet Plan 2.png")}
@@ -99,7 +99,17 @@ const HomeOwner = () => {
         </div>
 
         <div className="card">
-          <Link to="/workout-plan">
+          <Link to="/dietMealPlan">
+            <img
+              className="card-img-top"
+              src={require("../../assets/Diet Plan 2.png")}
+              alt="Add Diet Meal"
+            />
+          </Link>
+        </div>
+
+        <div className="card">
+          <Link to="/workoutPlan">
             <img
               className="card-img-top"
               src={require("../../assets/workout2.jpg")}
@@ -109,24 +119,14 @@ const HomeOwner = () => {
         </div>
 
         <div className="card">
-          <Link to="/membership-plan">
+          <Link to="/workoutRoutine">
             <img
               className="card-img-top"
               src={require("../../assets/workoutRoutine.webp")}
-              alt="Add Membership Plan"
+              alt="Add Workout Routine"
             />
           </Link>
         </div>
-
-        {/* <div className="card">
-          <Link to="/new-feature">
-            <img
-              className="card-img-top"
-              src={require("../../assets/new-feature.jpg")}
-              alt="New Feature"
-            />
-          </Link>
-        </div> */}
       </div>
     </div>
   );

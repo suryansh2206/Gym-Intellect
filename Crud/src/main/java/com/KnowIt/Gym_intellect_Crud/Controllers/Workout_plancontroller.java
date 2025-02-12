@@ -39,23 +39,29 @@ public class Workout_plancontroller {
 
     // Get workout plan by ID
     @GetMapping("/{id}")
-    public ResponseEntity<WorkoutPlan> getPlanById(@PathVariable int id) {
+    public ResponseEntity<WorkoutPlan> getPlanById(@PathVariable Long id) {
         WorkoutPlan plan = workoutPlanService.getPlanById(id);
         return ResponseEntity.ok(plan);
     }
 
     // Update workout plan
     @PutMapping("/{id}")
-    public ResponseEntity<WorkoutPlan> updatePlan(@PathVariable int id, @RequestBody WorkoutPlan updatedPlan) {
+    public ResponseEntity<WorkoutPlan> updatePlan(@PathVariable Long id, @RequestBody WorkoutPlan updatedPlan) {
         WorkoutPlan plan = workoutPlanService.updatePlan(id, updatedPlan);
         return ResponseEntity.ok(plan);
     }
 
     // Delete workout plan
     @DeleteMapping("/{id}")
-    public ResponseEntity<Void> deletePlan(@PathVariable int id) {
+    public ResponseEntity<Void> deletePlan(@PathVariable Long id) {
         workoutPlanService.deletePlan(id);
         return ResponseEntity.noContent().build();
     }
 
+//    @PostMapping("/add-workouts")
+//   	public ResponseEntity<String> addWorkoutsToPlan(@RequestBody WorkoutPlanRequest request) {
+//   	    workoutPlanService.addWorkoutsToPlan(request.getPlanId(), request.getWorkoutIds());
+//   	    return ResponseEntity.ok("Workouts added to plan successfully");
+//   	}
+    
 }

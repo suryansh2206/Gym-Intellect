@@ -15,6 +15,7 @@ import OwnerProfile from "./Components/Pages/OwnerProfile";
 import MemberProfile from "./Components/Pages/MemberProfile";
 import WorkoutPlans from "./Components/Pages/WorkoutPlans";
 import WorkoutPlanMember from "./Components/Pages/WorkoutPlanMember";
+import WorkoutRoutine from "./Components/Pages/WorkoutRoutine";
 
 function App() {
   // Access authentication state from Redux
@@ -32,7 +33,7 @@ function App() {
       <Route path="/login" element={<LoginForm />} />
       <Route path="/signupOwner" element={<SignupFormOwner />} />
 
-       <Route path="/reset-password" element={<LoginForm />} />
+      <Route path="/reset-password" element={<LoginForm />} />
 
       {/* Protected Route for Signup Member (only for GYM_OWNER) */}
       <Route
@@ -71,10 +72,21 @@ function App() {
       />
 
       <Route
-        path="/workout-plan"
+        path="/workoutPlan"
         element={
           isAuthenticated && userRole === "GYM_OWNER" ? (
             <WorkoutPlans />
+          ) : (
+            <Navigate to="/login" replace />
+          )
+        }
+      />
+
+      <Route
+        path="/workoutRoutine"
+        element={
+          isAuthenticated && userRole === "GYM_OWNER" ? (
+            <WorkoutRoutine />
           ) : (
             <Navigate to="/login" replace />
           )
@@ -129,11 +141,14 @@ function App() {
 
       <Route
         path="/workoutplanmember"
-        element={isAuthenticated && userRole === "MEMBER" ? (
-          <WorkoutPlanMember />
-        ) : (
-          <Navigate to="/login" replace />
-        )}/>  
+        element={
+          isAuthenticated && userRole === "MEMBER" ? (
+            <WorkoutPlanMember />
+          ) : (
+            <Navigate to="/login" replace />
+          )
+        }
+      />
 
       {/* Protected Route for Member Dashboard (for any authenticated member) */}
       <Route

@@ -1,0 +1,184 @@
+/* WorkoutRoutine.css */
+
+.workout-routine-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  padding: 40px 0;
+  background-color: #e3f6f5; /* Light Aqua */
+  background-image: linear-gradient(
+      rgba(154, 203, 208, 0.6) 1px,
+      transparent 1px
+    ),
+    linear-gradient(90deg, rgba(154, 203, 208, 0.6) 1px, transparent 1px);
+  background-size: 10px 10px;
+}
+
+.workout-routine-wrapper {
+  background-color: #9acbd0; /* Light Teal */
+  border: 2px solid #1e3a5f; /* Dark Navy Blue */
+  border-radius: 20px;
+  box-shadow: 3px 4px 0px 1px #48a6a7;
+  padding: 20px;
+  width: 100%;
+  max-width: 500px;
+  text-align: center;
+  margin-top: -50px; /* Shift the form up */
+}
+
+.workout-routine-wrapper h2 {
+  color: #1e3a5f;
+  font-weight: 900;
+  margin-bottom: 20px;
+}
+
+/* Form group styles for each field */
+.workout-routine-form-group {
+  margin-bottom: 15px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.workout-routine-form-group label {
+  display: block;
+  margin-bottom: 5px;
+  font-weight: 600;
+  color: #1e3a5f;
+  text-align: left;
+}
+
+.workout-routine-form-group input {
+  width: 100%;
+  padding: 12px;
+  border: 2px solid #1e3a5f;
+  border-radius: 4px;
+  box-shadow: 3px 4px 0px 1px #48a6a7;
+  font-size: 14px;
+}
+
+.workout-routine-form-group input:focus {
+  outline: none;
+  box-shadow: 1px 2px 0px 0px #48a6a7;
+}
+
+/* Submit button styles */
+.workout-routine-btn {
+  width: 100%;
+  padding: 12px;
+  background-color: #1e3a5f;
+  color: white;
+  border-radius: 10px;
+  font-weight: bold;
+  font-size: 15px;
+  cursor: pointer;
+}
+
+.workout-routine-btn:hover {
+  opacity: 0.9;
+}
+
+/* Success message styling */
+.workout-routine-success-message {
+  margin-top: 15px;
+  padding: 10px;
+  background-color: #b9fbc0;
+  border: 2px solid #1e3a5f;
+  border-radius: 4px;
+  color: #1e3a5f;
+  font-weight: bold;
+}
+
+/* Back to Dashboard link styling */
+.dashboard-link {
+  display: inline-block;
+  margin-top: 20px;
+  color: #1e3a5f;
+  font-weight: bold;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.dashboard-link:hover {
+  text-decoration: underline;
+}
+
+/* Assign workouts container */
+.assign-workouts-container {
+  margin-top: 50px;
+  width: 100%;
+  max-width: 800px;
+  text-align: center;
+}
+
+.assign-workouts-container h2 {
+  color: #1e3a5f;
+  font-weight: 900;
+  margin-bottom: 20px;
+}
+
+/* Workout plan select box styling */
+.workout-plan-select {
+  margin-bottom: 20px;
+}
+
+.workout-plan-select label {
+  font-weight: 600;
+  color: #1e3a5f;
+  margin-right: 10px;
+}
+
+.workout-plan-select select {
+  padding: 10px;
+  border: 2px solid #1e3a5f;
+  border-radius: 4px;
+  box-shadow: 3px 4px 0px 1px #48a6a7;
+  font-size: 14px;
+}
+
+/* Workouts table styling */
+.workouts-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 20px;
+}
+
+.workouts-table th,
+.workouts-table td {
+  border: 1px solid #1e3a5f;
+  padding: 10px;
+  text-align: left;
+}
+
+.workouts-table th {
+  background-color: #9acbd0;
+  color: #1e3a5f;
+}
+
+.workouts-table td {
+  background-color: #e3f6f5;
+}
+
+.workouts-table th:first-child,
+.workouts-table td:first-child {
+  width: 50px; /* Adjust width as needed */
+  text-align: center;
+}
+
+/* Assign button styling */
+.assign-workouts-btn {
+  margin-top: 20px;
+  padding: 10px 20px;
+  background-color: #1e3a5f;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.assign-workouts-btn:hover {
+  opacity: 0.9;
+}

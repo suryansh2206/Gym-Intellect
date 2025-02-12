@@ -6,7 +6,7 @@ import org.springframework.stereotype.Repository;
 import com.KnowIt.Gym_intellect_Crud.Entity.Workout;
 
 @Repository
-public interface Workoutrepo extends JpaRepository<Workout,Integer> {
+public interface Workoutrepo extends JpaRepository<Workout,Long> {
 	
 
 }

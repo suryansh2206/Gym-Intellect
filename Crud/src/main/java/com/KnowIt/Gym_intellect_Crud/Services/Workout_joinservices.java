@@ -24,25 +24,25 @@ public class Workout_joinservices {
 	    @Autowired
 	    private Workout_planrepo workoutPlanRepository;
 
-	    // Link a workout to a plan
-	    public Workout_join linkWorkoutToPlan(int workoutId, int planId) {
-	        Workout workout = workoutRepository.findById(workoutId)
-	                .orElseThrow(() -> new AotInitializerNotFoundException(null, "Workout not found with ID: " + workoutId));
-	        WorkoutPlan plan = workoutPlanRepository.findById(planId)
-	                .orElseThrow(() -> new AotInitializerNotFoundException(null, "Plan not found with ID: " + planId));
-
-	        Workout_join join = new Workout_join();
-	        join.setWorkout(workout);
-	        join.setPlan(plan);
-	        return workoutJoinRepository.save(join);
-	    }
-	    public void unlinkWorkoutFromPlan(int workoutId, int planId) {
-	        Workout_join join = workoutJoinRepository.findByWorkoutIdAndPlanId(workoutId, planId)
-	            .orElseThrow(() -> new AotInitializerNotFoundException(null, "Link not found for workoutId: " + workoutId + " and planId: " + planId));
-
-	        workoutJoinRepository.delete(join);
-	    }
-
+//	    // Link a workout to a plan
+//	    public Workout_join linkWorkoutToPlan(int workoutId, int planId) {
+//	        Workout workout = workoutRepository.findById(workoutId)
+//	                .orElseThrow(() -> new AotInitializerNotFoundException(null, "Workout not found with ID: " + workoutId));
+//	        WorkoutPlan plan = workoutPlanRepository.findById(planId)
+//	                .orElseThrow(() -> new AotInitializerNotFoundException(null, "Plan not found with ID: " + planId));
+//
+//	        Workout_join join = new Workout_join();
+//	        join.setWorkout(workout);
+//	        join.setPlan(plan);
+//	        return workoutJoinRepository.save(join);
+//	    }
+//	    public void unlinkWorkoutFromPlan(int workoutId, int planId) {
+//	        Workout_join join = workoutJoinRepository.findByWorkoutIdAndPlanId(workoutId, planId)
+//	            .orElseThrow(() -> new AotInitializerNotFoundException(null, "Link not found for workoutId: " + workoutId + " and planId: " + planId));
+//
+//	        workoutJoinRepository.delete(join);
+//	    }
+//
 
 	    
 

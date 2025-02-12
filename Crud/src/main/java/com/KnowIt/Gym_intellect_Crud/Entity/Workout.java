@@ -21,7 +21,7 @@ public class Workout {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int workoutId;
+    private Long workoutId;
 
     @Column(nullable = false, length = 255)
     private String exerciseName;
@@ -32,11 +32,11 @@ public class Workout {
     @Column(nullable = false)
     private int reps;
 
-    @Column(nullable = false)
+    @Column(nullable = true)
     @JsonFormat(pattern = "HH:mm:ss")
     private LocalTime duration;
 
-    @Column(nullable = false)
+    @Column(nullable = true)
     @JsonFormat(pattern = "HH:mm:ss")
     private LocalTime restTime;
 
@@ -44,11 +44,11 @@ public class Workout {
     @JsonIgnore
     private List<Workout_join> workoutJoins;
 
-	public int getWorkoutId() {
+	public Long getWorkoutId() {
 		return workoutId;
 	}
 
-	public void setWorkoutId(int workoutId) {
+	public void setWorkoutId(Long workoutId) {
 		this.workoutId = workoutId;
 	}
 

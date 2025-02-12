@@ -23,26 +23,26 @@ public class Workout_joincontroller {
 	@Autowired
     private Workout_joinservices workoutJoinService;
 
-    // Link a workout to a plan
-    @PostMapping("/link")
-    public ResponseEntity<Workout_join> linkWorkoutToPlan(
-            @RequestParam int workoutId,
-            @RequestParam int planId) {
-        Workout_join join = workoutJoinService.linkWorkoutToPlan(workoutId, planId);
-        return ResponseEntity.ok(join);
-    }
-
-    // Unlink a workout from a plan
-    @DeleteMapping("/unlink")
-    public ResponseEntity<String> unlinkWorkoutFromPlan(
-            @RequestParam int workoutId,
-            @RequestParam int planId) {
-    	workoutJoinService.unlinkWorkoutFromPlan(workoutId, planId);
-    	return ResponseEntity.ok("Workout unlinked from plan successfully");
-    }
+//    // Link a workout to a plan
+//    @PostMapping("/link")
+//    public ResponseEntity<Workout_join> linkWorkoutToPlan(
+//            @RequestParam Long workoutId,
+//            @RequestParam Long planId) {
+//        Workout_join join = workoutJoinService.linkWorkoutToPlan(workoutId, planId);
+//        return ResponseEntity.ok(join);
+//    }
+//
+//    // Unlink a workout from a plan
+//    @DeleteMapping("/unlink")
+//    public ResponseEntity<String> unlinkWorkoutFromPlan(
+//            @RequestParam Long workoutId,
+//            @RequestParam Long planId) {
+//    	workoutJoinService.unlinkWorkoutFromPlan(workoutId, planId);
+//    	return ResponseEntity.ok("Workout unlinked from plan successfully");
+//    }
 
     @GetMapping("/workouts-by-plan/{planId}")
-    public ResponseEntity<List<WorkoutJoinDTO>> getWorkoutsByPlan(@PathVariable int planId) {
+    public ResponseEntity<List<WorkoutJoinDTO>> getWorkoutsByPlan(@PathVariable Long planId) {
         List<Workout_join> joins = workoutJoinService.getWorkoutsByPlan(planId);
         List<WorkoutJoinDTO> dtos = joins.stream()
             .map(join -> {

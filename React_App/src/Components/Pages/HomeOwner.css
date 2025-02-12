@@ -1,3 +1,7 @@
+/* .home-owner-container {
+  padding: 20px;
+} */
+
 .content-container {
   display: flex;
   flex-direction: row;
@@ -5,12 +9,14 @@
 }
 
 .cards-container {
-  padding: 30px;
+  padding: 20px;
   display: flex;
+  flex-wrap: wrap; /* Allow wrapping to create multiple rows */
   justify-content: center; /* Centers horizontally */
   align-items: center; /* Keeps proper positioning */
   gap: 50px; /* Space between cards */
   margin-top: 50px; /* Adjust to position correctly */
+  padding: 0 20px; /* Add padding to the left and right sides */
 }
 
 .card {
@@ -19,6 +25,7 @@
   border-radius: 10px;
   overflow: hidden;
   box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2); /* Soft shadow effect */
+  margin: 10px; /* Add margin to the card */
 }
 
 .card:hover {

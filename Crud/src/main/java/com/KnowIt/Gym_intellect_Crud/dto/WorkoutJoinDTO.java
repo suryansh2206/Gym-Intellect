@@ -2,15 +2,15 @@ package com.KnowIt.Gym_intellect_Crud.dto;
 
 public class WorkoutJoinDTO {
 	
-	private int wojId;
+	private Long wojId;
     private long workoutId;
     private String exerciseName;
     private long planId;
     private String planName;
-	public int getWojId() {
+	public Long getWojId() {
 		return wojId;
 	}
-	public void setWojId(int wojId) {
+	public void setWojId(Long wojId) {
 		this.wojId = wojId;
 	}
 	public long getWorkoutId() {

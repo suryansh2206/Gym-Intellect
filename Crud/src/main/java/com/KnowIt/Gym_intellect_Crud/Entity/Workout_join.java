@@ -16,7 +16,7 @@ public class Workout_join {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int wojId;
+    private Long wojId;
 
     @ManyToOne
     @JoinColumn(name = "workout_id")
@@ -29,11 +29,11 @@ public class Workout_join {
     private WorkoutPlan plan;
 
 
-	public int getWojId() {
+	public Long getWojId() {
 		return wojId;
 	}
 
-	public void setWojId(int wojId) {
+	public void setWojId(Long wojId) {
 		this.wojId = wojId;
 	}
 

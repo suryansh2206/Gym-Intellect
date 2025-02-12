@@ -18,11 +18,12 @@ public interface Workout_joinrepo extends JpaRepository<Workout_join, Integer> {
 
     // Find all workout joins by workout ID
     List<Workout_join> findByWorkout_WorkoutId(int workoutId);
+    
+    List<Workout_join> findByWorkoutPlan_PlanId(Long planId);
 
-    // Corrected JPQL query to fetch Workout_join by workoutId and planId
-    @Query("SELECT wj FROM Workout_join wj WHERE wj.workout.workoutId = :workoutId AND wj.plan.planId = :planId")
-    Optional<Workout_join> findByWorkoutIdAndPlanId(@Param("workoutId") int workoutId, @Param("planId") int planId);
+//    // Corrected JPQL query to fetch Workout_join by workoutId and planId
+//    @Query("SELECT wj FROM Workout_join wj WHERE wj.workout.workoutId = :workoutId AND wj.plan.planId = :planId")
+//    Optional<Workout_join> findByWorkoutIdAndPlanId(@Param("workoutId") int workoutId, @Param("planId") int planId);
 
-	
 
 }
