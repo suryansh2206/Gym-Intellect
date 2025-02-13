@@ -11,13 +11,13 @@ import org.springframework.stereotype.Repository;
 import com.KnowIt.Gym_intellect_Crud.Entity.Workout_join;
 
 @Repository
-public interface Workout_joinrepo extends JpaRepository<Workout_join, Integer> {
+public interface Workout_joinrepo extends JpaRepository<Workout_join, Long> {
 
     // Find all workout joins by plan ID
-    List<Workout_join> findByPlan_PlanId(long planId);
+//    List<Workout_join> findByWorkoutPlan_PlanId(Long planId);
 
     // Find all workout joins by workout ID
-    List<Workout_join> findByWorkout_WorkoutId(int workoutId);
+    List<Workout_join> findByWorkout_WorkoutId(Long workoutId);
     
     List<Workout_join> findByWorkoutPlan_PlanId(Long planId);
 

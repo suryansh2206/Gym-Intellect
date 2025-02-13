@@ -47,12 +47,12 @@ public class Workout_joinservices {
 	    
 
 	    // Get all workouts in a plan
-	    public List<Workout_join> getWorkoutsByPlan(long planId) {
-	        return workoutJoinRepository.findByPlan_PlanId(planId);
+	    public List<Workout_join> getWorkoutsByPlan(Long planId) {
+	        return workoutJoinRepository.findByWorkoutPlan_PlanId(planId);
 	    }
 
 	    // Get all plans containing a workout
-	    public List<Workout_join> getPlansByWorkout(int workoutId) {
+	    public List<Workout_join> getPlansByWorkout(Long workoutId) {
 	        return workoutJoinRepository.findByWorkout_WorkoutId(workoutId);
 	    }
 	

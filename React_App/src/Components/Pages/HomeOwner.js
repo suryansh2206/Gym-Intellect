@@ -89,7 +89,7 @@ const HomeOwner = () => {
       {/* Cards Container - NEW ADDITION */}
       <div className="cards-container">
         <div className="card">
-          <Link to="/dietPlan">
+          <Link to="/dietPlanOwner">
             <img
               className="card-img-top"
               src={require("../../assets/Diet Plan 2.png")}
@@ -98,7 +98,7 @@ const HomeOwner = () => {
           </Link>
         </div>
 
-        <div className="card">
+        {/* <div className="card">
           <Link to="/dietMealPlan">
             <img
               className="card-img-top"
@@ -106,7 +106,7 @@ const HomeOwner = () => {
               alt="Add Diet Meal"
             />
           </Link>
-        </div>
+        </div> */}
 
         <div className="card">
           <Link to="/workoutPlan">

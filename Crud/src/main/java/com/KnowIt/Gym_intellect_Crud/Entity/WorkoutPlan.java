@@ -32,7 +32,7 @@ public class WorkoutPlan {
     @Column(nullable = false, columnDefinition = "TEXT")
     private String description;
 
-    @OneToMany(mappedBy = "plan", cascade = CascadeType.ALL, orphanRemoval = true)
+    @OneToMany(mappedBy = "workoutPlan", cascade = CascadeType.ALL, orphanRemoval = true)
     @JsonIgnore
     private List<Workout_join> workoutJoins;
 

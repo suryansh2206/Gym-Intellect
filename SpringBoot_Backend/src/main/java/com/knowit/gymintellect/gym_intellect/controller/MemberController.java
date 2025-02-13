@@ -24,7 +24,9 @@ import com.knowit.gymintellect.gym_intellect.entity.MembershipPlan;
 import com.knowit.gymintellect.gym_intellect.entity.User;
 import com.knowit.gymintellect.gym_intellect.entity.WorkoutPlan;
 import com.knowit.gymintellect.gym_intellect.exception.ResourceNotFoundException;
+import com.knowit.gymintellect.gym_intellect.repository.MemberRepository;
 import com.knowit.gymintellect.gym_intellect.repository.UserRepository;
+import com.knowit.gymintellect.gym_intellect.service.MemberService;
 import com.knowit.gymintellect.gym_intellect.service.UserService;
 
 @RestController
@@ -33,10 +35,14 @@ public class MemberController {
 
     private final UserService userService;
     private final UserRepository userRepository;
+    private final MemberRepository memberRepository;
+//    private final MemberService memberservice;
 
-    public MemberController(UserService userService, UserRepository userRepository) {
+    public MemberController(UserService userService, UserRepository userRepository, MemberRepository memberRepository) {
         this.userService = userService;
         this.userRepository = userRepository;
+        this.memberRepository = memberRepository;
+//        this.memberservice = memberservice;
     }
 
     private User getAuthenticatedUser() {
@@ -105,4 +111,9 @@ public class MemberController {
     public ResponseEntity<List<WorkoutPlan>> getWorkoutPlans() {
         return ResponseEntity.ok(userService.getAllWorkoutPlans());
     }
+    
+//    @GetMapping("/{memberId}")
+//    public ResponseEntity<Member> getMemberById(@PathVariable Long memberId) {
+//        return ResponseEntity.ok(memberservice.getMemberById(memberId));
+//    }
 }
